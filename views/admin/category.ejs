@@ -838,6 +838,9 @@
                     message: xhr.responseText,
                     position: "topRight",
                 });
+                setTimeout(function () {
+                        location.reload();
+                    }, 1000);
             });
     }
     //#endregion Add Category
@@ -901,6 +904,7 @@
                         message: res.message,
                         position: "topRight",
                     });
+
                 }
             })
             .fail(function (xhr, status, error) {
@@ -909,6 +913,9 @@
                     message: xhr.responseText,
                     position: "topRight",
                 });
+                setTimeout(function () {
+                        location.reload();
+                    }, 1000);
             });
     }
     //#endregion Edit Category
@@ -952,6 +959,9 @@
                         message: xhr.responseText,
                         position: "topRight",
                     });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
                 });
         });
     });

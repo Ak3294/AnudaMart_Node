@@ -161,44 +161,101 @@
                                 <div class="table-responsive table-card">
                                     <table
                                         class="table align-middle table-nowrap"
+                                        id="brandTable"
                                     >
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <div class="form-check">
-                                                        <input
-                                                            class="form-check-input"
-                                                            type="checkbox"
-                                                            value="option"
-                                                            id="checkAll"
-                                                        />
-                                                        <label
-                                                            class="form-check-label"
-                                                            for="checkAll"
-                                                        ></label>
+                                        <tbody class="list" id="brandTableBody">
+                                            <% brands.forEach(function(brand,
+                                            index) { %>
+                                            <tr data-id="<%= brand._id %>">
+                                                <!-- Index column -->
+                                                <td><%= index + 1 %></td>
+
+                                                <td class="customer">
+                                                    <div
+                                                        class="d-flex align-items-center"
+                                                    >
+                                                        <div
+                                                            class="flex-grow-1"
+                                                        >
+                                                            <h5
+                                                                class="fs-base mb-0"
+                                                            >
+                                                                <a
+                                                                    href="#"
+                                                                    class="text-reset customer-name-elem"
+                                                                >
+                                                                    <%=
+                                                                    brand.name
+                                                                    %>
+                                                                </a>
+                                                            </h5>
+                                                        </div>
                                                     </div>
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Icon
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Category
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Slug
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Meta Title
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Meta Description
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Status
-                                                </th>
-                                                <th>Action</th>
+                                                </td>
+                                                <td class="status">
+                                                    <span
+                                                        class="badge bg-secondary-subtle text-secondary"
+                                                    >
+                                                        <%= brand.status %>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button
+                                                            class="btn btn-subtle-secondary btn-sm dropdown"
+                                                            type="button"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-expanded="false"
+                                                        >
+                                                            <i
+                                                                class="ri-more-fill align-middle"
+                                                            ></i>
+                                                        </button>
+                                                        <ul
+                                                            class="dropdown-menu dropdown-menu-end"
+                                                        >
+                                                            <li>
+                                                                <a
+                                                                    class="dropdown-item view-item-btn"
+                                                                    href="javascript:void(0);"
+                                                                >
+                                                                    <i
+                                                                        class="ri-eye-fill align-bottom me-2 text-muted"
+                                                                    ></i>
+                                                                    View
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    class="dropdown-item edit-item-btn"
+                                                                    href="#editBrandModal"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#editBrandModal"
+                                                                >
+                                                                    <i
+                                                                        class="ri-pencil-fill align-bottom me-2 text-muted"
+                                                                    ></i>
+                                                                    Edit
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    class="dropdown-item remove-item-btn"
+                                                                    data-bs-toggle="modal"
+                                                                    href="#deleteRecordModal"
+                                                                >
+                                                                    <i
+                                                                        class="ri-delete-bin-fill align-bottom me-2 text-muted"
+                                                                    ></i>
+                                                                    Delete
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
                                             </tr>
-                                        </thead>
+                                            <% }); %>
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="noresult" style="display: none">
@@ -211,8 +268,8 @@
                                         </h5>
                                         <p class="text-muted mb-0">
                                             We've searched more than 150+
-                                            customers We did not find any
-                                            customers for you search.
+                                            customers. We did not find any
+                                            brands for your search.
                                         </p>
                                     </div>
                                 </div>
@@ -223,9 +280,23 @@
                                     <div class="col-sm">
                                         <div class="text-muted">
                                             Showing
-                                            <span class="fw-semibold">10</span>
+                                            <span
+                                                class="fw-semibold"
+                                                id="pagination-start"
+                                                >1</span
+                                            >
+                                            to
+                                            <span
+                                                class="fw-semibold"
+                                                id="pagination-end"
+                                                >10</span
+                                            >
                                             of
-                                            <span class="fw-semibold">13</span>
+                                            <span
+                                                class="fw-semibold"
+                                                id="total-results"
+                                                >13</span
+                                            >
                                             Results
                                         </div>
                                     </div>
@@ -240,6 +311,7 @@
                                             >
                                             <ul
                                                 class="pagination listjs-pagination mb-0"
+                                                id="pagination-list"
                                             ></ul>
                                             <a
                                                 class="page-item pagination-next"
@@ -284,7 +356,7 @@
                     id="close-ordermodal"
                 ></button>
             </div>
-            <form class="tablelist-form" id="addCategoryForm">
+            <form class="tablelist-form" id="addBrandForm">
                 <div class="modal-body">
                     <div
                         id="alert-error-msg"
@@ -345,6 +417,137 @@
         </div>
     </div>
 </div>
+
+<!-- Edit Modal Starts -->
+<div
+    class="modal fade"
+    id="editBrandModal"
+    tabindex="-1"
+    aria-labelledby="editBrandModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBrandModalLabel">Edit Brand</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <div
+                    id="edit-alert-error-msg"
+                    class="alert alert-danger py-2"
+                ></div>
+                <input type="hidden" id="edit-id-field" />
+
+                <div class="mb-3">
+                    <label for="edit-customername-field" class="form-label"
+                        >Brand Name</label
+                    >
+                    <input
+                        type="text"
+                        id="edit-customername-field"
+                        class="form-control"
+                        name="name"
+                    />
+                </div>
+
+                <div>
+                    <label for="edit-status-field" class="form-label"
+                        >Status</label
+                    >
+                    <select
+                        class="form-control"
+                        name="status"
+                        id="edit-status-field"
+                        required
+                    >
+                        <option value="Active">Active</option>
+                        <option value="Block">Block</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-success"
+                    id="edit-brand-btn"
+                >
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edir Modal ends -->
+
+<!-- deleteRecordModal -->
+<div
+    id="deleteRecordModal"
+    class="modal fade zoomIn"
+    tabindex="-1"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="btn-close"
+                    id="deleteRecord-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body p-md-5">
+                <div class="text-center">
+                    <div class="text-danger">
+                        <i class="bi bi-trash display-4"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="mb-2">Are you sure?</h3>
+                        <p class="text-muted fs-lg mx-3 mb-0">
+                            Are you sure you want to remove this record?
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button
+                        type="button"
+                        class="btn w-sm btn-light btn-hover"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        type="button"
+                        class="btn w-sm btn-danger btn-hover"
+                        id="delete-brand"
+                    >
+                        Yes, Delete It!
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- /deleteRecordModal -->
+
 <!-- end Add Category Modal -->
 
 <!-- Edit Category Modal -->
@@ -360,7 +563,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        $("#addCategoryForm").on("submit", function (event) {
+        $("#addBrandForm").on("submit", function (event) {
             event.preventDefault();
 
             const name = $("#customername-field").val();
@@ -396,7 +599,90 @@
                         message: xhr.responseText,
                         position: "topRight",
                     });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
                 });
+        });
+    });
+
+    $(document).on("click", ".edit-item-btn", function () {
+        currentEditRow = $(this).closest("tr"); // Track the row being edited
+        const id = currentEditRow.data("id");
+        const name = currentEditRow.find(".customer-name-elem").text().trim();
+        const status = currentEditRow.find(".status span").text().trim();
+
+        $("#edit-id-field").val(id);
+        $("#edit-customername-field").val(name);
+        $("#edit-status-field").val(status);
+
+        $("#editBrandModal").modal("show"); // Show the modal
+    });
+
+    $("#edit-brand-btn").on("click", function () {
+        const id = $("#edit-id-field").val();
+        const name = $("#edit-customername-field").val();
+        const status = $("#edit-status-field").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/admin/brand/edit/" + id,
+            contentType: "application/json",
+            data: JSON.stringify({ name, status }),
+            success: function (response) {
+                iziToast.success({
+                    title: "Success",
+                    message: "Brand updated successfully!",
+                    position: "topRight",
+                });
+
+                // Update the row in the table
+                currentEditRow.find(".customer-name-elem").text(name);
+                currentEditRow.find(".status span").text(status);
+
+                setTimeout(function () {
+                    location.reload(); // Reload to reflect changes
+                }, 1000);
+            },
+            error: function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText || "Failed to update brand!",
+                    position: "topRight",
+                });
+            },
+        });
+    });
+
+    // Delete Brand AJAX
+
+    $(document).on("click", ".remove-item-btn", function () {
+        currentDeleteId = $(this).data("id"); // Get the id of the brand to delete
+    });
+
+    $(document).on("click", "#delete-brand", function () {
+        if (!currentDeleteId) return; // Check if currentDeleteId is defined
+
+        $.ajax({
+            type: "DELETE",
+            url: "/admin/brand/delete/" + currentDeleteId,
+            success: function (response) {
+                iziToast.success({
+                    title: "Deleted",
+                    message: "Brand deleted successfully!",
+                    position: "topRight",
+                });
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+            },
+            error: function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText || "Failed to delete brand!",
+                    position: "topRight",
+                });
+            },
         });
     });
 </script>

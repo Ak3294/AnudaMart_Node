@@ -9,14 +9,7 @@ const BrandSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    created_at: {
-        type: String,
-        default: Date,
-    },
-    updated_at: {
-        type: String,
-        default: Date.now,
-    },
+    
 });
 
 module.exports = mongoose.model("brand", BrandSchema);
