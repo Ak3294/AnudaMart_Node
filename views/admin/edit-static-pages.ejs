@@ -1,0 +1,411 @@
+<%- include('partials/header') %>
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Static Pages</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="/admin/dashboard">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Static Pages
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <!--end col-->
+                    <div class="col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">
+                                    Edit Static Pages
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="editPagesForm">
+                                    <input
+                                        type="hidden"
+                                        id="editid"
+                                        name="editid"
+                                        value="<%= page._id %>"
+                                    />
+                                    <div
+                                        class="row g-2 justify-content-lg-between align-items-center"
+                                    >
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="title"
+                                                class="form-label"
+                                                >Title</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="title"
+                                                    name="title"
+                                                    placeholder="Enter Title"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <label
+                                                for="description"
+                                                class="form-label"
+                                                >Description</label
+                                            >
+                                            <div class="position-relative">
+                                                <textarea
+                                                    class="form-control"
+                                                    id="editor"
+                                                    name="description"
+                                                    placeholder="Enter Description"
+                                                >
+                                                <%= page.description ? page.description : "" %>
+                                            </textarea
+                                                >
+                                            </div>
+                                        </div>
+
+                                        <div class="row gy-3">
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label
+                                                        for="product-manufacturer"
+                                                        class="form-label"
+                                                        >Meta Title</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="meta_title"
+                                                        name="meta_title"
+                                                        placeholder="Enter Meta Title"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label
+                                                        for="productimporter"
+                                                        class="form-label"
+                                                        >Meta Keywords</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="meta_keywords"
+                                                        name="meta_keywords"
+                                                        placeholder="Enter Meta Keywords"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label
+                                                        class="form-label"
+                                                        for="productPacker"
+                                                        >Meta Description</label
+                                                    >
+                                                    <textarea
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="meta_description"
+                                                        name="meta_description"
+                                                        placeholder="Enter Meta Description"
+                                                    ></textarea>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <div class="mb-3">
+                                                    <label
+                                                        for="productimporter"
+                                                        class="form-label"
+                                                        >Slug</label
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="slug"
+                                                        name="slug"
+                                                        placeholder="Enter Slug"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div
+                                                    class="form-group row"
+                                                    style="margin-top: 2rem"
+                                                >
+                                                    <label
+                                                        class="col-lg-2 col-from-label form-label"
+                                                        style="
+                                                            margin-left: 2rem;
+                                                        "
+                                                        >Status</label
+                                                    >
+                                                    <div
+                                                        class="col-lg-7 form-check form-switch ms-5"
+                                                    >
+                                                        <input
+                                                            type="checkbox"
+                                                            name="status_id"
+                                                            id="status_id"
+                                                            class="form-check-input form-check-input-lg"
+                                                            checked
+                                                        />
+                                                        <span
+                                                            class="custom-switch-indicator"
+                                                        ></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <div class="mb-3">
+                                                    <label class="form-label"
+                                                        >Image
+                                                    </label>
+                                                    <input
+                                                        type="file"
+                                                        class="form-control"
+                                                        id="image"
+                                                        name="image"
+                                                        placeholder="Upload image"
+                                                    />
+                                                    <input
+                                                        type="hidden"
+                                                        id="image-hidden"
+                                                        name="image-hidden"
+                                                        value="<%= page.image %>"
+                                                    />
+                                                    <div
+                                                        class="mb-2 mt-2"
+                                                        id="preview-image"
+                                                    >
+                                                        <img
+                                                            src=""
+                                                            id="display_preview_image"
+                                                            style="
+                                                                margin: 5px;
+                                                                width: 100px;
+                                                                height: 100px;
+                                                            "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-3 col-sm-6">
+                                                <label class="form-label"
+                                                    >Show In</label
+                                                >
+                                                <div>
+                                                    <select
+                                                        class="form-control"
+                                                        id="idShowIn"
+                                                        name="show_in"
+                                                    >
+                                                        <option
+                                                            value="none"
+                                                            class="none"
+                                                            selected
+                                                        >
+                                                            None
+                                                        </option>
+                                                        <option
+                                                            value="information"
+                                                            class="information"
+                                                        >
+                                                            Information
+                                                        </option>
+                                                        <option
+                                                            value="letus"
+                                                            class="letus"
+                                                        >
+                                                            Let Us
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center justify-content-end"
+                                    >
+                                        <div class="">
+                                            <button
+                                                type="submit"
+                                                class="btn btn-thm"
+                                            >
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<%- include('partials/footer') %>
+<script src="/admin/js/ckeditor/ckeditor.js"></script>
+<script src="/admin/js/ck.js"></script>
+
+<!-- script for fill data in editProductForm -->
+<script>
+    $(document).ready(function () {
+        const page = JSON.parse(
+            '<%- JSON.stringify(page)
+            .replace(/\\/g, "\\\\")
+            .replace(/'/g, "\\'")
+            .replace(/\\n/g, "\\n")
+            .replace(/\\r/g, "\\r")
+            .replace(/\\t/g, "\\t")
+            .replace(/\\f/g, "\\f")
+            .replace(/<\/script>/g, "<\\/script>")%>' // Handle double quotes as well
+        );
+
+        const activeStatusId = "<%= activeStatus._id.toString() %>";
+        var imageUrl = "/dist/pages/" + page.image;
+        var defaultImageUrl =
+            "../../../assets/images/default/mart-demo-img.jpg";
+
+        // Function to check if the image exists
+        function imageExists(url, callback) {
+            $.ajax({
+                url: url,
+                type: "HEAD",
+                success: function () {
+                    callback(true);
+                },
+                error: function () {
+                    callback(false);
+                },
+            });
+        }
+        if (page.image) {
+            imageExists(imageUrl, function (exists) {
+                if (exists) {
+                    $("#display_preview_image").attr("src", imageUrl);
+                } else {
+                    $("#display_preview_image").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_preview_image").attr("src", defaultImageUrl);
+        }
+
+        // Fill form fields with existing data
+        $("#title").val(page.title);
+        $("#meta_title").val(page.meta_title);
+        $("#meta_description").val(page.meta_description);
+        $("#meta_keywords").val(page.meta_keywords);
+        $("#slug").val(page.slug);
+        $("#idShowIn").val(page.show_in);
+        $("#status_id").prop(
+            "checked",
+            page.status_id.toString() === activeStatusId
+        );
+    });
+</script>
+
+<!-- profile-update -->
+<script>
+    $("#image").change(function () {
+        displayPP(this, $("#preview-image"));
+    });
+    var editform = $("#editPagesForm");
+    editform.submit(function (e) {
+        e.preventDefault();
+        var formData = new FormData(editform[0]);
+        $.ajax({
+            type: "POST",
+            cache: false,
+            enctype: "multipart/form-data",
+            processData: false,
+            contentType: false,
+            url: "/admin/static-pages/edit",
+            data: formData,
+        })
+            .done((res) => {
+                if (res.status == 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        window.location.href = "/admin/static-pages/list";
+                    }, 1000);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    });
+</script>
+
+<script>
+    function generateSlug(name) {
+        return name
+            .toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, "")
+            .replace(/\s+/g, "-");
+    }
+
+    // Generate slug when product name is entered
+    $("#title").on("input", function () {
+        var slug = generateSlug($(this).val());
+        $("#slug").val(slug);
+    });
+</script>

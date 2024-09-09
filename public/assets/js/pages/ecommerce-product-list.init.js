@@ -50,8 +50,7 @@ var previewTemplate,
         }),
     dropzonePreviewNode = document.querySelector("#dropzone-preview-list"),
     productList =
-        ((dropzonePreviewNode.id = ""),
-        dropzonePreviewNode &&
+        (dropzonePreviewNode &&
             ((previewTemplate = dropzonePreviewNode.parentNode.innerHTML),
             dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode),
             (dropzone = new Dropzone("div.my-dropzone", {
@@ -105,8 +104,7 @@ var previewTemplate,
                           "noresult"
                       )[0].style.display = "block");
         }));
-const xhttp = new XMLHttpRequest();
-(xhttp.onload = function () {
+xhttp.onload = function () {
     var e = JSON.parse(this.responseText);
     Array.from(e).forEach(function (e) {
         productList.add({
@@ -138,45 +136,10 @@ const xhttp = new XMLHttpRequest();
         ),
         refreshCallbacks(),
         ischeckboxcheck();
-}),
-    xhttp.open("GET", "assets/json/product-list.json"),
-    xhttp.send(),
-    (isCount = new DOMParser().parseFromString(
-        productList.items.slice(-1)[0]._values.id,
-        "text/html"
-    )),
-    document
-        .querySelector(".pagination-next")
-        .addEventListener("click", function () {
-            document.querySelector(".pagination.listjs-pagination") &&
-                document
-                    .querySelector(".pagination.listjs-pagination")
-                    .querySelector(".active") &&
-                null !=
-                    document
-                        .querySelector(".pagination.listjs-pagination")
-                        .querySelector(".active").nextElementSibling &&
-                document
-                    .querySelector(".pagination.listjs-pagination")
-                    .querySelector(".active")
-                    .nextElementSibling.children[0].click();
-        }),
-    document
-        .querySelector(".pagination-prev")
-        .addEventListener("click", function () {
-            document.querySelector(".pagination.listjs-pagination") &&
-                document
-                    .querySelector(".pagination.listjs-pagination")
-                    .querySelector(".active") &&
-                null !=
-                    document
-                        .querySelector(".pagination.listjs-pagination")
-                        .querySelector(".active").previousSibling &&
-                document
-                    .querySelector(".pagination.listjs-pagination")
-                    .querySelector(".active")
-                    .previousSibling.children[0].click();
-        });
+};
+// xhttp.open("GET", "assets/json/product-list.json");
+// xhttp.send();
+
 var idField = document.getElementById("id-field"),
     productTitleField = document.getElementById("product-title-input"),
     productCategoryField = document.getElementById("product-category-input"),
@@ -185,9 +148,10 @@ var idField = document.getElementById("id-field"),
     removeBtns = document.getElementsByClassName("remove-item-btn"),
     editBtns = document.getElementsByClassName("edit-item-btn"),
     date = (refreshCallbacks(), new Date().toUTCString().slice(5, 16)),
-    categoryVal = new Choices(productCategoryField, { searchEnabled: !1 }),
+    // categoryVal = new Choices(productCategoryField, { searchEnabled: !1 }),
     count = 13,
     forms = document.querySelectorAll(".tablelist-form");
+
 function ischeckboxcheck() {
     Array.from(document.getElementsByName("chk_child")).forEach(function (i) {
         i.addEventListener("change", function (e) {
@@ -208,6 +172,7 @@ function ischeckboxcheck() {
         });
     });
 }
+
 function refreshCallbacks() {
     removeBtns &&
         Array.from(removeBtns).forEach(function (e) {
@@ -269,40 +234,20 @@ function refreshCallbacks() {
                                 i.body.querySelector("img").src
                             ),
                             categoryVal && categoryVal.destroy(),
-                            (categoryVal = new Choices(productCategoryField, {
-                                searchEnabled: !1,
-                            })),
-                            (t = e._values.category),
-                            categoryVal.setChoiceByValue(t),
+                            // (categoryVal = new Choices(productCategoryField, {
+                            //     searchEnabled: !1,
+                            // })),
+                            categoryVal.setChoiceByValue(e._values.category),
                             (productStockField.value = e._values.stock),
-                            (i = e._values.price.split("$")),
-                            (productPriceField.value = i[1]),
-                            (t = new DOMParser().parseFromString(
-                                e._values.rating,
-                                "text/html"
-                            )),
-                            (document.getElementById("order-field").value =
-                                e._values.orders),
-                            (document.getElementById("rating-field").value =
-                                t.querySelector(".rate").innerHTML));
+                            (productPriceField.value = e._values.price),
+                            flatpickr("#datepicker-publish-input", {
+                                defaultDate: date,
+                            }));
                     });
                 });
             });
 }
-function clearFields() {
-    (idField.value = ""),
-        (productTitleField.value = ""),
-        (productStockField.value = ""),
-        (productPriceField.value = ""),
-        document.getElementById("dropzone-preview") &&
-            (document.getElementById("dropzone-preview").innerHTML = ""),
-        categoryVal &&
-            (categoryVal.destroy(),
-            (categoryVal = new Choices(productCategoryField))),
-        (document.getElementById("order-field").value = ""),
-        (document.getElementById("rating-field").value = ""),
-        (document.getElementById("discount-field").value = "");
-}
+
 function deleteMultiple() {
     ids_array = [];
     var e,
@@ -352,186 +297,160 @@ function deleteMultiple() {
               showCloseButton: !0,
           });
 }
-function filterData() {
-    var r = document.getElementById("idDiscount").value,
-        n = document.getElementById("idCategory").value;
-    productList.filter(function (e) {
-        var t = !1,
-            i = !1,
-            l = e.values().discount.split("%"),
-            i =
-                "all" == e.values().category ||
-                "all" == n ||
-                e.values().category == n;
-        if (
-            (t =
-                "all" == l ||
-                "all" == r ||
-                ("0" == r ? parseFloat(l[0]) < 10 : parseFloat(l[0]) >= r)) &&
-            i
-        )
-            return t && i;
-    }),
-        productList.update();
+
+function clearFields() {
+    (productTitleField.value = ""),
+        (productCategoryField.value = ""),
+        (productStockField.value = ""),
+        (productPriceField.value = "");
 }
-Array.prototype.slice.call(forms).forEach(function (e) {
-    e.addEventListener("submit", function (e) {
-        e.preventDefault(),
-            document.querySelector(".dz-image-preview") &&
-                (t = new DOMParser()
-                    .parseFromString(
-                        document.querySelectorAll(".dz-image-preview")[0]
-                            .innerHTML,
-                        "text/html"
-                    )
-                    .body.querySelector("[data-dz-thumbnail]"));
-        var t,
-            i = document.getElementById("alert-error-msg");
+
+var productList = new List("products", {
+    valueNames: ["products", "category", "stock", "price", "published"],
+    item: '<tr><td class="products"></td><td class="category" data-category-id=""></td><td class="stock"></td><td class="price"></td><td class="published"></td></tr>',
+});
+
+function filterData() {
+    var selectedCategory = document.getElementById("idCategory").value;
+    var selectedBrand = document.getElementById("idBrand").value;
+
+    productList.filter(function (item) {
+        var itemCategoryId = item.elm
+            .querySelector(".category")
+            .getAttribute("data-category-id");
+
         return (
-            i.classList.remove("d-none"),
-            setTimeout(() => i.classList.add("d-none"), 2e3),
-            "" == productTitleField.value
-                ? !(i.innerHTML = "Please enter a product title")
-                : 0 == document.querySelectorAll(".dz-image-preview").length
-                ? !(i.innerHTML = "Please select a product images")
-                : "" == productCategoryField.value
-                ? !(i.innerHTML = "Please select a products category")
-                : "" == productStockField.value
-                ? !(i.innerHTML = "Please enter a product stocks")
-                : "" == productPriceField.value
-                ? !(i.innerHTML = "Please enter a product price")
-                : ("" !== productTitleField.value &&
-                  "" !== productCategoryField.value &&
-                  "" !== productStockField.value &&
-                  "" !== productPriceField.value &&
-                  0 < document.querySelectorAll(".dz-image-preview").length &&
-                  !editlist
-                      ? (productList.add({
-                            id:
-                                '<a href="javascript:void(0);" class="fw-medium link-primary">#TBT' +
-                                count +
-                                "</a>",
-                            products:
-                                '<div class="d-flex align-items-center">                    <div class="avatar-xs bg-light rounded p-1 me-2">                        <img src="' +
-                                t.src +
-                                '" alt="' +
-                                t.getAttribute("alt") +
-                                '" class="img-fluid d-block product-img">                    </div>                    <div>                        <h6 class="mb-0"><a href="apps-ecommerce-product-details.html" class="text-reset product-title">' +
-                                productTitleField.value +
-                                "</a></h6>                    </div>                </div>",
-                            discount:
-                                document.getElementById("discount-field").value,
-                            category: productCategoryField.value,
-                            stock: productStockField.value,
-                            price: productPriceField.value,
-                            orders: "--",
-                            rating: '<span class="badge bg-warning-subtle text-warning"><i class="bi bi-star-fill align-baseline me-1"></i> <span class="rate">--</span></span>',
-                            published: date,
-                        }),
-                        productList.sort("id", { order: "desc" }),
-                        document
-                            .getElementById("alert-error-msg")
-                            .classList.add("d-none"),
-                        document.getElementById("close-modal").click(),
-                        count++,
-                        clearFields(),
-                        refreshCallbacks(),
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Product Add successfully!",
-                            showConfirmButton: !1,
-                            timer: 2e3,
-                            showCloseButton: !0,
-                        }))
-                      : "" !== productTitleField.value &&
-                        "" !== productCategoryField.value &&
-                        "" !== productStockField.value &&
-                        "" !== productPriceField.value &&
-                        0 <
-                            document.querySelectorAll(".dz-image-preview")
-                                .length &&
-                        editlist &&
-                        ((e = productList.get({ id: idField.value })),
-                        Array.from(e).forEach(function (e) {
-                            (isid = new DOMParser().parseFromString(
-                                e._values.id,
-                                "text/html"
-                            )).body.firstElementChild.innerHTML == itemId &&
-                                e.values({
-                                    id:
-                                        '<a href="javascript:void(0);" class="fw-medium link-primary">' +
-                                        idField.value +
-                                        "</a>",
-                                    products:
-                                        '<div class="d-flex align-items-center">                            <div class="avatar-xs bg-light rounded p-1 me-2">                                <img src="' +
-                                        t.src +
-                                        '" alt="' +
-                                        t.getAttribute("alt") +
-                                        '" class="img-fluid d-block product-img">                            </div>                            <div>                                <h6 class="mb-0"><a href="apps-ecommerce-product-details.html" class="text-reset product-title">' +
-                                        productTitleField.value +
-                                        "</a></h6>                            </div>                        </div>",
-                                    discount:
-                                        document.getElementById(
-                                            "discount-field"
-                                        ).value,
-                                    category: productCategoryField.value,
-                                    stock: productStockField.value,
-                                    price: productPriceField.value,
-                                    orders: document.getElementById(
-                                        "order-field"
-                                    ).value,
-                                    rating:
-                                        '<span class="badge bg-warning-subtle text-warning"><i class="bi bi-star-fill align-baseline me-1"></i> <span class="rate">' +
-                                        document.getElementById("rating-field")
-                                            .value +
-                                        "</span></span>",
-                                    published: date,
-                                });
-                        }),
-                        document
-                            .getElementById("alert-error-msg")
-                            .classList.add("d-none"),
-                        document.getElementById("close-modal").click(),
-                        clearFields(),
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Order updated Successfully!",
-                            showConfirmButton: !1,
-                            timer: 2e3,
-                            showCloseButton: !0,
-                        })),
-                  !0)
+            selectedCategory === "" ||
+            selectedCategory === "all" ||
+            itemCategoryId === selectedCategory
         );
     });
-}),
-    document
-        .getElementById("showModal")
-        .addEventListener("show.bs.modal", function (e) {
-            e.relatedTarget.classList.contains("edit-item-btn")
-                ? ((document.getElementById("exampleModalLabel").innerHTML =
-                      "Edit product"),
-                  (document
-                      .getElementById("showModal")
-                      .querySelector(".modal-footer").style.display = "block"),
-                  (document.getElementById("add-btn").innerHTML = "Update"))
-                : e.relatedTarget.classList.contains("add-btn")
-                ? ((document.getElementById("exampleModalLabel").innerHTML =
-                      "Add product"),
-                  (document
-                      .getElementById("showModal")
-                      .querySelector(".modal-footer").style.display = "block"),
-                  (document.getElementById("add-btn").innerHTML =
-                      "Add product"))
-                : ((document.getElementById("exampleModalLabel").innerHTML =
-                      "List product"),
-                  (document
-                      .getElementById("showModal")
-                      .querySelector(".modal-footer").style.display = "none"));
-        }),
-    document
-        .getElementById("showModal")
-        .addEventListener("hidden.bs.modal", function () {
-            clearFields();
+
+    productList.update();
+}
+
+forms &&
+    Array.from(forms).forEach(function (e) {
+        e.addEventListener("submit", function (e) {
+            if (
+                (e.preventDefault(),
+                "" === productTitleField.value ||
+                    "" === productCategoryField.value ||
+                    "" === productStockField.value ||
+                    "" === productPriceField.value)
+            )
+                return (
+                    Swal.fire({
+                        html: "Please fill all fields",
+                        icon: "error",
+                        showConfirmButton: !1,
+                        timer: 1500,
+                    }),
+                    !1
+                );
+            var t;
+            (e = productList.get({ id: idField.value })),
+                Array.from(e).forEach(function (e) {
+                    (isid = new DOMParser().parseFromString(
+                        e._values.id,
+                        "text/html"
+                    )),
+                        (t = isid.body.firstElementChild.innerHTML);
+                }),
+                (t ? Array.from(productList.get({ id: t })) : []).forEach(
+                    function (e) {
+                        var t,
+                            i = new DOMParser().parseFromString(
+                                e._values.id,
+                                "text/html"
+                            ).body.firstElementChild.innerHTML;
+                        i == idField.value &&
+                            ((t = new DOMParser().parseFromString(
+                                e._values.products,
+                                "text/html"
+                            )),
+                            (t.querySelector(".product-title").innerHTML =
+                                productTitleField.value),
+                            (e.values({
+                                id: `<a href="javascript:void(0);" class="fw-medium link-primary">${idField.value}</a>`,
+                                products:
+                                    '<div class="d-flex align-items-center">                <div class="avatar-xs bg-light rounded p-1 me-2">                    <img src="' +
+                                    t.body.querySelector("img").src +
+                                    '" alt="' +
+                                    t.body
+                                        .querySelector("img")
+                                        .getAttribute("alt") +
+                                    '" class="img-fluid d-block product-img">                </div>                <div>                    <h6 class="mb-0"><a href="apps-ecommerce-product-details.html" class="text-reset text-capitalize product-title">' +
+                                    productTitleField.value +
+                                    "</a></h6>                </div>            </div>",
+                                category: productCategoryField.value,
+                                stock: productStockField.value,
+                                price: productPriceField.value,
+                            }),
+                            document.getElementById("close-modal").click()));
+                    }
+                ),
+                editlist ||
+                    (productList.add({
+                        id: `<a href="javascript:void(0);" class="fw-medium link-primary">#TB${count}</a>`,
+                        products:
+                            '<div class="d-flex align-items-center">                <div class="avatar-xs bg-light rounded p-1 me-2">                    <img src="' +
+                            document
+                                .querySelectorAll(
+                                    ".dz-preview.dz-processing.dz-image-preview.dz-complete"
+                                )[0]
+                                .querySelectorAll("img")[0].src +
+                            '" alt="' +
+                            document
+                                .querySelectorAll(
+                                    ".dz-preview.dz-processing.dz-image-preview.dz-complete"
+                                )[0]
+                                .querySelectorAll("img")[0]
+                                .getAttribute("alt") +
+                            '" class="img-fluid d-block product-img">                </div>                <div>                    <h6 class="mb-0"><a href="apps-ecommerce-product-details.html" class="text-reset text-capitalize product-title">' +
+                            productTitleField.value +
+                            "</a></h6>                </div>            </div>",
+                        discount: "0",
+                        category: productCategoryField.value,
+                        stock: productStockField.value,
+                        price: productPriceField.value,
+                        orders: "<div>0</div>",
+                        rating: '<span class="badge bg-warning-subtle text-warning"><i class="bi bi-star-fill align-baseline me-1"></i> <span class="rate">0</span></span>',
+                        published: date,
+                    }),
+                    productList.sort("id", { order: "desc" }),
+                    count++),
+                document.getElementById("close-modal").click(),
+                clearFields();
         });
+    });
+
+// var example = new Choices("#choices-single-default", {
+//     searchEnabled: !1,
+//     removeItemButton: !1,
+//     choices: [
+//         { value: "Choice 1", label: "Choice 1", selected: !0 },
+//         { value: "Choice 2", label: "Choice 2" },
+//         { value: "Choice 3", label: "Choice 3" },
+//     ],
+// });
+
+document.querySelectorAll(".filter-list a").forEach(function (t) {
+    t.addEventListener("click", function (e) {
+        var i = t.querySelector(".filter-key").innerHTML;
+        "All" == i
+            ? (productList.filter(), productList.update())
+            : (productList.filter(function (e) {
+                  return (
+                      e.values().published.includes(i) ||
+                      e.values().stock.includes(i) ||
+                      e.values().category.includes(i)
+                  );
+              }),
+              productList.update()),
+            document.querySelectorAll(".filter-list a").forEach(function (e) {
+                e.classList.remove("active");
+            }),
+            t.classList.add("active");
+    });
+});

@@ -5,13 +5,17 @@ const Schema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    type: {
+        type: String,
+        required: true,
+    },
     created_at: {
         type: String,
-        default: Date.now,
+        default: Date,
     },
     updated_at: {
         type: String,
-        default: Date.now,
+        default: Date,
     },
 });
 

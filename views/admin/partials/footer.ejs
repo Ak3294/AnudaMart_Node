@@ -33,6 +33,17 @@
 <script src="/admin/js/timepicker.js"></script>
 <script src="/admin/js/getParam.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+></script>
+<script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <!-- JAVASCRIPT -->
 <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/libs/simplebar/simplebar.min.js"></script>
@@ -47,8 +58,6 @@
 <!-- list.js min js -->
 <script src="/assets/libs/dropzone/dropzone-min.js"></script>
 <!-- dropzone min -->
-<script src="/assets/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
-<!-- ckeditor -->
 <script src="/assets/libs/list.pagination.js/list.pagination.min.js"></script>
 <!-- list.pagination.js min js -->
 <script src="/assets/libs/sweetalert2/sweetalert2.min.js"></script>
@@ -59,15 +68,44 @@
 
 <!-- Page Specific JS File -->
 <script src="/assets/js/pages/toastr.js"></script>
-<!-- rater-js plugin -->
-<!-- <script src="/assets/js/plugins.js"></script> -->
-<!-- plugins.js -->
-<script src="/assets/js/pages/dashboard-ecommerce.init.js"></script>
 <!-- Dashboard init -->
+<script src="/assets/js/pages/dashboard-ecommerce.init.js"></script>
+
 <script src="/assets/js/app.js"></script>
-<!-- App js -->
-<script src="/assets/js/pages/ecommerce-create-product.init.js"></script>
-<!-- init js -->
-<script src="/assets/js/pages/ecommerce-product-list.init.js"></script>
+<script src="/assets/js/pages/ecommerce-orders.init.js"></script>
+<script src="/assets/js/pages/leaflet-us-states.js"></script>
 <!--Ecommerce Product List init js-->
-<script src="/assets/js/pages/ecommerce-product-overview.init.js"></script>
+<script src="/assets/js/pages/ecommerce-product-list.init.js"></script>
+
+<script type="text/javascript">
+    if (jQuery().select2) {
+        $(".select2").select2();
+    }
+    $(document).ready(function () {
+        $("#showModal").on("shown.bs.modal", function () {
+            $("#category-field").select2({
+                dropdownParent: $("#showModal"),
+            });
+        });
+
+        $("#showEditModal").on("shown.bs.modal", function () {
+            $("#edit_category").select2({
+                dropdownParent: $("#showEditModal"),
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $("#showModal").on("shown.bs.modal", function () {
+            $("#product_id").select2({
+                dropdownParent: $("#showModal"),
+            });
+        });
+
+        $("#showEditModal").on("shown.bs.modal", function () {
+            $("#edit_product").select2({
+                dropdownParent: $("#showEditModal"),
+            });
+        });
+    });
+</script>

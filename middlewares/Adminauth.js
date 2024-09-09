@@ -1,6 +1,18 @@
 const Adminauth = require("../models/Adminauth");
 
-const LoggedIn = async (req, res, next) => {};
+const LoggedIn = async (req, res, next) => {
+    try {
+        if (req.session && req.session.user) {
+            res.locals.user = req.session.user;
+        } else {
+            res.locals.user = null;
+        }
+        next();
+    } catch (error) {
+        console.error("Error in SessionData middleware:", error);
+        next(error);
+    }
+};
 
 const NotLoggedIn = async (req, res, next) => {
     req.session.path = req.originalUrl;

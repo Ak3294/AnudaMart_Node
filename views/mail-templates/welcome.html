@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Welcome Email</title>
+
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+        </style>
+        <script src="/controllers/website/webauthController.js"></script>
+    </head>
+    <body
+        style="
+            background-color: #f7fafc;
+            color: #2d3748;
+            font-family: Poppins, sans-serif;
+            margin: 0;
+            padding: 0;
+        "
+    >
+        <div
+            style="
+                max-width: 600px;
+                margin: 40px auto;
+                background-color: #ffffff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                overflow: hidden;
+            "
+        >
+            <!-- Header -->
+            <header
+                style="
+                    background-color: #ec1e24;
+                    color: #ffffff;
+                    text-align: center;
+                    padding: 20px;
+                "
+            >
+                <img
+                    src="/public/assets/images/w-logo.png"
+                    alt="Logo"
+                    style="display: block; margin: 0 auto 16px; width: 112px"
+                />
+                <h1 style="font-size: 24px; font-weight: bold; margin: 0">
+                    Welcome to Our Community!
+                </h1>
+                <p style="margin: 8px 0 0">
+                    Thank you for joining us! We're thrilled to have you on
+                    board.
+                </p>
+            </header>
+
+            <!-- Introduction Section -->
+            <section style="padding: 24px; background-color: #f2ecec">
+                <h2 style="font-size: 20px; font-weight: 600; color: #4a5568">
+                    Hello {{first_name}},
+                </h2>
+                <p style="margin: 16px 0 0; color: #718096">
+                    We are excited to welcome you to our vibrant community. As a
+                    member, you'll enjoy exclusive access to our latest
+                    products, special promotions, and updates from our creative
+                    team.
+                </p>
+                <p style="margin: 16px 0 0; color: #718096">
+                    Whether you're here to explore our unique apparel, stay
+                    up-to-date with our campaigns, or simply browse our latest
+                    collections, we're here to make your experience exceptional.
+                </p>
+            </section>
+
+            <!-- Featured Product -->
+            <section style="padding: 24px; background-color: #f2ecec">
+                <h2 style="font-size: 18px; font-weight: 600; color: #4a5568">
+                    Explore Our Featured Collection
+                </h2>
+                <div
+                    style="
+                        margin-top: 16px;
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 16px;
+                    "
+                >
+                    <div style="text-align: center; width: calc(50% - 8px)">
+                        <img
+                            src="/public/assets/images/products/img-1.png"
+                            alt="Product 1"
+                            style="
+                                display: block;
+                                margin: 0 auto;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                max-width: 200px;
+                            "
+                        />
+                        <p style="font-weight: 500; margin: 8px 0 0">
+                            Hang Loose
+                        </p>
+                        <p style="color: #718096">$22.99</p>
+                    </div>
+                    <div style="text-align: center; width: calc(50% - 8px)">
+                        <img
+                            src="/public/assets/images/products/img-10.png"
+                            alt="Product 2"
+                            style="
+                                display: block;
+                                margin: 0 auto;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                max-width: 200px;
+                            "
+                        />
+                        <p style="font-weight: 500; margin: 8px 0 0">
+                            Surfing USA
+                        </p>
+                        <p style="color: #718096">$23.99</p>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 16px">
+                    Discover more of what you love in our store.
+                </p>
+            </section>
+
+            <!-- Call to Action -->
+            <section
+                style="
+                    padding: 24px;
+                    text-align: center;
+                    background-color: #f2ecec;
+                "
+            >
+                <a
+                    href="#"
+                    style="
+                        display: inline-block;
+                        background-color: #ec1e24;
+                        color: #ffffff;
+                        padding: 12px 24px;
+                        border-radius: 8px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        transition: background-color 0.3s;
+                    "
+                    >Start Exploring</a
+                >
+            </section>
+
+            <!-- Footer -->
+
+            <footer
+                style="
+                    background-color: #ec1e24;
+                    color: #ffffff;
+                    padding: 24px;
+                    text-align: center;
+                "
+            >
+                <div style="text-align: center">
+                    <p style="font-weight: bold; font-size: 18px; margin: 0">
+                        Stay Connected with Us!
+                    </p>
+                    <!-- Centering using table layout -->
+                    <table
+                        role="presentation"
+                        style="margin: 16px auto 0; text-align: center"
+                    >
+                        <tr>
+                            <td style="padding: 0 8px">
+                                <a
+                                    href="#"
+                                    style="color: white; text-decoration: none"
+                                >
+                                    <img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png"
+                                        alt="Facebook"
+                                        style="
+                                            width: 24px;
+                                            height: 24px;
+                                            object-fit: cover;
+                                            display: inline-block;
+                                        "
+                                    />
+                                </a>
+                            </td>
+                            <td style="padding: 0 8px">
+                                <a
+                                    href="#"
+                                    style="color: white; text-decoration: none"
+                                >
+                                    <img
+                                        src="https://icon2.cleanpng.com/20240402/kzp/transparent-x-logo-woman-black-and-white-photography-street-fa-woman-in-dark-clothing-walking-determinedly660c4b50383a25.14507568.webp"
+                                        alt="Twitter"
+                                        style="
+                                            width: 24px;
+                                            height: 24px;
+                                            object-fit: cover;
+                                            display: inline-block;
+                                        "
+                                    />
+                                </a>
+                            </td>
+                            <td style="padding: 0 8px">
+                                <a
+                                    href="#"
+                                    style="color: white; text-decoration: none"
+                                >
+                                    <img
+                                        src="https://cdn-icons-png.flaticon.com/512/145/145808.png"
+                                        alt="Pinterest"
+                                        style="
+                                            width: 24px;
+                                            height: 24px;
+                                            object-fit: cover;
+                                            display: inline-block;
+                                        "
+                                    />
+                                </a>
+                            </td>
+                            <td style="padding: 0 8px">
+                                <a
+                                    href="#"
+                                    style="color: white; text-decoration: none"
+                                >
+                                    <img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/768px-Instagram_icon.png"
+                                        alt="Instagram"
+                                        style="
+                                            width: 24px;
+                                            height: 24px;
+                                            object-fit: cover;
+                                            display: inline-block;
+                                        "
+                                    />
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="font-size: 14px; margin: 16px 0 0">
+                        We're here to help! If you have any questions, don't
+                        hesitate to
+                        <a
+                            href="#"
+                            style="text-decoration: underline; color: #ffffff"
+                            >contact us.</a
+                        >
+                    </p>
+                    <div style="padding: 24px; text-align: center">
+                        <img
+                            src="/public/assets/images/w-logo.png"
+                            alt="Logo"
+                            style="max-width: 100%; margin-top: 24px"
+                        />
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

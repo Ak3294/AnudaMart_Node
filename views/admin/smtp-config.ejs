@@ -1,0 +1,311 @@
+<%- include('partials/header') %><!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">SMTP Config</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="/admin/dashboard">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        SMTP Config
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <!--end col-->
+                    <div class="col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">SMTP Config</h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="updateForm">
+                                    <div
+                                        class="row g-2 justify-content-lg-between align-items-center"
+                                    >
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="service"
+                                                class="form-label"
+                                                >Service</label
+                                            >
+                                            <select
+                                                class="form-control"
+                                                id="service"
+                                                name="service"
+                                            >
+                                                <option
+                                                    value="gmail"
+                                                    default
+                                                    selected
+                                                >
+                                                    Gmail
+                                                </option>
+                                                <option value="yahoo">
+                                                    Yahoo
+                                                </option>
+                                                <option value="outlook">
+                                                    Outlook
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="host" class="form-label"
+                                                >Host</label
+                                            >
+                                            <div class="position-relative">
+                                                <input type="text"
+                                                class="form-control" id="host"
+                                                name="host" placeholder="Enter
+                                                Host" value="<%= host ? host :
+                                                "" %>" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label for="port" class="form-label"
+                                                >Port</label
+                                            >
+                                            <div class="position-relative">
+                                                <input type="text"
+                                                class="form-control" id="port"
+                                                name="port" placeholder="Enter
+                                                Port" value="<%= port ? port :
+                                                "" %>" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="mail_address"
+                                                class="form-label"
+                                                >Mail From Address</label
+                                            >
+                                            <div class="position-relative">
+                                                <input type="text"
+                                                class="form-control"
+                                                id="mail_address"
+                                                name="mail_address"
+                                                placeholder="Enter Mail Address"
+                                                value="<%= mail_address ?
+                                                mail_address : "" %>" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="name" class="form-label"
+                                                >Name</label
+                                            >
+                                            <div class="position-relative">
+                                                <input type="text"
+                                                class="form-control" id="name"
+                                                name="name" placeholder="Enter
+                                                Name" value="<%= name ? name :
+                                                "" %>" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="username"
+                                                class="form-label"
+                                                >Username</label
+                                            >
+                                            <div class="position-relative">
+                                                <input type="text"
+                                                class="form-control"
+                                                id="username" name="username"
+                                                placeholder="Enter Username"
+                                                value="<%= username ? username :
+                                                "" %>" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="password"
+                                                class="form-label"
+                                                >Password</label
+                                            >
+                                            <div class="position-relative">
+                                                <input type="password"
+                                                class="form-control"
+                                                id="password" name="password"
+                                                placeholder="Enter Password"
+                                                value="<%= password ? password :
+                                                "" %>" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="encryption_type"
+                                                class="form-label"
+                                                >Mail Encryption Type</label
+                                            >
+                                            <select
+                                                class="form-control"
+                                                id="secure"
+                                                name="secure"
+                                                value="<%= secure ? secure : '' %>"
+                                                <option value="ssl" <%= secure ===true ? selected : "" %>default
+                                                    selected>
+                                                    SSL
+                                                </option>
+                                                <option value="tsl" <%= secure === false ? selected : "" %>>TSL</option>
+                                            ></select>
+                                        </div>
+
+                                        <div
+                                            class="d-flex align-items-center justify-content-end"
+                                        >
+                                            <div class="">
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-thm"
+                                                >
+                                                    Save Changes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end row-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+<%- include('partials/footer') %><!-- profile-update -->
+<script>
+    var editform = $("#updateForm");
+    editform.submit(function (e) {
+        e.preventDefault();
+
+        //validation
+        if ($("#service").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Service is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#host").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Host is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#port").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Port is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#mail_address").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Mail Address is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#name").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Name is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#username").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Username is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#secure").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Encryption Type is required",
+                position: "topRight",
+            });
+            return false;
+        }
+
+        if ($("#password").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "password is required",
+                position: "topRight",
+            });
+            return false;
+        }
+
+        var formData = getFormData(editform);
+
+        $.ajax({
+            type: "POST",
+            url: "/admin/smtp_config_add",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            processData: false,
+        })
+            .done((res) => {
+                if (res.status == 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    });
+</script>

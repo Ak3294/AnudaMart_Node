@@ -1,0 +1,492 @@
+<%- include('partials/header.ejs') %>
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Transactions History</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript: void(0);"
+                                            >Products</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Transactions History
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card" id="orderList">
+                            <div class="card-header">
+                                <div class="row align-items-center gy-3">
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="search-box">
+                                            <input
+                                                type="text"
+                                                class="form-control search"
+                                                placeholder="Search for order ID, customer, order status or something..."
+                                            />
+                                            <i
+                                                class="ri-search-line search-icon"
+                                            ></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xxl-3 col-sm-6">
+                                        <div>
+                                            <select
+                                                class="form-control"
+                                                id="idUsername"
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                >
+                                                    By User
+                                                </option>
+                                                <% users.forEach(function(user)
+                                                { %>
+                                                <option
+                                                    value="<%= user.first_name + ' ' + user.last_name %>"
+                                                >
+                                                    <%= user.first_name + " " +
+                                                    user.last_name %>
+                                                </option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-3 col-sm-6">
+                                        <div>
+                                            <select
+                                                class="form-control"
+                                                id="idDuration"
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                >
+                                                    By Duration
+                                                </option>
+                                                <option value="today">
+                                                    Today
+                                                </option>
+                                                <option value="last_week">
+                                                    Last Week
+                                                </option>
+                                                <option value="last_month">
+                                                    Last Month
+                                                </option>
+                                                <option value="last_year">
+                                                    Last Year
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-auto ms-md-auto">
+                                        <div
+                                            class="d-flex flex-wrap align-items-center gap-2"
+                                        >
+                                            <button
+                                                class="btn btn-subtle-danger d-none"
+                                                id="remove-actions"
+                                                onClick="deleteMultiple()"
+                                            >
+                                                <i
+                                                    class="ri-delete-bin-2-line"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                        class="table table-borderless table-centered align-middle table-nowrap mb-0"
+                                    >
+                                        <thead class="text-muted table-light">
+                                            <tr>
+                                                <th>
+                                                    <div class="form-check">
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="checkbox"
+                                                            value="option"
+                                                            id="checkAll"
+                                                        />
+                                                        <label
+                                                            class="form-check-label"
+                                                            for="checkAll"
+                                                        ></label>
+                                                    </div>
+                                                </th>
+                                                <th scope="col">User</th>
+                                                <th scope="col">Order ID</th>
+                                                <th scope="col">Amount</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">
+                                                    Payment Mode
+                                                </th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody
+                                            class="list form-check-all"
+                                            id="transactionTable"
+                                        >
+                                            <%
+                                            transactions.forEach(function(transaction)
+                                            { const fullName =
+                                            transaction.user_id ?
+                                            transaction.user_id.first_name + " "
+                                            + transaction.user_id.last_name :
+                                            ''; const date = new
+                                            Date(transaction.created_at); const
+                                            formattedDate =
+                                            date.toLocaleString('en-GB', { day:
+                                            '2-digit', month: 'short', year:
+                                            'numeric' }); %>
+                                            <tr
+                                                data-username="<%= fullName %>"
+                                                data-date="<%= date.toISOString() %>"
+                                            >
+                                                <th>
+                                                    <div class="form-check">
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="checkbox"
+                                                            name="chk_child"
+                                                        />
+                                                        <label
+                                                            class="form-check-label"
+                                                        ></label>
+                                                    </div>
+                                                </th>
+                                                <td class="user">
+                                                    <%= fullName %>
+                                                </td>
+                                                <td class="order_id">
+                                                    <%= transaction.orderId ?
+                                                    transaction.orderId : "" %>
+                                                </td>
+                                                <td class="amount">
+                                                    <% if (transaction.amount) {
+                                                    %>
+                                                    <span class="fw-medium"
+                                                        >₹<%= transaction.amount
+                                                        ? transaction.amount :
+                                                        "0" %></span
+                                                    >
+                                                    <% } %>
+                                                </td>
+                                                <td class="order_date">
+                                                    <%= formattedDate %>
+                                                </td>
+                                                <td class="status">
+                                                    <span
+                                                        class="badge bg-primary-subtle text-primary"
+                                                    >
+                                                        <%=
+                                                        transaction.payment_mode
+                                                        ?
+                                                        transaction.payment_mode
+                                                        : "" %>
+                                                    </span>
+                                                </td>
+                                                <td class="status">
+                                                    <span
+                                                        class="badge bg-primary-subtle text-primary"
+                                                    >
+                                                        <%=
+                                                        transaction.status_id ?
+                                                        transaction.status_id.name
+                                                        : "" %>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+
+                                            <!-- Row to show when no data is found -->
+                                            <tr
+                                                id="noDataRow"
+                                                class="text-center"
+                                                style="display: none"
+                                            >
+                                                <td colspan="100%">
+                                                    No Data found
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <!-- end tbody -->
+                                    </table>
+                                    <!-- end table -->
+                                    <div class="noresult" style="display: none">
+                                        <div class="text-center py-4">
+                                            <i
+                                                class="ph-magnifying-glass fs-1 text-primary"
+                                            ></i>
+                                            <h5 class="mt-2">
+                                                Sorry! No Result Found
+                                            </h5>
+                                            <p class="text-muted mb-0">
+                                                We've searched more than 150+
+                                                transactions We did not find any
+                                                transactions for you search.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-center justify-content-sm-end mt-2"
+                                >
+                                    <div class="pagination-wrap hstack gap-2">
+                                        <a
+                                            class="page-item pagination-prev disabled"
+                                            href="javascript:void(0)"
+                                        >
+                                            <i
+                                                class="mdi mdi-chevron-left align-middle"
+                                            ></i>
+                                        </a>
+                                        <ul
+                                            class="pagination listjs-pagination mb-0"
+                                        ></ul>
+                                        <a
+                                            class="page-item pagination-next"
+                                            href="javascript:void(0)"
+                                        >
+                                            <i
+                                                class="mdi mdi-chevron-right align-middle"
+                                            ></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- deleteRecordModal -->
+<div
+    id="deleteRecordModal"
+    class="modal fade zoomIn"
+    tabindex="-1"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="btn-close"
+                    id="deleteRecord-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body p-md-5">
+                <div class="text-center">
+                    <div class="text-danger">
+                        <i class="bi bi-trash display-4"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="mb-2">Are you sure ?</h3>
+                        <p class="text-muted fs-lg mx-3 mb-0">
+                            Are you sure you want to remove this record ?
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button
+                        type="button"
+                        class="btn w-sm btn-light btn-hover"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        type="button"
+                        class="btn w-sm btn-danger btn-hover"
+                        id="delete-record"
+                    >
+                        Yes, Delete It!
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /deleteRecordModal -->
+
+<%- include('partials/footer.ejs') %>
+
+<script>
+    document
+        .getElementById("idUsername")
+        .addEventListener("change", function () {
+            // Get the selected username
+            const selectedUsername = this.value;
+
+            // Get all rows in the transactions table
+            const rows = document.querySelectorAll(
+                "#transactionTable tr[data-username]"
+            );
+
+            let hasVisibleRows = false;
+
+            rows.forEach((row) => {
+                // Get the username from the data attribute
+                const username = row.getAttribute("data-username");
+
+                // Show or hide the row based on the selected username
+                if (selectedUsername === "" || username === selectedUsername) {
+                    row.style.display = "";
+                    hasVisibleRows = true; // Mark that at least one row is visible
+                } else {
+                    row.style.display = "none";
+                }
+            });
+
+            // Show "No Data found" if no rows are visible
+            const noDataRow = document.getElementById("noDataRow");
+            if (hasVisibleRows) {
+                noDataRow.style.display = "none";
+            } else {
+                noDataRow.style.display = "";
+            }
+        });
+</script>
+
+<script>
+    document
+        .getElementById("idDuration")
+        .addEventListener("change", function () {
+            const selectedDuration = this.value;
+
+            // Get all transaction rows
+            const rows = document.querySelectorAll(
+                "#transactionTable tr[data-date]"
+            );
+            let hasVisibleRows = false;
+
+            // Get current date for comparison
+            const now = new Date();
+            now.setHours(0, 0, 0, 0); // Set to the start of the day
+
+            rows.forEach((row) => {
+                const rowDate = new Date(row.getAttribute("data-date"));
+                let showRow = false;
+
+                // Define date ranges for filtering based on the selected duration
+                switch (selectedDuration) {
+                    case "today":
+                        // Check if the row date is today
+                        showRow =
+                            rowDate.getTime() >= now.getTime() &&
+                            rowDate.getTime() <= now.setHours(23, 59, 59, 999);
+                        break;
+                    case "last_week":
+                        // Get the last week's Monday and Sunday
+                        const dayOfWeek = now.getDay();
+                        const lastSunday = new Date(
+                            now.setDate(now.getDate() - dayOfWeek - 1)
+                        ); // Last week's Sunday
+                        const lastMonday = new Date(
+                            now.setDate(lastSunday.getDate() - 6)
+                        ); // Last week's Monday
+                        lastMonday.setHours(0, 0, 0, 0); // Start of last week
+                        lastSunday.setHours(23, 59, 59, 999); // End of last week
+                        // Check if the row date falls within the last week range
+                        showRow =
+                            rowDate >= lastMonday && rowDate <= lastSunday;
+                        break;
+                    case "last_month":
+                        // Get the first and last days of the previous month
+                        const lastMonthStart = new Date(
+                            now.getFullYear(),
+                            now.getMonth() - 1,
+                            1
+                        ); // First day of last month
+                        const lastMonthEnd = new Date(
+                            now.getFullYear(),
+                            now.getMonth(),
+                            0
+                        ); // Last day of last month
+                        lastMonthStart.setHours(0, 0, 0, 0); // Start of last month
+                        lastMonthEnd.setHours(23, 59, 59, 999); // End of last month
+                        // Check if the row date falls within the last month range
+                        showRow =
+                            rowDate >= lastMonthStart &&
+                            rowDate <= lastMonthEnd;
+                        break;
+                    case "last_year":
+                        // Get the first and last days of the previous year
+                        const lastYearStart = new Date(
+                            now.getFullYear() - 1,
+                            0,
+                            1
+                        ); // January 1st of last year
+                        const lastYearEnd = new Date(
+                            now.getFullYear() - 1,
+                            11,
+                            31
+                        ); // December 31st of last year
+                        lastYearStart.setHours(0, 0, 0, 0); // Start of last year
+                        lastYearEnd.setHours(23, 59, 59, 999); // End of last year
+                        // Check if the row date falls within the last year range
+                        showRow =
+                            rowDate >= lastYearStart && rowDate <= lastYearEnd;
+                        break;
+                    default:
+                        // No filtering, show all rows
+                        showRow = true;
+                        break;
+                }
+
+                // Show or hide the row
+                if (showRow) {
+                    row.style.display = "";
+                    hasVisibleRows = true; // Mark that at least one row is visible
+                } else {
+                    row.style.display = "none";
+                }
+            });
+
+            // Show "No Data found" if no rows are visible
+            const noDataRow = document.getElementById("noDataRow");
+            noDataRow.style.display = hasVisibleRows ? "none" : "";
+        });
+</script>

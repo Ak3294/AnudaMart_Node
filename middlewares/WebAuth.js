@@ -13,6 +13,7 @@ const NotLoggedIn = async (req, res, next) => {
 
         const user = await User.findById(payload.id);
         if (!user) return res.status(401).send("user not found");
+        req.user = payload;
         req.id = payload.id;
         req.login_user = user;
     } catch (error) {

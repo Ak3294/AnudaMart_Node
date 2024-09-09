@@ -1,0 +1,1462 @@
+<%- include('partials/header') %>
+
+<!-- Add Bank modal -->
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Profile</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="/seller/dashboard"
+                                            >Dashboard</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Profile
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <!--end col-->
+                    <div class="col-xxl-3">
+                        <div class="card overflow-hidden">
+                            <div>
+                                <img
+                                    src="/assets/images/small/img-7.jpg"
+                                    alt=""
+                                    class="card-img-top profile-wid-img object-fit-cover"
+                                    style="height: 200px"
+                                />
+                                <div>
+                                    <input
+                                        id="profile-foreground-img-file-input"
+                                        type="file"
+                                        class="profile-foreground-img-file-input d-none"
+                                    />
+                                    <label
+                                        for="profile-foreground-img-file-input"
+                                        class="profile-photo-edit btn btn-light btn-sm position-absolute end-0 top-0 m-3"
+                                    >
+                                        <i
+                                            class="ri-image-edit-line align-bottom me-1"
+                                        ></i>
+                                        Edit Cover Images
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0 mt-n5">
+                                <div class="text-center">
+                                    <div
+                                        class="profile-user position-relative d-inline-block mx-auto"
+                                    >
+                                        <img
+                                            src="/assets/images/users/avatar-1.jpg"
+                                            alt=""
+                                            class="avatar-lg rounded-circle object-fit-cover border-0 img-thumbnail user-profile-image"
+                                        />
+                                        <div
+                                            class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute end-0 bottom-0"
+                                        >
+                                            <input
+                                                id="profile-img-file-input"
+                                                type="file"
+                                                class="profile-img-file-input d-none"
+                                            />
+                                            <label
+                                                for="profile-img-file-input"
+                                                class="profile-photo-edit avatar-xs"
+                                            >
+                                                <span
+                                                    class="avatar-title rounded-circle bg-light text-body"
+                                                >
+                                                    <i class="bi bi-camera"></i>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <h5>
+                                            Richard Marshall
+                                            <i
+                                                class="bi bi-patch-check-fill align-baseline text-info ms-1"
+                                            ></i>
+                                        </h5>
+                                        <p>
+                                            Status:-
+                                            <span
+                                                class="active bg-success activinactive"
+                                                >Active</span
+                                            >
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body border-top">
+                                <div
+                                    class="d-flex align-items-center mb-4 pb-2"
+                                >
+                                    <div class="flex-grow-1">
+                                        <h5 class="card-title mb-0">
+                                            Complete Your Profile
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div
+                                    class="progress animated-progress custom-progress progress-label"
+                                >
+                                    <div
+                                        class="progress-bar btn-thm"
+                                        role="progressbar"
+                                        style="width: 30%"
+                                        aria-valuenow="30"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                    >
+                                        <div class="label">30%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body border-top">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div
+                                        class="flex-grow-1 d-flex justify-content-between"
+                                    >
+                                        <h5 class="card-title mb-0">
+                                            Portfolio
+                                        </h5>
+                                        <button
+                                            class="btn btn-light btn-icon btn-sm"
+                                            type="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="bi bi-share"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex">
+                                    <div
+                                        class="avatar-xs d-block flex-shrink-0 me-3"
+                                    >
+                                        <span
+                                            class="avatar-title rounded-circle bg-primary-subtle text-primary"
+                                        >
+                                            <i class="bi bi-facebook"></i>
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="websiteInput"
+                                        placeholder="www.example.com"
+                                        value="www.steex.com"
+                                    />
+                                </div>
+                                <div class="mb-3 d-flex">
+                                    <div
+                                        class="avatar-xs d-block flex-shrink-0 me-3"
+                                    >
+                                        <span
+                                            class="avatar-title rounded-circle bg-dark-subtle text-dark"
+                                        >
+                                            <span class="bi bi-linkedin"></span>
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="gitUsername"
+                                        placeholder="Username"
+                                        value="@richardmarshall"
+                                    />
+                                </div>
+
+                                <div class="mb-3 d-flex">
+                                    <div
+                                        class="avatar-xs d-block flex-shrink-0 me-3"
+                                    >
+                                        <span
+                                            class="avatar-title rounded-circle bg-success-subtle text-success"
+                                        >
+                                            <span class="bi bi-twitter"></span>
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="dribbleName"
+                                        placeholder="Username"
+                                        value="@richard_marshall"
+                                    />
+                                </div>
+                                <div class="mb-3 d-flex">
+                                    <div
+                                        class="avatar-xs d-block flex-shrink-0 me-3"
+                                    >
+                                        <span
+                                            class="avatar-title rounded-circle bg-danger-subtle text-danger"
+                                        >
+                                            <i class="bi bi-instagram"></i>
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="pinterestName"
+                                        placeholder="Username"
+                                        value="Richard Marshall"
+                                    />
+                                </div>
+                                <div class="d-flex">
+                                    <div
+                                        class="avatar-xs d-block flex-shrink-0 me-3"
+                                    >
+                                        <span
+                                            class="avatar-title rounded-circle bg-primary-subtle text-primary"
+                                        >
+                                            <i class="bi bi-telephone"></i>
+                                        </span>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="phne"
+                                        placeholder="Mobile"
+                                        value="+91 1245126510"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-9">
+                        <div
+                            class="d-flex align-items-center flex-wrap gap-2 mb-4"
+                        >
+                            <ul
+                                class="nav nav-pills arrow-navtabs nav-secondary gap-2 flex-grow-1 order-2 order-lg-1"
+                                role="tablist"
+                            >
+                                <li class="nav-item" role="presentation">
+                                    <a
+                                        class="nav-link active"
+                                        data-bs-toggle="tab"
+                                        href="#education"
+                                        role="tab"
+                                        aria-selected="false"
+                                        tabindex="-1"
+                                    >
+                                        KYC Information
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a
+                                        class="nav-link"
+                                        data-bs-toggle="tab"
+                                        href="#personalDetails"
+                                        role="tab"
+                                        aria-selected="true"
+                                    >
+                                        Personal Information
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a
+                                        class="nav-link"
+                                        data-bs-toggle="tab"
+                                        href="#businessinformation"
+                                        role="tab"
+                                        aria-selected="false"
+                                        tabindex="-1"
+                                    >
+                                        Business Information
+                                    </a>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <a
+                                        class="nav-link"
+                                        data-bs-toggle="tab"
+                                        href="#securityPrivacy"
+                                        role="tab"
+                                        aria-selected="false"
+                                        tabindex="-1"
+                                    >
+                                        Banking Information
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <div class="tab-content">
+                                <div
+                                    class="tab-pane"
+                                    id="personalDetails"
+                                    role="tabpanel"
+                                >
+                                    <div class="card-header">
+                                        <h6 class="card-title mb-0">
+                                            Personal Details
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="javascript:void(0);">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="firstnameInput"
+                                                            class="form-label"
+                                                            >First Name</label
+                                                        >
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="firstnameInput"
+                                                            placeholder="Enter your firstname"
+                                                            value="Richard"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="lastnameInput"
+                                                            class="form-label"
+                                                            >Last Name</label
+                                                        >
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="lastnameInput"
+                                                            placeholder="Enter your last name"
+                                                            value="Marshall"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="phonenumberInput"
+                                                            class="form-label"
+                                                            >Mobile
+                                                            Number</label
+                                                        >
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="phonenumberInput"
+                                                            placeholder="Enter your phone number"
+                                                            value="617 219 6245"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="emailInput"
+                                                            class="form-label"
+                                                            >Email
+                                                            Address</label
+                                                        >
+                                                        <input
+                                                            type="email"
+                                                            class="form-control"
+                                                            id="emailInput"
+                                                            placeholder="Enter your email"
+                                                            value="richardmarshall@steex.com"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="birthDateInput"
+                                                            class="form-label"
+                                                            >Date Of
+                                                            Birth</label
+                                                        >
+                                                        <input
+                                                            type="date"
+                                                            class="form-control"
+                                                            id="exampleInputdate"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="JoiningdatInput"
+                                                            class="form-label"
+                                                            >Registration
+                                                            Date</label
+                                                        >
+                                                        <input
+                                                            type="date"
+                                                            class="form-control"
+                                                            id="exampleInputdate"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="adressy"
+                                                            class="form-label"
+                                                            >Address</label
+                                                        >
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="adressy"
+                                                            placeholder="Address"
+                                                            value=""
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-4">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="cityInput"
+                                                            class="form-label"
+                                                            >City</label
+                                                        >
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="cityInput"
+                                                            placeholder="City"
+                                                            value="Jaipur"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-4">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="countryInput"
+                                                            class="form-label"
+                                                            >State</label
+                                                        >
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="countryInput"
+                                                            placeholder="Country"
+                                                            value="Rajasthan"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-4">
+                                                    <div class="mb-3">
+                                                        <label
+                                                            for="zipcodeInput"
+                                                            class="form-label"
+                                                            >Pin Code</label
+                                                        >
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            minlength="5"
+                                                            maxlength="6"
+                                                            id="zipcodeInput"
+                                                            placeholder="Enter zipcode"
+                                                            value="302020"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <!--end col-->
+                                            </div>
+                                            <div class="row mrb-20">
+                                                <div
+                                                    class="col-md-12 col-lg-12"
+                                                >
+                                                    <div class="cr-plot">
+                                                        <input
+                                                            type="checkbox"
+                                                            id="sameaddress"
+                                                            class="if-else-check"
+                                                            checked
+                                                        />
+                                                        <label
+                                                            for="sameaddress"
+                                                        >
+                                                            <span></span> Same
+                                                            comunication address
+                                                        </label>
+                                                        <span
+                                                            >If you want
+                                                            diffrent address
+                                                            then unchecked
+                                                            box</span
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="answer answer-rw">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div
+                                                            class="card-header"
+                                                        >
+                                                            <h6
+                                                                class="card-title mb-0"
+                                                            >
+                                                                Add
+                                                                Communication
+                                                                Address
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div
+                                                        class="col-md-12 col-lg-4"
+                                                    >
+                                                        <div class="form-rws">
+                                                            <p>Address</p>
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                value="Ram Nagar Jaipur"
+                                                                name=""
+                                                                placeholder=""
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-12 col-lg-4"
+                                                    >
+                                                        <div class="form-rws">
+                                                            <p>City</p>
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                value="Jaipur"
+                                                                name=""
+                                                                placeholder=""
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-12 col-lg-4"
+                                                    >
+                                                        <div class="form-rws">
+                                                            <p>State</p>
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                value="Rajasthan"
+                                                                name=""
+                                                                placeholder=""
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="answer">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div
+                                                            class="card-header"
+                                                        >
+                                                            <h6
+                                                                class="card-title mb-0"
+                                                            >
+                                                                Nominee Details
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div
+                                                        class="col-md-12 col-lg-4"
+                                                    >
+                                                        <div class="form-rws">
+                                                            <p>Nominee Name</p>
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                value=""
+                                                                name=""
+                                                                placeholder="Enter Nominee Name"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-12 col-lg-4"
+                                                    >
+                                                        <div class="form-rws">
+                                                            <p>
+                                                                Nominee Mobile
+                                                            </p>
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                value=""
+                                                                name=""
+                                                                placeholder="Enter Nominee Mobile"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="col-md-12 col-lg-4"
+                                                    >
+                                                        <div class="form-rws">
+                                                            <p>
+                                                                Nominee Relation
+                                                            </p>
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                value=""
+                                                                name=""
+                                                                placeholder="Enter Nominee Relation"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div
+                                                    class="hstack gap-2 justify-content-end mrt-30"
+                                                >
+                                                    <button
+                                                        type="submit"
+                                                        class="btn btn-thm"
+                                                    >
+                                                        Updates & Save
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-subtle-danger"
+                                                    >
+                                                        Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--end tab-pane-->
+                                <div
+                                    class="tab-pane"
+                                    id="businessinformation"
+                                    role="tabpanel"
+                                >
+                                    <div class="card-body">
+                                        <form action="">
+                                            <div
+                                                class="row g-2 justify-content-lg-between align-items-center mb-3"
+                                            >
+                                                <div class="col-lg-6">
+                                                    <div
+                                                        class="auth-pass-inputgroup"
+                                                    >
+                                                        <label
+                                                            for="businessprofile"
+                                                            class="form-label"
+                                                            >Business
+                                                            Profile</label
+                                                        >
+                                                        <div
+                                                            class="position-relative"
+                                                        >
+                                                            <select
+                                                                class="form-control"
+                                                                id="businessprofile"
+                                                                name="p_id"
+                                                            >
+                                                                <option
+                                                                    value=""
+                                                                >
+                                                                    Select
+                                                                    Business
+                                                                    Profile
+                                                                </option>
+                                                                <option
+                                                                    value="1035"
+                                                                >
+                                                                    Beauty And
+                                                                    Personal
+                                                                    Care
+                                                                </option>
+                                                                <option
+                                                                    value="12"
+                                                                >
+                                                                    Education
+                                                                </option>
+                                                                <option
+                                                                    value="54"
+                                                                >
+                                                                    Entertainment
+                                                                    &amp; Arts
+                                                                </option>
+                                                                <option
+                                                                    value="97"
+                                                                >
+                                                                    Finance
+                                                                    &amp;
+                                                                    Insurance
+                                                                </option>
+                                                                <option
+                                                                    value="142"
+                                                                >
+                                                                    Govt. &amp;
+                                                                    Public
+                                                                    Services
+                                                                </option>
+                                                                <option
+                                                                    value="180"
+                                                                >
+                                                                    Health &amp;
+                                                                    Wellness
+                                                                </option>
+                                                                <option
+                                                                    value="160"
+                                                                >
+                                                                    Hotel &amp;
+                                                                    Accommodation
+                                                                </option>
+                                                                <option
+                                                                    value="1010"
+                                                                >
+                                                                    Legal
+                                                                </option>
+                                                                <option
+                                                                    value="346"
+                                                                >
+                                                                    Nightlife
+                                                                    &amp; Drinks
+                                                                </option>
+                                                                <option
+                                                                    value="1055"
+                                                                >
+                                                                    Others
+                                                                </option>
+                                                                <option
+                                                                    value="357"
+                                                                    selected=""
+                                                                >
+                                                                    Property
+                                                                </option>
+                                                                <option
+                                                                    value="421"
+                                                                >
+                                                                    Religious
+                                                                    Place
+                                                                </option>
+                                                                <option
+                                                                    value="424"
+                                                                >
+                                                                    Restaurants
+                                                                    &amp; Cafes
+                                                                </option>
+                                                                <option
+                                                                    value="702"
+                                                                >
+                                                                    Services
+                                                                </option>
+                                                                <option
+                                                                    value="559"
+                                                                >
+                                                                    Shopping
+                                                                    &amp;
+                                                                    Convenience
+                                                                    Stores
+                                                                </option>
+                                                                <option
+                                                                    value="190"
+                                                                >
+                                                                    Sports And
+                                                                    Fitness
+                                                                    Recreation
+                                                                </option>
+                                                                <option
+                                                                    value="891"
+                                                                >
+                                                                    Transportation
+                                                                    / Automotive
+                                                                </option>
+                                                                <option
+                                                                    value="953"
+                                                                >
+                                                                    Travel &amp;
+                                                                    Tourism
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div
+                                                        class="auth-pass-inputgroup"
+                                                    >
+                                                        <label
+                                                            for="password-input"
+                                                            class="form-label"
+                                                            >Business
+                                                            Type</label
+                                                        >
+                                                        <div
+                                                            class="position-relative"
+                                                        >
+                                                            <select
+                                                                name=""
+                                                                id="businsesstype"
+                                                                class="form-control"
+                                                                required=""
+                                                            >
+                                                                <option
+                                                                    value=""
+                                                                >
+                                                                    Select
+                                                                    Business
+                                                                    Type
+                                                                </option>
+                                                                <option
+                                                                    value="358"
+                                                                >
+                                                                    Caravan
+                                                                </option>
+                                                                <option
+                                                                    value="359"
+                                                                >
+                                                                    Caravan Park
+                                                                </option>
+                                                                <option
+                                                                    value="360"
+                                                                >
+                                                                    Commercial
+                                                                    Property
+                                                                    Agent
+                                                                </option>
+                                                                <option
+                                                                    value="361"
+                                                                >
+                                                                    Escrow
+                                                                    Service
+                                                                </option>
+                                                                <option
+                                                                    value="362"
+                                                                >
+                                                                    Estate Agent
+                                                                </option>
+                                                                <option
+                                                                    value="363"
+                                                                >
+                                                                    Home
+                                                                    Inspector
+                                                                </option>
+                                                                <option
+                                                                    value="364"
+                                                                >
+                                                                    Home Staging
+                                                                    Service
+                                                                </option>
+                                                                <option
+                                                                    value="365"
+                                                                >
+                                                                    Housing
+                                                                    Assistance
+                                                                    Service
+                                                                </option>
+                                                                <option
+                                                                    value="366"
+                                                                >
+                                                                    Mortgage
+                                                                    Brokers
+                                                                </option>
+                                                                <option
+                                                                    value="367"
+                                                                >
+                                                                    Property
+                                                                    Company
+                                                                </option>
+                                                                <option
+                                                                    value="368"
+                                                                >
+                                                                    Property
+                                                                    Developer
+                                                                </option>
+                                                                <option
+                                                                    value="372"
+                                                                >
+                                                                    Property
+                                                                    Development
+                                                                </option>
+                                                                <option
+                                                                    value="374"
+                                                                >
+                                                                    Property
+                                                                    Expert
+                                                                </option>
+                                                                <option
+                                                                    value="369"
+                                                                >
+                                                                    Property
+                                                                    Investment
+                                                                    company
+                                                                </option>
+                                                                <option
+                                                                    value="370"
+                                                                >
+                                                                    Property
+                                                                    management
+                                                                    company
+                                                                </option>
+                                                                <option
+                                                                    value="371"
+                                                                >
+                                                                    Property
+                                                                    Service
+                                                                </option>
+                                                                <option
+                                                                    value="373"
+                                                                >
+                                                                    Property
+                                                                    valuation
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                            </div>
+                                            <div
+                                                class="row g-2 justify-content-lg-between align-items-center mb-3"
+                                            >
+                                                <div class="col-lg-6">
+                                                    <div
+                                                        class="auth-pass-inputgroup"
+                                                    >
+                                                        <label
+                                                            for="businessprofile"
+                                                            class="form-label"
+                                                            >Business
+                                                            Name</label
+                                                        >
+                                                        <div
+                                                            class="position-relative"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                name=""
+                                                                value=""
+                                                                placeholder="Business Name"
+                                                                class="form-control"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div
+                                                        class="auth-pass-inputgroup"
+                                                    >
+                                                        <label
+                                                            for="password-input"
+                                                            class="form-label"
+                                                            >Business
+                                                            Address</label
+                                                        >
+                                                        <div
+                                                            class="position-relative"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                name=""
+                                                                value=""
+                                                                placeholder="Address"
+                                                                class="form-control"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="d-flex align-items-center justify-content-end"
+                                                >
+                                                    <div class="">
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-thm"
+                                                        >
+                                                            Change Password
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <!--end col-->
+
+                                                <div class="col-lg-12">
+                                                    <div
+                                                        class="card bg-light shadow-none passwd-bg"
+                                                        id="password-contain"
+                                                    >
+                                                        <div class="card-body">
+                                                            <div class="mb-4">
+                                                                <h5
+                                                                    class="fs-sm"
+                                                                >
+                                                                    Password
+                                                                    must
+                                                                    contain:
+                                                                </h5>
+                                                            </div>
+                                                            <div class="">
+                                                                <p
+                                                                    id="pass-length"
+                                                                    class="invalid fs-xs mb-2"
+                                                                >
+                                                                    Minimum
+                                                                    <b
+                                                                        >8
+                                                                        characters</b
+                                                                    >
+                                                                </p>
+                                                                <p
+                                                                    id="pass-lower"
+                                                                    class="invalid fs-xs mb-2"
+                                                                >
+                                                                    At
+                                                                    <b
+                                                                        >lowercase</b
+                                                                    >
+                                                                    letter (a-z)
+                                                                </p>
+                                                                <p
+                                                                    id="pass-upper"
+                                                                    class="invalid fs-xs mb-2"
+                                                                >
+                                                                    At least
+                                                                    <b
+                                                                        >uppercase</b
+                                                                    >
+                                                                    letter (A-Z)
+                                                                </p>
+                                                                <p
+                                                                    id="pass-number"
+                                                                    class="invalid fs-xs mb-0"
+                                                                >
+                                                                    A least
+                                                                    <b
+                                                                        >number</b
+                                                                    >
+                                                                    (0-9)
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end row-->
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--end tab-pane-->
+                                <div
+                                    class="tab-pane active"
+                                    id="education"
+                                    role="tabpanel"
+                                >
+                                    <div class="card-header">
+                                        <h6 class="card-title mb-0">
+                                            KYC Information
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div id="newlink">
+                                                <div id="1">
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="degreeName"
+                                                                    class="form-label"
+                                                                    >Aadhar
+                                                                    E-KYC</label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    class="form-control"
+                                                                    id="degreeName"
+                                                                    placeholder="XXXX-XXXX-XXXX"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="gstnno"
+                                                                    class="form-label"
+                                                                    >GST
+                                                                    No</label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    class="form-control"
+                                                                    id="gstnno"
+                                                                    placeholder="XXXXARCPV"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="pancard"
+                                                                    class="form-label"
+                                                                    >Pan
+                                                                    Card</label
+                                                                >
+                                                                <input
+                                                                    type="text"
+                                                                    class="form-control"
+                                                                    id="pancard"
+                                                                    placeholder="ARCXXXXXX"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-lg-12">
+                                                            <div
+                                                                class="hstack gap-2"
+                                                            >
+                                                                <button
+                                                                    type="submit"
+                                                                    class="btn btn-thm"
+                                                                >
+                                                                    Submit
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end row-->
+                                                </div>
+                                            </div>
+
+                                            <!--end col-->
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--end tab-pane-->
+                                <div
+                                    class="tab-pane"
+                                    id="securityPrivacy"
+                                    role="tabpanel"
+                                >
+                                    <div class="card-header">
+                                        <h6 class="card-title mb-0">
+                                            Banking Information
+                                        </h6>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="row mb-4">
+                                            <div class="col-lg-6">
+                                                <h6 class="mb-2">
+                                                    Withdrawal Account
+                                                </h6>
+                                                <div class="account-av">
+                                                    <p>
+                                                        <span>Bank Name</span>
+                                                        <span
+                                                            ><img
+                                                                src="/assets/images/icici.png"
+                                                                alt="bank"
+                                                                width="100"
+                                                                height="20"
+                                                        /></span>
+                                                    </p>
+                                                    <p>
+                                                        <span
+                                                            >A/c Holder's
+                                                            Name</span
+                                                        >
+                                                        <span>Anuda Live</span>
+                                                    </p>
+                                                    <p>
+                                                        <span>A/c Number</span>
+                                                        <span
+                                                            >cahsfree000045641</span
+                                                        >
+                                                    </p>
+                                                    <p>
+                                                        <span>IFSC</span>
+                                                        <span>ICIC0000104</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <h6 class="mb-2">
+                                                    Deposit Account
+                                                </h6>
+                                                <div class="account-av">
+                                                    <p>
+                                                        <span>Bank Name</span>
+                                                        <span
+                                                            ><img
+                                                                src="/assets/images/icici.png"
+                                                                alt="bank"
+                                                                width="100"
+                                                                height="20"
+                                                        /></span>
+                                                    </p>
+                                                    <p>
+                                                        <span
+                                                            >A/c Holder's
+                                                            Name</span
+                                                        >
+                                                        <span>Anuda Live</span>
+                                                    </p>
+                                                    <p>
+                                                        <span>A/c Number</span>
+                                                        <span
+                                                            >cahsfree000045641</span
+                                                        >
+                                                    </p>
+                                                    <p>
+                                                        <span>IFSC</span>
+                                                        <span>ICIC0000104</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-1 pb-2">
+                                            <div
+                                                class="d-flex flex-column flex-sm-row mb-4"
+                                            >
+                                                <div class="flex-grow-1">
+                                                    <h6 class="fs-md mb-1">
+                                                        Add User Bank Account
+                                                    </h6>
+                                                </div>
+                                                <div
+                                                    class="flex-shrink-0 ms-sm-3"
+                                                >
+                                                    <a
+                                                        href="javascript:void(0);"
+                                                        class="btn btn-sm btn-thm"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#showModal"
+                                                        ><i
+                                                            class="bi bi-plus-circle align-baseline me-1"
+                                                        ></i>
+                                                        Add New Bank Account</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                            <div class="bn-table">
+                                                <table width="100%" border="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>S. No.</th>
+                                                            <th>IFSC</th>
+                                                            <th>Bank Name</th>
+                                                            <th>
+                                                                A/C Holder Name
+                                                            </th>
+                                                            <th>
+                                                                Account Number
+                                                            </th>
+                                                            <th>
+                                                                Upload Cancelled
+                                                                Cheque
+                                                            </th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>SBIN0054114</td>
+                                                            <td>State Bank</td>
+                                                            <td>Ram Kumar</td>
+                                                            <td>7744561240</td>
+                                                            <td>
+                                                                <img
+                                                                    src="/assets/images/comingsoon.png"
+                                                                    alt="cheque"
+                                                                    width="70"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    name="bankprimary"
+                                                                    value=""
+                                                                    checked
+                                                                />
+                                                                Primary
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>SBIN0054114</td>
+                                                            <td>State Bank</td>
+                                                            <td>Ram Kumar</td>
+                                                            <td>7744561240</td>
+                                                            <td>
+                                                                <img
+                                                                    src="/assets/images/comingsoon.png"
+                                                                    alt="cheque"
+                                                                    width="70"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    name="bankprimary"
+                                                                    value=""
+                                                                />
+                                                                Primary
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end tab-pane-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!--Add Bank modal -->
+<div
+    class="modal fade"
+    id="showModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header px-4 pt-4">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Add New Bank Account
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    id="close-modal"
+                ></button>
+            </div>
+
+            <form class="tablelist-form" novalidate autocomplete="off">
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label for="bifsc" class="form-label">Bank IFSC</label>
+                        <input
+                            type="text"
+                            id="bifsc"
+                            class="form-control"
+                            placeholder="Enter IFSC Code"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="bname" class="form-label">Bank Name</label>
+                        <input
+                            type="text"
+                            id="bname"
+                            class="form-control"
+                            placeholder="Enter Bank Name"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="bholddername" class="form-label"
+                            >Account Holder Name</label
+                        >
+                        <input
+                            type="text"
+                            id="bholddername"
+                            class="form-control"
+                            placeholder="Enter Bank Name"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="bacnumber" class="form-label"
+                            >Account Number</label
+                        >
+                        <input
+                            type="text"
+                            id="bacnumber"
+                            class="form-control"
+                            placeholder="Enter Bank Name"
+                            required
+                        />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button type="submit" class="btn btn-thm" id="add-btn">
+                            Add Bank
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-ghost-danger"
+                            data-bs-dismiss="modal"
+                        >
+                            <i class="bi bi-x-lg align-baseline me-1"></i> Close
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- modal-content -->
+    </div>
+    <!-- modal-dialog -->
+</div>
+
+<%- include('partials/footer') %>

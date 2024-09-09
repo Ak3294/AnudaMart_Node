@@ -1,0 +1,623 @@
+<%- include('partials/header') %>
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Support</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="/seller/dashboard"
+                                            >Dashboard</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Support
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div id="productList">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-xxl-3">
+                                            <div class="search-box">
+                                                <input
+                                                    type="text"
+                                                    class="form-control search"
+                                                    placeholder="Search products, price etc..."
+                                                />
+                                                <i
+                                                    class="ri-search-line search-icon"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div
+                                    class="card-header d-flex align-items-center"
+                                >
+                                    <div class="flex-grow-1">
+                                        <h5 class="card-title mb-0">Support</h5>
+                                    </div>
+
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <button
+                                            type="button"
+                                            class="btn btn-thm add-btn"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#showSupportModal"
+                                            data-name="support"
+                                        >
+                                            <i
+                                                class="bi bi-plus-circle align-baseline me-1"
+                                            ></i>
+                                            Send request
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table
+                                            class="table table-centered align-middle table-nowrap mb-0"
+                                        >
+                                            <thead class="table-active">
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                value="option"
+                                                                id="checkAll"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="checkAll"
+                                                            ></label>
+                                                        </div>
+                                                    </th>
+                                                    <th
+                                                        class="sort cursor-pointer"
+                                                        data-sort="index"
+                                                    >
+                                                        #
+                                                    </th>
+                                                    <th
+                                                        class="sort cursor-pointer"
+                                                        data-sort="products"
+                                                    >
+                                                        Subject
+                                                    </th>
+                                                    <!-- <th
+                                                        class="sort cursor-pointer"
+                                                        data-sort="stock"
+                                                    >
+                                                        Contact
+                                                    </th> -->
+                                                    <!-- <th
+                                                        class="sort cursor-pointer"
+                                                        data-sort="price"
+                                                    >
+                                                        Status
+                                                    </th> -->
+                                                    <th
+                                                        class="sort cursor-pointer"
+                                                        data-sort="price"
+                                                    >
+                                                        Priority
+                                                    </th>
+                                                    <th
+                                                        class="sort cursor-pointer"
+                                                        data-sort="price"
+                                                    >
+                                                        Sending Date
+                                                    </th>
+                                                    <th
+                                                        class="sort cursor-pointer"
+                                                        data-sort="action"
+                                                    >
+                                                        Action
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="list form-check-all">
+                                                <% if(!supports[0]) { %>
+                                                <tr>
+                                                    <td
+                                                        colspan="100%"
+                                                        class="text-center"
+                                                    >
+                                                        No Data
+                                                    </td>
+                                                </tr>
+                                                <% } else {%> <%
+                                                supports.forEach((support,index)=>{
+                                                %>
+                                                <tr
+                                                    data-id="<%= support._id %>"
+                                                >
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                name="chk_child"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                            ></label>
+                                                        </div>
+                                                    </td>
+                                                    <td><%= index + 1 %></td>
+                                                    <td class="subject">
+                                                        <%= support.subject ?
+                                                        support.subject : '' %>
+                                                    </td>
+                                                    <!-- <td class="status">
+                                                        Active
+                                                    </td> -->
+                                                    <td class="priority">
+                                                        <%= support.priority ?
+                                                        support.priority : '' %>
+                                                    </td>
+                                                    <% const date = new
+                                                    Date(support.created_at);
+                                                    const formattedDate =
+                                                    date.toLocaleString('en-GB',
+                                                    { day: '2-digit', month:
+                                                    'short', year: 'numeric' });
+                                                    %>
+                                                    <td class="date">
+                                                        <%= formattedDate ?
+                                                        formattedDate : ""%>
+                                                    </td>
+
+                                                    <td>
+                                                        <div
+                                                            class="dropdown position-static"
+                                                        >
+                                                            <button
+                                                                data-id="<%= support._id %>"
+                                                                class="btn btn-subtle-secondary btn-sm btn-icon three-dot three-dot-button"
+                                                                role="button"
+                                                                data-bs-toggle="dropdown"
+                                                                aria-expanded="false"
+                                                            >
+                                                                <i
+                                                                    class="bi bi-three-dots-vertical"
+                                                                ></i>
+                                                            </button>
+                                                            <ul
+                                                                class="dropdown-menu dropdown-menu-end"
+                                                            >
+                                                                <!-- <li>
+                                                                    <a
+                                                                        class="dropdown-item edit-item-btn"
+                                                                        href="/admin/SupportEnquiry/edit/<%= support._id %>"
+                                                                        data-model="<%= JSON.stringify(support) %>"
+                                                                    >
+                                                                        <i
+                                                                            class="ph-pencil align-middle me-1"
+                                                                        ></i>
+                                                                        Edit
+                                                                    </a>
+                                                                </li> -->
+
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item delete-support-btn"
+                                                                        href="#DeleteSupportEnquiryModal"
+                                                                        data-bs-toggle="modal"
+                                                                        data-id="<%= support._id %>"
+                                                                    >
+                                                                        <i
+                                                                            class="ph-trash align-middle me-1"
+                                                                        ></i
+                                                                        >Remove
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <% }); %> <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--end table-responsive-->
+
+                                    <div class="noresult" style="display: none">
+                                        <div class="text-center py-4">
+                                            <div class="avatar-md mx-auto mb-4">
+                                                <div
+                                                    class="avatar-title bg-light text-primary rounded-circle fs-4xl"
+                                                >
+                                                    <i class="bi bi-search"></i>
+                                                </div>
+                                            </div>
+                                            <h5 class="mt-2">
+                                                Sorry! No Result Found
+                                            </h5>
+                                            <p class="text-muted mb-0">
+                                                We've searched more than 150+
+                                                products We did not find any
+                                                products for you search.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- end noresult -->
+
+                                    <div
+                                        class="row mt-3 align-items-center"
+                                        id="pagination-element"
+                                    >
+                                        <div class="col-sm">
+                                            <div
+                                                class="text-muted text-center text-sm-start"
+                                            >
+                                                Showing
+                                                <span class="fw-semibold"
+                                                    >10</span
+                                                >
+                                                of
+                                                <span class="fw-semibold"
+                                                    >35</span
+                                                >
+                                                Results
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-auto mt-3 mt-sm-0">
+                                            <div
+                                                class="pagination-wrap hstack gap-2 justify-content-center"
+                                            >
+                                                <a
+                                                    class="page-item pagination-prev disabled"
+                                                    href="#"
+                                                >
+                                                    <i
+                                                        class="mdi mdi-chevron-left align-middle"
+                                                    ></i>
+                                                </a>
+                                                <ul
+                                                    class="pagination listjs-pagination mb-0"
+                                                ></ul>
+                                                <a
+                                                    class="page-item pagination-next"
+                                                    href="#"
+                                                >
+                                                    <i
+                                                        class="mdi mdi-chevron-right align-middle"
+                                                    ></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end pagination-element -->
+                                </div>
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Add User Modal -->
+<div
+    class="modal fade modal-lg"
+    id="showSupportModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel">Ticket Info</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    id="close-ordermodal"
+                ></button>
+            </div>
+            <form
+                id="addSupportForm"
+                enctype="multipart/form-data"
+                class="tablelist-form"
+                autocomplete="off"
+            >
+                <div class="modal-body">
+                    <input type="hidden" id="id-field" />
+                    <div class="row">
+                        <div class="col lg-12 mb-3">
+                            <label for="subject" class="form-label"
+                                >Subject</label
+                            >
+                            <input
+                                type="text"
+                                id="subject"
+                                class="form-control"
+                                name="subject"
+                                placeholder="Enter Subject "
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="priority-field" class="form-label"
+                            >Priority</label
+                        >
+                        <select
+                            class="form-control"
+                            id="priority"
+                            name="priority"
+                        >
+                            <option value="" disabled selected>
+                                Select Priority
+                            </option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div class="tab-pane mt-3" id="description" role="tabpanel">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12 mb-3">
+                                    <div>
+                                        <label class="form-label">
+                                            Description
+                                        </label>
+                                        <textarea
+                                            type="text"
+                                            class="form-control"
+                                            id="editor"
+                                            name="description"
+                                            placeholder="Enter Description"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                                <!--end col-->
+                            </div>
+                            <!--end row-->
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"
+                            >Gallery Images
+                            <span class="text-danger">*</span></label
+                        >
+                        <input
+                            type="file"
+                            class="form-control"
+                            id="gallery_images"
+                            name="gallery_images"
+                            multiple
+                            placeholder="Upload gallery image"
+                        />
+                        <input
+                            type="hidden"
+                            id="gallery_images"
+                            name="gallery_images"
+                            value=""
+                        />
+                        <div
+                            class="mb-2 mt-2"
+                            id="previewgalleryicon"
+                            style="display: none"
+                        >
+                            <img src="" id="display_preview_gallery_icon" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                            id="add-btn"
+                        >
+                            Send request
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- DeleteSupportEnquiryModal -->
+<div
+    id="DeleteSupportEnquiryModal"
+    class="modal fade zoomIn"
+    tabindex="-1"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="btn-close"
+                    id="deleteRecord-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body p-md-5">
+                <div class="text-center">
+                    <div class="text-danger">
+                        <i class="bi bi-trash display-4"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="mb-2">Are you sure?</h3>
+                        <p class="text-muted fs-lg mx-3 mb-0">
+                            Are you sure you want to delete this SupportEnquiry?
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button
+                        type="button"
+                        class="btn w-sm btn-light btn-hover"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        type="button"
+                        class="btn w-sm btn-danger btn-hover"
+                        id="confirm-delete-btn"
+                    >
+                        Yes, Delete This.
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /DeleteSupportEnquiryModal -->
+
+<%- include('partials/footer') %>
+
+<!-- Initialize CKEditor -->
+<script src="/admin/js/ckeditor/ckeditor.js"></script>
+<script src="/admin/js/ck.js"></script>
+<script>
+    $("#gallery_images").change(function () {
+        displayPP(this, $("#previewgalleryicon"));
+    });
+</script>
+
+<script>
+    // Script for Add form
+    var addform = $("#addSupportForm");
+    addform.on("submit", submitFormHandler);
+
+    function submitFormHandler(e) {
+        e.preventDefault();
+
+        var formData = new FormData(addform[0]);
+        console.log(formData);
+        $.ajax({
+            type: "POST",
+            url: "/seller/support/add",
+            data: formData,
+            processData: false,
+            contentType: false,
+        })
+            .done((res) => {
+                iziToast.success({
+                    title: "Success",
+                    message: res.message,
+                    position: "topRight",
+                });
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    }
+    //Add Script end here
+
+    //# Delete region Start Here
+    let SupportIdToDelete;
+    $(document).ready(function () {
+        // Show the modal and store the Slider ID to delete
+        $(".delete-support-btn").on("click", function () {
+            var SupportIdToDelete = $(this).data("id");
+
+            // AJAX request to delete the Slider
+            $("#confirm-delete-btn").click(function () {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/seller/support/delete/" + SupportIdToDelete,
+                })
+                    .done((res) => {
+                        if (res.status == 200) {
+                            iziToast.success({
+                                title: "Success",
+                                message: res.message,
+                                position: "topRight",
+                            });
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            iziToast.error({
+                                title: "Error",
+                                message: res.message,
+                                position: "topRight",
+                            });
+                        }
+                    })
+                    .fail(function (xhr, status, error) {
+                        iziToast.error({
+                            title: "Error",
+                            message: xhr.responseText,
+                            position: "topRight",
+                        });
+                    });
+            });
+        });
+    });
+    //#endregion  Delete supportregion End Here
+</script>

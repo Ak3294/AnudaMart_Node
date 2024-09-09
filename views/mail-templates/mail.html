@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Email Template</title>
+
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+        </style>
+    </head>
+    <body
+        style="
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: Poppins, sans-serif;
+            margin: 0;
+            padding: 0;
+        "
+    >
+        <div
+            style="
+                max-width: 600px;
+                margin: 40px auto;
+                background-color: #ffffff;
+                box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                border-radius: 8px;
+            "
+        >
+            <!-- Header -->
+            <header
+                style="
+                    background-color: #ec1e24;
+                    color: white;
+                    text-align: center;
+                    padding: 24px;
+                "
+            >
+                <img
+                    src="/public/assets/images/w-logo.png"
+                    alt="Logo"
+                    style="display: block; margin: 0 auto 16px; width: 112px"
+                />
+                <h1
+                    style="font-size: 24px; font-weight: bold; margin: 0 0 16px"
+                >
+                    Congratulations! Your Order is Confirmed!
+                </h1>
+                <div
+                    style="margin-top: 16px; padding: 16px; border-radius: 4px"
+                >
+                    <p style="margin: 0">
+                        Order Confirmation Number:
+                        <span style="font-weight: 600">21321</span>
+                    </p>
+                    <p style="margin: 0">
+                        Expected Delivery: September 16th, 2024
+                    </p>
+                </div>
+            </header>
+
+            <!-- Order Summary -->
+            <section style="padding: 24px; background-color: #f2ecec">
+                <h2
+                    style="
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: #374151;
+                        margin: 0 0 16px;
+                    "
+                >
+                    Order summary
+                </h2>
+                <div
+                    style="
+                        border-top: 1px solid #e5e7eb;
+                        padding-top: 16px;
+                        margin-top: 16px;
+                    "
+                >
+                    <div
+                        style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 8px;
+                        "
+                    >
+                        <div style="width: 70%">
+                            <p style="font-weight: 500; margin: 0">
+                                1 Malibu Surf T-shirt
+                            </p>
+                            <p
+                                style="
+                                    font-size: 14px;
+                                    color: #6b7280;
+                                    margin: 0;
+                                "
+                            >
+                                Size: M | Color: Blue
+                            </p>
+                        </div>
+                        <div style="width: 30%">
+                            <p style="font-weight: 500; margin: 0">$21.99</p>
+                        </div>
+                    </div>
+                    <div
+                        style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 8px;
+                        "
+                    >
+                        <div style="width: 70%">
+                            <p style="margin: 0">Shipping</p>
+                        </div>
+                        <div style="width: 30%">
+                            <p style="margin: 0">$4.00</p>
+                        </div>
+                    </div>
+                    <div
+                        style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            font-weight: bold;
+                            margin-top: 8px;
+                        "
+                    >
+                        <div style="width: 70%">
+                            <p style="margin: 0">Total</p>
+                        </div>
+                        <div style="width: 30%">
+                            <p style="margin: 0">$25.99</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Addresses Section -->
+            <section style="padding: 24px; background-color: #f2ecec">
+                <h2
+                    style="
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: #374151;
+                        margin: 0 0 16px;
+                    "
+                >
+                    Addresses
+                </h2>
+                <div
+                    style="
+                        margin-top: 16px;
+                        font-size: 14px;
+                        border-top: 1px solid #e5e7eb;
+                        padding-top: 16px;
+                    "
+                >
+                    <div style="display: flex; gap: 16px">
+                        <div style="width: 50%">
+                            <p style="font-weight: 600; margin: 0 0 8px">
+                                Billing Address
+                            </p>
+                            <p style="margin: 0">Kyle Miller</p>
+                            <p style="margin: 0">1234 Main Lane</p>
+                            <p style="margin: 0">Hollywood Hills, CA 90265</p>
+                        </div>
+                        <div style="width: 50%">
+                            <p style="font-weight: 600; margin: 0 0 8px">
+                                Shipping Address
+                            </p>
+                            <p style="margin: 0">Kyle Miller</p>
+                            <p style="margin: 0">1234 Main Lane</p>
+                            <p style="margin: 0">Hollywood Hills, CA 90265</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customers Also Bought -->
+            <section style="padding: 24px; background-color: #f2ecec">
+                <h2
+                    style="
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: #374151;
+                        margin: 0 0 16px;
+                    "
+                >
+                    Customers also bought
+                </h2>
+                <div
+                    style="
+                        margin-top: 16px;
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 16px;
+                    "
+                >
+                    <div style="text-align: center; width: calc(50% - 8px)">
+                        <img
+                            src="/public/assets/images/products/img-1.png"
+                            alt="Product 1"
+                            style="
+                                display: block;
+                                margin: 0 auto;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                max-width: 200px;
+                            "
+                        />
+                        <p style="font-weight: 500; margin: 8px 0 0">
+                            Hang Loose
+                        </p>
+                        <p style="color: #718096">$22.99</p>
+                    </div>
+                    <div style="text-align: center; width: calc(50% - 8px)">
+                        <img
+                            src="/public/assets/images/products/img-10.png"
+                            alt="Product 2"
+                            style="
+                                display: block;
+                                margin: 0 auto;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                width: 100%;
+                                max-width: 200px;
+                            "
+                        />
+                        <p style="font-weight: 500; margin: 8px 0 0">
+                            Surfing USA
+                        </p>
+                        <p style="color: #718096">$23.99</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer
+                style="
+                    background-color: #ec1e24;
+                    color: white;
+                    padding: 24px;
+                    text-align: center;
+                "
+            >
+                <p style="font-size: 24px; font-weight: bold; margin: 0">
+                    Thanks again for the purchase!
+                </p>
+                <p style="margin: 8px 0">
+                    I'm sure your wardrobe is thanking you too 😊
+                </p>
+                <div
+                    style="
+                        display: flex;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        gap: 16px;
+                        margin-top: 16px;
+                    "
+                >
+                    <a
+                        href="#"
+                        style="
+                            color: white;
+                            text-decoration: none;
+                            font-size: 14px;
+                        "
+                        >Questions about your order?</a
+                    >
+                    <a
+                        href="#"
+                        style="
+                            color: white;
+                            text-decoration: none;
+                            font-size: 14px;
+                        "
+                        >Browse related campaigns</a
+                    >
+                    <a
+                        href="#"
+                        style="
+                            color: white;
+                            text-decoration: none;
+                            font-size: 14px;
+                        "
+                        >Start selling on Teespring</a
+                    >
+                </div>
+                <div style="margin-top: 16px; text-align: center">
+                    <a
+                        href="#"
+                        style="
+                            color: white;
+                            text-decoration: none;
+                            margin: 0 8px;
+                            display: inline-block;
+                        "
+                    >
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png"
+                            alt="Facebook"
+                            style="
+                                width: 24px;
+                                height: 24px;
+                                object-fit: cover;
+                                display: inline-block;
+                            "
+                        />
+                    </a>
+                    <a
+                        href="#"
+                        style="
+                            color: white;
+                            text-decoration: none;
+                            margin: 0 8px;
+                            display: inline-block;
+                        "
+                    >
+                        <img
+                            src="https://icon2.cleanpng.com/20240402/kzp/transparent-x-logo-woman-black-and-white-photography-street-fa-woman-in-dark-clothing-walking-determinedly660c4b50383a25.14507568.webp"
+                            alt="Twitter"
+                            style="
+                                width: 24px;
+                                height: 24px;
+                                object-fit: cover;
+                                display: inline-block;
+                            "
+                        />
+                    </a>
+                    <a
+                        href="#"
+                        style="
+                            color: white;
+                            text-decoration: none;
+                            margin: 0 8px;
+                            display: inline-block;
+                        "
+                    >
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/145/145808.png"
+                            alt="Pinterest"
+                            style="
+                                width: 24px;
+                                height: 24px;
+                                object-fit: cover;
+                                display: inline-block;
+                            "
+                        />
+                    </a>
+                    <a
+                        href="#"
+                        style="
+                            color: white;
+                            text-decoration: none;
+                            margin: 0 8px;
+                            display: inline-block;
+                        "
+                    >
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/768px-Instagram_icon.png"
+                            alt="Instagram"
+                            style="
+                                width: 24px;
+                                height: 24px;
+                                object-fit: cover;
+                                display: inline-block;
+                            "
+                        />
+                    </a>
+                </div>
+
+                <img
+                    src="/public/assets/images/w-logo.png"
+                    alt="Logo"
+                    style="max-width: 100%; margin-top: 24px"
+                />
+            </footer>
+        </div>
+    </body>
+</html>

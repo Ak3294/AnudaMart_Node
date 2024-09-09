@@ -9,25 +9,13 @@ const schema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    meta_title: {
-        type: String,
-        require: true,
-    },
-    meta_description: {
-        type: String,
-        require: true,
-    },
-    meta_keywords: {
-        type: String,
-        require: true,
-    },
     created_at: {
         type: String,
-        default: Date.now,
+        default: Date,
     },
     updated_at: {
         type: String,
-        default: Date.now,
+        default: Date,
     },
 });
 

@@ -1,0 +1,596 @@
+<%- include('partials/header.ejs') %>
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Orders</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript: void(0);"
+                                            >Products</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Orders
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body pb-0 mb-lg-n4">
+                                <div class="d-flex z-1 position-relative">
+                                    <div class="flex-shrink-0">
+                                        <div
+                                            data-provider="flatpickr"
+                                            data-range-date="true"
+                                            data-date-format="d M, Y"
+                                            data-default-date="01 Feb 2023 to 28 Feb 2023"
+                                        >
+                                            01 Feb 2023 to 28 Feb 2023
+                                            <i
+                                                class="ph-caret-down align-middle ms-1"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div
+                                    id="line_chart_basic"
+                                    data-colors='["--tb-primary", "--tb-secondary"]'
+                                    class="apex-charts"
+                                    dir="ltr"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+
+                <div
+                    class="row row-cols-xxl-5 row-cols-lg-3 row-cols-md-2 row-cols-1"
+                >
+                    <div class="col">
+                        <div
+                            class="card border-bottom border-3 card-animate border-secondary"
+                        >
+                            <div class="card-body">
+                                <span
+                                    class="badge bg-success-subtle text-success float-end"
+                                    ><i
+                                        class="ph-trend-up align-middle me-1"
+                                    ></i>
+                                    3.8%</span
+                                >
+                                <h4 class="mb-4">
+                                    <span
+                                        class="counter-value"
+                                        data-target="<%= totalOrdersCount ? totalOrdersCount : 0 %>"
+                                        >
+                                        <%= totalOrdersCount ? totalOrdersCount : 0 %>
+                                        </span
+                                    >
+                                </h4>
+
+                                <p
+                                    class="text-muted fw-medium text-uppercase mb-0"
+                                >
+                                    Total Orders
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="card border-bottom border-3 card-animate border-primary"
+                        >
+                            <div class="card-body">
+                                <span
+                                    class="badge bg-success-subtle text-success float-end"
+                                    ><i
+                                        class="ph-trend-up align-middle me-1"
+                                    ></i>
+                                    20.8%</span
+                                >
+                                <h4 class="mb-4">
+                                    <span
+                                        class="counter-value"
+                                        data-target="5963"
+                                        >0</span
+                                    >
+                                </h4>
+
+                                <p
+                                    class="text-muted fw-medium text-uppercase mb-0"
+                                >
+                                    New Orders
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="card border-bottom border-3 card-animate border-warning"
+                        >
+                            <div class="card-body">
+                                <span
+                                    class="badge bg-success-subtle text-success float-end"
+                                    ><i
+                                        class="ph-trend-up align-middle me-1"
+                                    ></i>
+                                    12.6%</span
+                                >
+                                <h4 class="mb-4">
+                                    <span
+                                        class="counter-value"
+                                        data-target="4620"
+                                        >0</span
+                                    >
+                                </h4>
+
+                                <p
+                                    class="text-muted fw-medium text-uppercase mb-0"
+                                >
+                                    Pending Orders
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="card border-bottom border-3 card-animate border-success"
+                        >
+                            <div class="card-body">
+                                <span
+                                    class="badge bg-success-subtle text-success float-end"
+                                    ><i
+                                        class="ph-trend-up align-middle me-1"
+                                    ></i>
+                                    18.7%</span
+                                >
+                                <h4 class="mb-4">
+                                    <span
+                                        class="counter-value"
+                                        data-target="8541"
+                                        >0</span
+                                    >
+                                </h4>
+
+                                <p
+                                    class="text-muted fw-medium text-uppercase mb-0"
+                                >
+                                    Delivered Orders
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="card border-bottom border-3 card-animate border-danger"
+                        >
+                            <div class="card-body">
+                                <span
+                                    class="badge bg-danger-subtle text-danger float-end"
+                                    ><i
+                                        class="ph-trend-down align-middle me-1"
+                                    ></i>
+                                    7.1%</span
+                                >
+                                <h4 class="mb-4">
+                                    <span
+                                        class="counter-value"
+                                        data-target="2314"
+                                        >0</span
+                                    >
+                                </h4>
+
+                                <p
+                                    class="text-muted fw-medium text-uppercase mb-0"
+                                >
+                                    Cancelled Orders
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---end row-->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card" id="orderList">
+                            <div class="card-header">
+                                <div class="row align-items-center gy-3">
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="search-box">
+                                            <input
+                                                type="text"
+                                                class="form-control search"
+                                                placeholder="Search for order ID, customer, order status or something..."
+                                            />
+                                            <i
+                                                class="ri-search-line search-icon"
+                                            ></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-auto ms-md-auto">
+                                        <div
+                                            class="d-flex flex-wrap align-items-center gap-2"
+                                        >
+                                            <button
+                                                class="btn btn-subtle-danger d-none"
+                                                id="remove-actions"
+                                                onClick="deleteMultiple()"
+                                            >
+                                                <i
+                                                    class="ri-delete-bin-2-line"
+                                                ></i>
+                                            </button>
+                                            <div
+                                                class="dropdown card-header-dropdown sortble-dropdown flex-shrink-0"
+                                            >
+                                                <a
+                                                    class="text-reset dropdown-btn"
+                                                    href="#"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"
+                                                >
+                                                    <span
+                                                        class="text-muted dropdown-title"
+                                                        >Order Date</span
+                                                    >
+                                                    <i
+                                                        class="mdi mdi-chevron-down ms-1"
+                                                    ></i>
+                                                </a>
+                                                <div
+                                                    class="dropdown-menu dropdown-menu-end"
+                                                >
+                                                    <button
+                                                        class="dropdown-item sort"
+                                                       data-sort="order_date"
+                                                    >
+                                                        Order Date
+                                                    </button>
+                                                    <button
+                                                        class="dropdown-item sort"
+                                                       data-sort="order_id"
+                                                    >
+                                                        Order ID
+                                                    </button>
+                                                    <button
+                                                        class="dropdown-item sort"
+                                                        data-sort="amount"
+                                                    >
+                                                        Amount
+                                                    </button>
+                                                    <button
+                                                        class="dropdown-item sort"
+                                                       data-sort="status"
+                                                    >
+                                                        Status
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- <button
+                                                type="button"
+                                                class="btn btn-thm add-btn ms-auto"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#showModal"
+                                            >
+                                                <i
+                                                    class="bi bi-plus-circle align-baseline me-1"
+                                                ></i>
+                                                Add Order
+                                            </button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                        class="table table-borderless table-centered align-middle table-nowrap mb-0"
+                                    >
+                                        <thead class="text-muted table-light">
+                                            <tr>
+                                                <th>
+                                                    <div class="form-check">
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="checkbox"
+                                                            value="option"
+                                                            id="checkAll"
+                                                        />
+                                                        <label
+                                                            class="form-check-label"
+                                                            for="checkAll"
+                                                        ></label>
+                                                    </div>
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    
+                                                   
+                                                >
+                                                    Order No.
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    
+                                                   
+                                                >
+                                                    Order Date
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    
+                                                   
+                                                >
+                                                    User
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    
+                                                   
+                                                >
+                                                    Total Amount
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    
+                                                   
+                                                >
+                                                    SubTotal Amount
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    
+                                                   
+                                                >
+                                                    Status
+                                                </th>
+                                                <!-- <th scope="col">Action</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody class="list form-check-all">
+                                            <% if(!orders[0]) { %>
+                                            <tr>
+                                                <td
+                                                    colspan="100%"
+                                                    class="text-center"
+                                                >
+                                                    No Data
+                                                </td>
+                                            </tr>
+                                            <% } else {%> <%
+                                            orders.forEach(function(order){%>
+                                            <tr>
+                                                <th>
+                                                    <div class="form-check">
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="checkbox"
+                                                            name="chk_child"
+                                                        />
+                                                        <label
+                                                            class="form-check-label"
+                                                        ></label>
+                                                    </div>
+                                                </th>
+                                                <td class="order_id">
+                                                    <a
+                                                        href="/seller/order/details/<%= order._id %>"
+                                                        class="fw-medium link-primary"
+                                                    >
+                                                    <%= order.order_no
+                                                    ? order.order_no :
+                                                    ""%>
+                                                    </a>
+                                                </td>
+                                                <% 
+                                                  const date = new Date(order.order_date);
+                                                  const formattedDate = date.toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+                                                %>
+                                                <td class="order_date">
+                                                    <%= formattedDate ? formattedDate : ""%>
+                                                </td>
+                                                <td class="user">
+                                                    <%= order.user_id ? order.user_id.first_name + " " + order.user_id.last_name : ""%>
+                                                </td>
+                                                <td class="amount">
+                                                    <% if (order.order_total_amount) { %>
+                                                        <span class="fw-medium">₹<%= order.order_total_amount ? order.order_total_amount: "0"%></span>
+                                                    <% } %>
+                                                </td>
+                                                <td class="amount">
+                                                    <% if (order.order_subtotal_amount) { %>
+                                                        <span class="fw-medium">₹<%= order.order_subtotal_amount ? order.order_subtotal_amount: "0"%></span>
+                                                    <% } %>
+                                                </td>
+                                                <td class="status">
+                                                    <span
+                                                        class="badge bg-primary-subtle text-primary"
+                                                        ><%= order.status_id ? order.status_id.name : ""%>
+                                                        </span
+                                                    >
+                                                </td>
+                                                <!-- <td>
+                                                    <ul
+                                                        class="d-flex gap-2 list-unstyled mb-0"
+                                                    >
+                                                        <li>
+                                                            <a
+                                                                href="/admin/order/view"
+                                                                class="btn btn-subtle-primary btn-icon btn-sm"
+                                                                ><i
+                                                                    class="ph-eye"
+                                                                ></i
+                                                            ></a>
+                                                        </li>
+                                                        <li>
+                                                            <a
+                                                                href="#deleteRecordModal"
+                                                                data-bs-toggle="modal"
+                                                                class="btn btn-subtle-danger btn-icon btn-sm remove-item-btn"
+                                                                ><i
+                                                                    class="ph-trash"
+                                                                ></i
+                                                            ></a>
+                                                        </li>
+                                                    </ul>
+                                                </td> -->
+                                            </tr>
+                                            <% }); %> <% } %>
+                                        </tbody>
+                                        <!-- end tbody -->
+                                    </table>
+                                    <!-- end table -->
+                                    <div class="noresult" style="display: none">
+                                        <div class="text-center py-4">
+                                            <i
+                                                class="ph-magnifying-glass fs-1 text-primary"
+                                            ></i>
+                                            <h5 class="mt-2">
+                                                Sorry! No Result Found
+                                            </h5>
+                                            <p class="text-muted mb-0">
+                                                We've searched more than 150+
+                                                orders We did not find any
+                                                orders for you search.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-center justify-content-sm-end mt-2"
+                                >
+                                    <div class="pagination-wrap hstack gap-2">
+                                        <a
+                                            class="page-item pagination-prev disabled"
+                                            href="javascript:void(0)"
+                                        >
+                                            <i
+                                                class="mdi mdi-chevron-left align-middle"
+                                            ></i>
+                                        </a>
+                                        <ul
+                                            class="pagination listjs-pagination mb-0"
+                                        ></ul>
+                                        <a
+                                            class="page-item pagination-next"
+                                            href="javascript:void(0)"
+                                        >
+                                            <i
+                                                class="mdi mdi-chevron-right align-middle"
+                                            ></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        © Anuda Mart.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Design & Develop by Anuda Mart
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- deleteRecordModal -->
+<div
+    id="deleteRecordModal"
+    class="modal fade zoomIn"
+    tabindex="-1"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="btn-close"
+                    id="deleteRecord-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body p-md-5">
+                <div class="text-center">
+                    <div class="text-danger">
+                        <i class="bi bi-trash display-4"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="mb-2">Are you sure ?</h3>
+                        <p class="text-muted fs-lg mx-3 mb-0">
+                            Are you sure you want to remove this record ?
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button
+                        type="button"
+                        class="btn w-sm btn-light btn-hover"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        type="button"
+                        class="btn w-sm btn-danger btn-hover"
+                        id="delete-record"
+                    >
+                        Yes, Delete It!
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /deleteRecordModal -->
+
+<%- include('partials/footer.ejs') %>

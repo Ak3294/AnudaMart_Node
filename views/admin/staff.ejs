@@ -1,0 +1,635 @@
+<%- include('partials/header.ejs') %>
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- Start right Content here -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Staff</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript: void(0);"
+                                            >Dashboard</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Staff
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div id="productList">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div
+                                        class="d-flex align-items-center flex-wrap gap-3"
+                                    >
+                                        <div class="flex-grow-1">
+                                            <h3 class="card-title mb-0">
+                                                Staff List
+                                            </h3>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <a href="/admin/staff/add">
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-thm add-btn"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#showModal"
+                                                        data-name="Slider"
+                                                    >
+                                                        <i
+                                                            class="bi bi-plus-circle align-baseline me-1"
+                                                        ></i>
+                                                        Add Staff
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+
+                    <div class="row">
+                        <div class="col-xxl-12">
+                            <!--end card-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table
+                                            class="table table-centered align-middle table-nowrap mb-0"
+                                        >
+                                            <thead class="table-active">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Image
+                                                    </th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Name
+                                                    </th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Phone
+                                                    </th>
+
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Email
+                                                    </th>
+
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="list form-check-all">
+                                                <%
+                                                staff.forEach((staff,index)=>{
+                                                %>
+                                                <tr data-id="<%=staff._id %>">
+                                                    <td>
+                                                        <%= (currentPage - 1) *
+                                                        10 +index + 1 %>
+                                                    </td>
+                                                    <td class="customer">
+                                                        <div
+                                                            class="d-flex align-items-center"
+                                                        >
+                                                            <div
+                                                                class="flex-shrink-0 me-2"
+                                                            >
+                                                                <div>
+                                                                    <img
+                                                                        class="avatar-sm rounded-circle customer-image-elem"
+                                                                        src="<%- staff.image ? '../../dist/staff/' + staff.image : '../../assets/images/default/user-dummy-img.jpg' %>"
+                                                                        onerror="this.src='../../assets/images/default/user-dummy-img.jpg';"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="name">
+                                                        <% if (staff.username) {
+                                                        %> <%= staff.username %>
+                                                        <% } else { %> <%=
+                                                        staff.first_name + " " +
+                                                        staff.last_name %> <% }
+                                                        %>
+                                                    </td>
+                                                    <td class="phone">
+                                                        <% if (staff.phone) { %>
+                                                        <%= staff.phone %> <% }
+                                                        %>
+                                                    </td>
+                                                    <td class="email">
+                                                        <%= staff.email ?
+                                                        staff.email :'' %>
+                                                    </td>
+
+                                                    <td>
+                                                        <div
+                                                            class="dropdown position-static"
+                                                        >
+                                                            <button
+                                                                class="btn btn-subtle-secondary btn-sm btn-icon"
+                                                                role="button"
+                                                                data-bs-toggle="dropdown"
+                                                                aria-expanded="false"
+                                                            >
+                                                                <i
+                                                                    class="bi bi-three-dots-vertical"
+                                                                ></i>
+                                                            </button>
+                                                            <ul
+                                                                class="dropdown-menu dropdown-menu-end"
+                                                            >
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item edit-item-btn"
+                                                                        data-bs-toggle="modal"
+                                                                        data-name="Staff"
+                                                                        href="#showEditModal"
+                                                                        id="edit_btn"
+                                                                        data-model="<%= JSON.stringify(staff) %>"
+                                                                    >
+                                                                        <i
+                                                                            class="ph-pencil align-middle me-1"
+                                                                        ></i>
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item remove-item-btn"
+                                                                        href="#deleteRecordModal"
+                                                                        data-bs-toggle="modal"
+                                                                        data-id="<%= staff._id %>"
+                                                                    >
+                                                                        <i
+                                                                            class="ph-trash align-middle me-1"
+                                                                        ></i
+                                                                        >Remove
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="noresult" style="display: none">
+                                        <div class="text-center py-4">
+                                            <i
+                                                class="ph-magnifying-glass fs-1 text-primary"
+                                            ></i>
+                                            <h5 class="mt-2">
+                                                Sorry! No Result Found
+                                            </h5>
+                                            <p class="text-muted mb-0">
+                                                We've searched more than 150+
+                                                customers We did not find any
+                                                customers for you search.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
+                                        id="pagination-element"
+                                    >
+                                        <div class="col-sm">
+                                            <div class="text-muted">
+                                                Showing
+                                                <span class="fw-semibold">
+                                                    <%= staff.length %>
+                                                </span>
+                                                of
+                                                <span class="fw-semibold">
+                                                    <%= totalStaffs ? totalStaffs : 0 %>
+                                                </span>
+                                                Results
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-auto mt-3 mt-sm-0">
+                                            <div
+                                                class="pagination-wrap hstack gap-2"
+                                            >
+                                                <% if (currentPage > 1) { %>
+                                                <a
+                                                    class="page-item pagination-prev"
+                                                    href="/staff?page=<%= currentPage - 1 %>"
+                                                    >Previous</a
+                                                >
+                                                <% } else { %><a
+                                                    class="page-item pagination-prev disabled"
+                                                    href="javascript:void(0)"
+                                                    >Previous</a
+                                                >
+
+                                                <% } %>
+                                                <ul
+                                                    class="pagination listjs-pagination mb-0"
+                                                >
+                                                    <% for (let i = 1; i <=
+                                                    totalPages; i++) { %>
+                                                    <li
+                                                        class="page-item<%= i === currentPage ? 'active' : '' %>"
+                                                    >
+                                                        <a
+                                                            class="page-link"
+                                                            href="/staff?page=<%= i %>"
+                                                        >
+                                                            <%= i %>
+                                                        </a>
+                                                    </li>
+
+                                                    <% } %>
+                                                </ul>
+                                                <% if (currentPage < totalPages)
+                                                { %>
+                                                <a
+                                                    class="page-item pagination-next"
+                                                    href="/staff?page=<%= currentPage + 1 %>"
+                                                    >Next</a
+                                                >
+                                                <% } else { %><a
+                                                    class="page-item pagination-next disabled"
+                                                    href="javascript:void(0)"
+                                                    >Next</a
+                                                >
+
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Edit Slider Modal -->
+<div
+    class="modal fade"
+    id="showEditModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Staff</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    id="close-ordermodal"
+                ></button>
+            </div>
+            <form class="tablelist-form" id="editform">
+                <div class="modal-body">
+                    <input type="hidden" id="editid" name="editid" />
+                    <div class="text-center mb-3">
+                        <div class="position-relative d-inline-block">
+                            <div
+                                class="position-absolute top-100 start-100 translate-middle"
+                            >
+                                <label
+                                    for="image"
+                                    class="mb-0"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right"
+                                    title="Select Staff Photo"
+                                >
+                                    <span class="avatar-xs d-inline-block">
+                                        <span
+                                            class="avatar-title bg-light border rounded-circle text-muted cursor-pointer"
+                                        >
+                                            <i class="ri-image-fill"></i>
+                                        </span>
+                                    </span>
+                                </label>
+                                <input
+                                    class="form-control d-none"
+                                    id="image"
+                                    name="image"
+                                    type="file"
+                                    accept="image/png, image/gif, image/jpeg"
+                                />
+                            </div>
+                            <div class="avatar-lg">
+                                <div
+                                    class="avatar-title bg-light rounded-3"
+                                    id="editpreviewimage"
+                                >
+                                    <img
+                                        src="../../assets/images/default/user-dummy-img.jpg"
+                                        id="edituserimage-preview"
+                                        class="avatar-md h-auto rounded-3 object-fit-cover"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_user_name" class="form-label"
+                            >UserName</label
+                        >
+                        <input
+                            type="text"
+                            id="edit_user_name"
+                            class="form-control"
+                            name="edit_user_name"
+                            placeholder="Enter User Name"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_first_name" class="form-label"
+                            >First Name</label
+                        >
+                        <input
+                            type="text"
+                            id="edit_first_name"
+                            class="form-control"
+                            name="edit_first_name"
+                            placeholder="Enter First Name"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_last_name" class="form-label"
+                            >Last Name</label
+                        >
+                        <input
+                            type="text"
+                            id="edit_last_name"
+                            class="form-control"
+                            name="edit_last_name"
+                            placeholder="Enter Last Name"
+                        />
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="edit_email" class="form-label"
+                                >Email</label
+                            >
+                            <input
+                                type="text"
+                                id="edit_email"
+                                name="edit_email"
+                                class="form-control"
+                                placeholder="Enter Email"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="edit_phone" class="form-label">Phone</label>
+                        <textarea
+                            class="form-control"
+                            name="edit_phone"
+                            id="edit_phone"
+                            placeholder="Enter Phone"
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end Edit Slider Modal -->
+
+<!-- deleteRecordModal -->
+<div
+    id="deleteRecordModal"
+    class="modal fade zoomIn"
+    tabindex="-1"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="btn-close"
+                    id="deleteRecord-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body p-md-5">
+                <div class="text-center">
+                    <div class="text-danger">
+                        <i class="bi bi-trash display-4"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="mb-2">Are you sure ?</h3>
+                        <p class="text-muted fs-lg mx-3 mb-0">
+                            Are you sure you want to remove this record ?
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button
+                        type="button"
+                        class="btn w-sm btn-light btn-hover"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn w-sm btn-danger btn-hover"
+                        id="delete-record"
+                    >
+                        Yes, Delete It!
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /deleteRecordModal -->
+<%- include('partials/footer.ejs') %>
+
+<script>
+    //#region starts Edit User
+    $("#image").change(function () {
+        displayPP(this, $("#edituserimage-preview"));
+    });
+
+    // Fill form fields with data when the edit button is clicked
+    $(document).on("click", "#edit_btn", function (e) {
+        var data = $(this).attr("data-model");
+        data = JSON.parse(data);
+
+        // Set the image URL based on whether the image exists in the folder
+        var imageUrl = "../../dist/staff/" + data.image;
+        var defaultImageUrl = "../../assets/images/default/user-dummy-img.jpg";
+
+        // Check if the image exists by trying to load it
+        var img = new Image();
+        img.onload = function () {
+            $("#edituserimage-preview").attr("src", imageUrl);
+        };
+        img.onerror = function () {
+            $("#edituserimage-preview").attr("src", defaultImageUrl);
+        };
+        img.src = imageUrl;
+
+        $("#editid").val(data._id);
+        $("#edit_user_name").val(data.username);
+        $("#edit_first_name").val(data.first_name);
+        $("#edit_last_name").val(data.last_name);
+        $("#edit_email").val(data.email);
+        $("#edit_phone").val(data.phone);
+    });
+
+    // Handle form submission
+    var editform = $("#editform");
+    editform.on("submit", editSubmitHandler);
+
+    function editSubmitHandler(e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            type: "POST",
+            enctype: "multipart/form-data",
+            processData: false,
+            contentType: false,
+            url: "/admin/staff/edit",
+            data: formData,
+        })
+            .done((res) => {
+                if (res.status == 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    $("#showEditModal").modal("hide");
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    }
+    //#endregion Edit Staff
+
+    // #region Delete Staff
+    let StaffIdToDelete;
+    $(document).ready(function () {
+        // Show the modal and store the Slider ID to delete
+        $(".remove-item-btn").on("click", function () {
+            var StaffIdToDelete = $(this).data("id");
+
+            // AJAX request to delete the Slider
+            $("#delete-record").click(function () {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/admin/staff/delete/" + StaffIdToDelete,
+                })
+                    .done((res) => {
+                        if (res.status == 200) {
+                            iziToast.success({
+                                title: "Success",
+                                message: res.message,
+                                position: "topRight",
+                            });
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            iziToast.error({
+                                title: "Error",
+                                message: res.message,
+                                position: "topRight",
+                            });
+                        }
+                    })
+                    .fail(function (xhr, status, error) {
+                        iziToast.error({
+                            title: "Error",
+                            message: xhr.responseText,
+                            position: "topRight",
+                        });
+                    });
+            });
+        });
+    });
+
+    // #endregion Delete Staff
+</script>

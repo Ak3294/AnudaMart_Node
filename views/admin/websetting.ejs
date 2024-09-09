@@ -1,0 +1,383 @@
+<%- include('partials/header') %>
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Web Settings</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="/admin/dashboard">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Web Settings
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <!--end col-->
+                    <div class="col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Web Settings</h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="updateForm">
+                                    <div
+                                        class="row g-2 justify-content-lg-between align-items-center"
+                                    >
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="email"
+                                                class="form-label"
+                                                >Email</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="email"
+                                                    name="email"
+                                                    placeholder="Enter Email"
+                                                    value="<%= email ? email : '' %>"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="phone"
+                                                class="form-label"
+                                                >Phone</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="phone"
+                                                    name="phone"
+                                                    placeholder="Enter Phone"
+                                                    value="<%= phone ? phone : '' %>"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="toll_number"
+                                                class="form-label"
+                                                >Toll Number</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="toll_number"
+                                                    name="toll_number"
+                                                    placeholder="Enter Toll Number"
+                                                    value="<%= toll_number ? toll_number : '' %>"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="copyright"
+                                                class="form-label"
+                                                >Copyright</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="copyright"
+                                                    name="copyright"
+                                                    placeholder="Enter Copyright"
+                                                    value="<%= copyright ? copyright : '' %>"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <label
+                                                for="address"
+                                                class="form-label"
+                                                >Address</label
+                                            >
+                                            <div class="position-relative">
+                                                <textarea
+                                                    class="form-control"
+                                                    id="address"
+                                                    name="address"
+                                                    rows="3"
+                                                    placeholder="Enter Address"
+                                                ><%= address ? address : '' %></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="copyright"
+                                                class="form-label"
+                                                >Twitter</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="twitter"
+                                                    name="twitter"
+                                                    placeholder="Enter Twitter"
+                                                    value="<%= twitter ? twitter : '' %>"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="copyright"
+                                                class="form-label"
+                                                >Facebook</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="facebook"
+                                                    name="facebook"
+                                                    placeholder="Enter Facebook"
+                                                    value="<%= facebook ? facebook : '' %>"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="copyright"
+                                                class="form-label"
+                                                >Instagram</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="instagram"
+                                                    name="instagram"
+                                                    placeholder="Enter Instagram"
+                                                    value="<%= instagram ? instagram : '' %>"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-8">
+                                            <div class="mb-3">
+                                                <label class="form-label"
+                                                    >Logo
+                                                </label>
+                                                <input
+                                                    type="file"
+                                                    class="form-control"
+                                                    id="logo"
+                                                    name="logo"
+                                                    placeholder="Upload image"
+                                                />
+                                                <input
+                                                    type="hidden"
+                                                    id="logo-hidden"
+                                                    name="logo-hidden"
+                                                    value="<%= logo %>"
+                                                />
+                                                <div
+                                                    class="mb-2 mt-2"
+                                                    id="preview-image"
+                                                >
+                                                    <% if (logo) { %>
+                                                    <img
+                                                        src="<%- logo ? '../../dist/websetting/' + logo : '../../assets/images/default/user-dummy-img.jpg' %>"
+                                                        onerror="this.src='../../assets/images/default/user-dummy-img.jpg';"
+                                                        id="display_preview_image"
+                                                        style="
+                                                            margin: 5px;
+                                                            width: 100px;
+                                                            height: 100px;
+                                                        "
+                                                    />
+                                                    <% } else { %>
+                                                    <img
+                                                        src=""
+                                                        style="display: none"
+                                                    />
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="d-flex align-items-center justify-content-end"
+                                        >
+                                            <div class="">
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-thm"
+                                                >
+                                                    Save Changes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end row-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<%- include('partials/footer') %>
+
+<!-- profile-update -->
+<script>
+    $("#logo").change(function () {
+        displayPP(this, $("#preview-image"));
+    });
+
+    var editform = $("#updateForm");
+    editform.submit(function (e) {
+        e.preventDefault();
+
+        //validation
+        if ($("#email").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Email is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#phone").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Phone is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#toll_number").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Toll Number is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#copyright").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Copy Right is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#address").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Address is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#twitter").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Twitter is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#facebook").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Facebook is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#instagram").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Instagram is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        // Check if image is uploaded or exists in the database
+        if ($("#logo").get(0).files.length === 0 && !$("#logo-hidden").val()) {
+            iziToast.error({
+                title: "Error",
+                message: "Logo is required",
+                position: "topRight",
+            });
+            return false;
+        }
+
+        var formData = new FormData(editform[0]);
+        if ($("#logo").get(0).files.length === 0) {
+            formData.append("logo", $("#logo-hidden").val());
+        }
+
+        $.ajax({
+            type: "POST",
+            cache: false,
+            enctype: "multipart/form-data",
+            processData: false,
+            contentType: false,
+            url: "/admin/web-settings",
+            data: formData,
+        })
+            .done((res) => {
+                if (res.status == 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    });
+</script>

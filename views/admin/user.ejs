@@ -1,0 +1,929 @@
+<%- include('partials/header.ejs') %>
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- Start right Content here -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Customers</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript: void(0);"
+                                            >Dashboard</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Customers
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div id="productList">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div
+                                        class="d-flex align-items-center flex-wrap gap-3"
+                                    >
+                                        <div class="flex-grow-1">
+                                            <h3 class="card-title mb-0">
+                                                Customer List
+                                            </h3>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-thm add-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showUserModal"
+                                                    data-name="User"
+                                                >
+                                                    <i
+                                                        class="bi bi-plus-circle align-baseline me-1"
+                                                    ></i>
+                                                    Add Customer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+
+                    <div class="row">
+                        <div class="col-xxl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row gy-3">
+                                        <div class="col-xl-4">
+                                            <div class="search-box">
+                                                <input
+                                                    type="text"
+                                                    class="form-control search"
+                                                    placeholder="Search customer, email etc..."
+                                                />
+                                                <i
+                                                    class="ri-search-line search-icon"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-xl-3 col-md-4">
+                                            <div>
+                                                <select
+                                                    class="form-control"
+                                                    id="idStatus"
+                                                    data-choices
+                                                    data-choices-search-false
+                                                >
+                                                    <option value="all">
+                                                        All Select
+                                                    </option>
+                                                    <option value="Active">
+                                                        Active
+                                                    </option>
+                                                    <option value="Unactive">
+                                                        Unactive
+                                                    </option>
+                                                    <option value="Block">
+                                                        Block
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-md-4">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="datepicker-range"
+                                                data-provider="flatpickr"
+                                                data-date-format="d M, Y"
+                                                data-range-date="true"
+                                                placeholder="Select date"
+                                            />
+                                        </div>
+                                        <div class="col-xl-2 col-md-4">
+                                            <button
+                                                class="btn btn-subtle-primary w-100"
+                                                onclick="filterData();"
+                                            >
+                                                <i
+                                                    class="bi bi-funnel align-baseline me-1"
+                                                ></i>
+                                                Filter
+                                            </button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end card-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table
+                                            class="table table-centered align-middle table-nowrap mb-0"
+                                        >
+                                            <thead class="table-active">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Image
+                                                    </th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Name
+                                                    </th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Email
+                                                    </th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Phone
+                                                    </th>
+                                                   
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="list form-check-all">
+                                                <% users.forEach(function(user,
+                                                index) { %>
+                                                <tr data-id="<%= user._id %>">
+                                                    <td><%= index + 1 %></td>
+                                                    <td class="customer">
+                                                        <div
+                                                            class="d-flex align-items-center"
+                                                        >
+                                                            <div
+                                                                class="flex-shrink-0 me-2"
+                                                            >
+                                                                <div>
+                                                                    <img
+                                                                        class="avatar-sm rounded-circle customer-image-elem"
+                                                                        src="<%- user.image ? '../../dist/users/' + user.image : '../../assets/images/default/user-dummy-img.jpg' %>"
+                                                                        onerror="this.src='../../assets/images/default/user-dummy-img.jpg';"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="category">
+                                                        <%= user.name ?
+                                                        user.name :
+                                                        user.first_name + " " +
+                                                        user.last_name %>
+                                                    </td>
+                                                    <td class="email">
+                                                        <%= user.email ?
+                                                        user.email : "" %>
+                                                    </td>
+                                                    <td class="contact">
+                                                        <%= user.phone ?
+                                                        user.phone : "" %>
+                                                    </td>
+                                                   
+                                                    <td>
+                                                        <div
+                                                            class="dropdown position-static"
+                                                        >
+                                                            <button
+                                                                class="btn btn-subtle-secondary btn-sm btn-icon"
+                                                                role="button"
+                                                                data-bs-toggle="dropdown"
+                                                                aria-expanded="false"
+                                                            >
+                                                                <i
+                                                                    class="bi bi-three-dots-vertical"
+                                                                ></i>
+                                                            </button>
+                                                            <ul
+                                                                class="dropdown-menu dropdown-menu-end"
+                                                            >
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item edit-item-btn"
+                                                                        data-bs-toggle="modal"
+                                                                        data-name="User"
+                                                                        href="#showEditModal"
+                                                                        id="edit_btn"
+                                                                        data-id="<%= user._id %>"
+                                                                        data-model="<%= JSON.stringify(user) %>"
+                                                                        ><i
+                                                                            class="ph-pencil align-middle me-1"
+                                                                        ></i>
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item remove-item-btn"
+                                                                        href="#deleteRecordModal"
+                                                                        data-bs-toggle="modal"
+                                                                        data-id="<%= user._id %>"
+                                                                    >
+                                                                        <i
+                                                                            class="ph-trash align-middle me-1"
+                                                                        ></i
+                                                                        >Remove
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a
+                                                                    id="vieworders"
+                                                                    class="vieworders dropdown-item view-item-btn"
+                                                                        href="/admin/user/order-view/<%= user._id %>"
+                                                                        data-model="<%= JSON.stringify(user) %>"
+                                                                        ><i
+                                                                            class="bi bi-eye me-1 "
+                                                                        ></i
+                                                                    >Order History</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <% }); %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="noresult" style="display: none">
+                                        <div class="text-center py-4">
+                                            <i
+                                                class="ph-magnifying-glass fs-1 text-primary"
+                                            ></i>
+                                            <h5 class="mt-2">
+                                                Sorry! No Result Found
+                                            </h5>
+                                            <p class="text-muted mb-0">
+                                                We've searched more than 150+
+                                                customers We did not find any
+                                                customers for you search.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
+                                        id="pagination-element"
+                                    >
+                                        <div class="col-sm">
+                                            <div class="text-muted">
+                                                Showing
+                                                <span class="fw-semibold"
+                                                    >10</span
+                                                >
+                                                of
+                                                <span class="fw-semibold"
+                                                    >13</span
+                                                >
+                                                Results
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-auto mt-3 mt-sm-0">
+                                            <div
+                                                class="pagination-wrap hstack gap-2"
+                                            >
+                                                <a
+                                                    class="page-item pagination-prev disabled"
+                                                    href="javascript:void(0)"
+                                                    >Previous</a
+                                                >
+                                                <ul
+                                                    class="pagination listjs-pagination mb-0"
+                                                ></ul>
+                                                <a
+                                                    class="page-item pagination-next"
+                                                    href="javascript:void(0)"
+                                                    >Next</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Add User Modal -->
+<div
+    class="modal fade"
+    id="showUserModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel">Add Customer</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    id="close-ordermodal"
+                ></button>
+            </div>
+            <form id="addUserForm" class="tablelist-form" autocomplete="off">
+                <div class="modal-body">
+                    <input type="hidden" id="id-field" />
+                    <div class="mb-3">
+                        <label for="add_firstname" class="form-label"
+                            >First Name</label
+                        >
+                        <input
+                            type="text"
+                            id="add_firstname"
+                            class="form-control"
+                            name="first_name"
+                            placeholder="Enter First name"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="add_lastname" class="form-label"
+                            >Last Name</label
+                        >
+                        <input
+                            type="text"
+                            id="add_lastname"
+                            class="form-control"
+                            name="last_name"
+                            placeholder="Enter Last name"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="add_email" class="form-label">Email</label>
+                        <input
+                            type="email"
+                            id="add_email"
+                            class="form-control"
+                            name="email"
+                            placeholder="Enter Email"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="add_password" class="form-label"
+                            >Password</label
+                        >
+                        <input
+                            type="password"
+                            id="add_password"
+                            class="form-control"
+                            name="password"
+                            placeholder="Enter Password"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="add_confirmpassword" class="form-label"
+                            >Confirm Password</label
+                        >
+                        <input
+                            type="password"
+                            id="add_confirmpassword"
+                            class="form-control"
+                            name="confirm_password"
+                            placeholder="Enter Confirm Password"
+                        />
+                    </div>
+                    <div>
+                        <label for="status-field" class="form-label"
+                            >Status</label
+                        >
+                        <select
+                            class="form-control"
+                            id="status-field"
+                            name="status_id"
+                        >
+                            <option value="" selected>Select Status</option>
+                            <% statuses.forEach(function(element) { %>
+                            <option value="<%= element._id %>">
+                                <%= element.name %>
+                            </option>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                            id="add-btn"
+                        >
+                            Add Customer
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end Add User Modal -->
+
+<!-- Edit User Modal -->
+<div
+    class="modal modal-lg fade"
+    id="showEditModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Edit Customer
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    id="close-ordermodal"
+                ></button>
+            </div>
+            <form class="tablelist-form" id="editform">
+                <div class="modal-body">
+                    <input type="hidden" id="editid" name="editid" />
+                    <div class="text-center mb-5">
+                        <div class="position-relative d-inline-block">
+                            <div
+                                class="position-absolute top-100 start-100 translate-middle"
+                            >
+                                <label
+                                    for="image"
+                                    class="mb-0"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="right"
+                                    title="Select User photo"
+                                >
+                                    <span class="avatar-xs d-inline-block">
+                                        <span
+                                            class="avatar-title bg-light border rounded-circle text-muted cursor-pointer"
+                                        >
+                                            <i class="ri-image-fill"></i>
+                                        </span>
+                                    </span>
+                                </label>
+                                <input
+                                    class="form-control d-none"
+                                    id="image"
+                                    name="image"
+                                    type="file"
+                                    accept="image/png, image/gif, image/jpeg"
+                                />
+                            </div>
+                            <div class="avatar-lg">
+                                <div
+                                    class="avatar-title bg-light rounded-3"
+                                    id="editpreviewimage"
+                                >
+                                    <img
+                                        src="../../assets/images/default/user-dummy-img.jpg"
+                                        id="edituserimage-preview"
+                                        class="avatar-md h-auto rounded-3 object-fit-cover"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Other input fields for user details -->
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="edit_first_name" class="form-label"
+                                >First Name</label
+                            >
+                            <input
+                                type="text"
+                                id="edit_first_name"
+                                class="form-control"
+                                name="edit_first_name"
+                                placeholder="Enter User first name"
+                            />
+                        </div>
+                        <div class="col">
+                            <label for="edit_last_name" class="form-label"
+                                >Last Name</label
+                            >
+                            <input
+                                type="text"
+                                id="edit_last_name"
+                                class="form-control"
+                                name="edit_last_name"
+                                placeholder="Enter User last name"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="edit_email" class="form-label">
+                            Email</label
+                        >
+                        <input
+                            type="email"
+                            id="edit_email"
+                            class="form-control"
+                            name="edit_email"
+                            placeholder="Enter User email"
+                        />
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="edit_phone" class="form-label">
+                                Phone</label
+                            >
+                            <input
+                                type="text"
+                                id="edit_phone"
+                                class="form-control"
+                                name="edit_phone"
+                                placeholder="Enter User Phone Number"
+                            />
+                        </div>
+                        <div class="col">
+                            <label for="edit_dob" class="form-label">
+                                DOB</label
+                            >
+                            <input
+                                type="date"
+                                id="edit_dob"
+                                class="form-control"
+                                name="edit_dob"
+                                placeholder="Enter User DOB"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="edit_address" class="form-label">
+                                Address</label
+                            >
+                            <input
+                                type="text"
+                                id="edit_address"
+                                class="form-control"
+                                name="edit_address"
+                                placeholder="Enter User address"
+                            />
+                        </div>
+                        <div class="col">
+                            <label for="edit_pincode" class="form-label">
+                                Pincode</label
+                            >
+                            <input
+                                type="text"
+                                id="edit_pincode"
+                                class="form-control"
+                                name="edit_pincode"
+                                placeholder="Enter User pincode"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="edit_additional_info" class="form-label">
+                            Additional Info</label
+                        >
+
+                        <textarea
+                            rows="3"
+                            id="edit_additional_info"
+                            class="form-control"
+                            name="edit_additional_info"
+                            placeholder="Enter User Additional Info"
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end Edit User Modal -->
+
+<!-- deleteRecordModal -->
+<div
+    id="deleteRecordModal"
+    class="modal fade zoomIn"
+    tabindex="-1"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="btn-close"
+                    id="deleteRecord-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body p-md-5">
+                <div class="text-center">
+                    <div class="text-danger">
+                        <i class="bi bi-trash display-4"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="mb-2">Are you sure ?</h3>
+                        <p class="text-muted fs-lg mx-3 mb-0">
+                            Are you sure you want to remove this record ?
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button
+                        type="button"
+                        class="btn w-sm btn-light btn-hover"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn w-sm btn-danger btn-hover"
+                        id="delete-record"
+                    >
+                        Yes, Delete It!
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /deleteRecordModal -->
+<%- include('partials/footer.ejs') %>
+<script>
+    //#region Add User
+    var addform = $("#addUserForm");
+    addform.on("submit", submitFormHandler);
+
+    function submitFormHandler(e) {
+        e.preventDefault();
+
+        function getFormData(form) {
+            var formData = {};
+            form.serializeArray().forEach(function (field) {
+                formData[field.name] = field.value;
+            });
+            return formData;
+        }
+
+        var formData = getFormData(addform);
+
+        // DO POST
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/admin/user/add",
+            data: JSON.stringify(formData),
+            success: function (res) {
+                iziToast.success({
+                    title: "Success",
+                    message: res.message,
+                    position: "topRight",
+                });
+                $("#showUserModal").modal("hide");
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
+            },
+            error: function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            },
+        });
+    }
+    //#endregion Add User
+
+    //# View Orders of user/customer region start
+    let UserIdToView;
+    $(document).ready(function(){
+        $('#viewOrders').on('click', function() {
+            var UserIdToView = $(this).data("id");
+            console.log(UserIdToView)
+
+            // AJAX request to view orders 
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/admin/order/view" + UserIdToView,
+            })
+                .done((res) => {
+                    if (res.status == 200) {
+                        iziToast.success({
+                            title: "Success",
+                            message: res.message,
+                            position: "topRight",
+                        });
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    } else {
+                        iziToast.error({
+                            title: "Error",
+                            message: res.message,
+                            position: "topRight",
+                        });
+                    }
+                })
+                .fail(function (xhr, status, error) {
+                    iziToast.error({
+                        title: "Error",
+                        message: xhr.responseText,
+                        position: "topRight",
+                    });
+                });
+        })
+    })
+
+
+    //# View Orders of user/customer region end
+
+    //#region starts Edit User
+    $("#image").change(function () {
+        displayPP(this, $("#edituserimage-preview"));
+    });
+
+    // Fill form fields with data when the edit button is clicked
+    $(document).on("click", "#edit_btn", function (e) {
+        var data = $(this).attr("data-model");
+        data = JSON.parse(data);
+
+        // Set the image URL based on whether the image exists in the folder
+        var imageUrl = "../../dist/users/" + data.image;
+        var defaultImageUrl = "../../assets/images/default/user-dummy-img.jpg";
+
+        // Check if the image exists by trying to load it
+        var img = new Image();
+        img.onload = function () {
+            $("#edituserimage-preview").attr("src", imageUrl);
+        };
+        img.onerror = function () {
+            $("#edituserimage-preview").attr("src", defaultImageUrl);
+        };
+        img.src = imageUrl;
+
+        $("#editid").val(data._id);
+        $("#edit_first_name").val(data.first_name);
+        $("#edit_last_name").val(data.last_name);
+        $("#edit_email").val(data.email);
+        $("#edit_phone").val(data.phone);
+        $("#edit_dob").val(data.dob);
+        $("#edit_address").val(data.address);
+        $("#edit_additional_info").val(data.additional_info);
+        $("#edit_pincode").val(data.pincode);
+    });
+
+    var editform = $("#editform");
+    editform.on("submit", editSubmitHandler);
+
+    function editSubmitHandler(e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            type: "POST",
+            enctype: "multipart/form-data",
+            processData: false,
+            contentType: false,
+            url: "/admin/user/edit",
+            data: formData,
+        })
+            .done((res) => {
+                if (res.status == 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    $("#showEditModal").modal("hide");
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    }
+
+    //#endregion Edit User
+
+    // #editregion Delete User
+    let UserIdToDelete;
+    $(document).ready(function () {
+        // Show the modal and store the Slider ID to delete
+        $(".remove-item-btn").on("click", function () {
+            var UserIdToDelete = $(this).data("id");
+            console.log(UserIdToDelete);
+
+            // AJAX request to delete the Slider
+            $("#delete-record").click(function () {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "/admin/user/delete/" + UserIdToDelete,
+                })
+                    .done((res) => {
+                        if (res.status == 200) {
+                            iziToast.success({
+                                title: "Success",
+                                message: res.message,
+                                position: "topRight",
+                            });
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            iziToast.error({
+                                title: "Error",
+                                message: res.message,
+                                position: "topRight",
+                            });
+                        }
+                    })
+                    .fail(function (xhr, status, error) {
+                        iziToast.error({
+                            title: "Error",
+                            message: xhr.responseText,
+                            position: "topRight",
+                        });
+                    });
+            });
+        });
+    });
+    // #editregion Delete User
+</script>

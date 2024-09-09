@@ -1,28 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+    lang="en"
+    data-layout="vertical"
+    data-sidebar="dark"
+    data-sidebar-size="lg"
+    data-preloader="disable"
+    data-theme="default"
+    data-topbar="light"
+    data-bs-theme="light"
+>
     <head>
-        <!-- <link rel="stylesheet" href="/admin/css/style.css" />
-        <link
-            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-            rel="stylesheet"
-            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-            crossorigin="anonymous"
-        />
-        <link
-            href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"
-        />
-        <link rel="stylesheet" href="/admin/css/snackbar.min.css" />
-        <link rel="stylesheet" href="/admin/css/timepicker.css" /> -->
-
         <meta charset="utf-8" />
         <title>Anuda Mart</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,7 +17,7 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="/assets/images/favicon.png" />
-
+        <link rel="stylesheet" href="/admin/css/style.css" />
         <!-- Fonts css load -->
         <link rel="preconnect" href="https://fonts.googleapis.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -39,9 +26,16 @@
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
             rel="stylesheet"
         />
+        <link
+            href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+        />
 
-        <!-- Layout config Js -->
-        <script src="/assets/js/layout.js"></script>
         <!-- Bootstrap Css -->
         <link
             href="/assets/css/bootstrap.min.css"
@@ -59,6 +53,12 @@
         <!-- custom Css-->
         <link
             href="/assets/css/custom.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <!-- Sweet Alert css-->
+        <link
+            href="/assets/libs/sweetalert2/sweetalert2.min.css"
             rel="stylesheet"
             type="text/css"
         />
@@ -81,6 +81,25 @@
             rel="stylesheet"
             href="/assets/libs/izitoast/css/iziToast.min.css"
         />
+        <!-- leaflet Css -->
+        <link
+            href="/assets/libs/leaflet/leaflet.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <!-- leaflet-routing-machine Css -->
+        <link
+            href="/assets/libs/leaflet-routing-machine/leaflet-routing-machine.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <style>
+            .select2.select2-container.select2-container--default {
+                width: 100% !important;
+            }
+        </style>
     </head>
 
     <body>
@@ -88,7 +107,7 @@
         <div class="app-menu navbar-menu">
             <!-- navbar-brand-box LOGO -->
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-light">
+                <a href="/admin/dashboard" class="logo logo-light">
                     <span class="logo-sm">
                         <img
                             src="/assets/images/white-logo.png"
@@ -120,91 +139,299 @@
                     <div id="two-column-menu"></div>
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard">
+                            <a
+                                class="nav-link dashboard"
+                                href="/admin/dashboard"
+                            >
                                 <i class="ph-gauge"></i>
                                 <span data-key="t-dashboards">Dashboards</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a
-                                href="#sidebarEcommerce"
-                                class="nav-link menu-link collapsed"
+                                href="#sidebarProducts"
+                                class="nav-link menu-link collapsed product"
                                 data-bs-toggle="collapse"
                                 role="button"
                                 aria-expanded="false"
-                                aria-controls="sidebarEcommerce"
+                                aria-controls="sidebarProducts"
                             >
                                 <i class="ph-storefront"></i>
-                                <span data-key="t-ecommerce">Product</span>
+                                <span data-key="t-ecommerce">Products</span>
                             </a>
                             <div
                                 class="collapse menu-dropdown"
-                                id="sidebarEcommerce"
+                                id="sidebarProducts"
                             >
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a
-                                            href="products.html"
-                                            class="nav-link"
+                                            href="/admin/product/list"
+                                            class="nav-link products"
                                             data-key="t-products"
-                                            >Products</a
+                                            >All Products</a
                                         >
                                     </li>
                                     <li class="nav-item">
                                         <a
-                                            href="add-product.html"
-                                            class="nav-link"
+                                            href="/admin/product/add"
+                                            class="nav-link add_product"
                                             data-key="t-create-product"
                                             >Add Product</a
                                         >
                                     </li>
                                     <li class="nav-item">
                                         <a
+                                            href="/admin/category/list"
+                                            class="nav-link categories"
+                                            data-key="t-products"
+                                            >Categories</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
                                             href="/admin/brand/list"
-                                            class="nav-link"
-                                            data-key="t-create-product"
+                                            class="nav-link brands"
+                                            data-key="t-products"
                                             >Brands</a
                                         >
                                     </li>
                                     <li class="nav-item">
                                         <a
-                                            href="orders.html"
-                                            class="nav-link"
-                                            data-key="t-orders"
-                                            >Orders</a
+                                            href="/admin/attribute/list"
+                                            class="nav-link attribute_sets"
+                                            data-key="t-products"
+                                            >Attribute Sets</a
                                         >
                                     </li>
-                                    
                                     <li class="nav-item">
                                         <a
-                                            href="order-overview.html"
-                                            class="nav-link"
-                                            data-key="t-order-overview"
-                                            >Order Overview</a
+                                            href="/admin/attribute-values/list"
+                                            class="nav-link attribute_values"
+                                            data-key="t-products"
+                                            >Attribute Values</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/unit/list"
+                                            class="nav-link units"
+                                            data-key="t-products"
+                                            >Units</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/product-review/list"
+                                            class="nav-link child-tab product_review"
+                                            data-key="t-create-product"
+                                            >Product Review</a
                                         >
                                     </li>
                                 </ul>
                             </div>
                         </li>
+
                         <li class="nav-item">
-                            <a href="/admin/profile" class="nav-link menu-link">
-                                <i class="ph-user-circle"></i>
-                                <span data-key="t-calendar">Profile</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/user/list" class="nav-link menu-link">
-                                <i class="ph-user-circle"></i>
-                                <span data-key="t-calendar">Users</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/admin/customers" class="nav-link menu-link"
-                                ><i class="bi bi-people"></i>
-                                <span data-key="t-calendar">Customers</span></a
+                            <a
+                                href="/admin/user/list"
+                                class="nav-link menu-link customers"
                             >
+                                <i class="ph-user-circle"></i>
+                                <span data-key="t-calendar">Customers</span>
+                            </a>
                         </li>
+
                         <li class="nav-item">
+                            <a
+                                href="/admin/vendor/list"
+                                class="nav-link menu-link venders"
+                            >
+                                <i class="ph-users"></i>
+                                <span data-key="t-calendar">Venders</span>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a
+                                href="/admin/status/list"
+                                class="nav-link menu-link status"
+                            >
+                                <i class="ph-slack-logo"></i>
+                                <span data-key="t-calendar">Status</span>
+                            </a>
+                        </li> -->
+
+                        <li class="nav-item">
+                            <a
+                                href="#sidebarPages"
+                                class="nav-link menu-link collapsed staticpages"
+                                data-bs-toggle="collapse"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="sidebarPages"
+                            >
+                                <i class="ph-file-text"></i>
+                                <span data-key="t-ecommerce">Static Pages</span>
+                            </a>
+                            <div
+                                class="collapse menu-dropdown"
+                                id="sidebarPages"
+                            >
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/static-pages/list"
+                                            class="nav-link pages"
+                                            data-key="pages"
+                                            >Static Pages List</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                href="#sidebarStoreFront"
+                                class="nav-link menu-link collapsed storefront"
+                                data-bs-toggle="collapse"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="sidebarStoreFront"
+                            >
+                                <i class="ph-gear"></i>
+                                <span data-key="t-ecommerce">Store Front</span>
+                            </a>
+                            <div
+                                class="collapse menu-dropdown"
+                                id="sidebarStoreFront"
+                            >
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/faq/list"
+                                            class="nav-link faq"
+                                            data-key="t-products"
+                                            >FAQ</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/slider/list"
+                                            class="nav-link slider"
+                                            data-key="t-products"
+                                            >Slider</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/banner/list"
+                                            class="nav-link banner banner"
+                                            data-key="t-products"
+                                            >Home Banners</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/settings_view"
+                                            class="nav-link web_setting"
+                                            data-key="t-products"
+                                            >Web Setting</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/razorpay_config"
+                                            class="nav-link razorpay_config"
+                                            data-key="t-products"
+                                            >Razorpay Config</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/smtp_config_view"
+                                            class="nav-link smtp_config"
+                                            data-key="t-products"
+                                            >SMTP Config</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                href="#sidebarMarketing"
+                                class="nav-link menu-link collapsed marketing"
+                                data-bs-toggle="collapse"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="sidebarMarketing"
+                            >
+                                <i class="ph-paper-plane"></i>
+                                <span data-key="t-ecommerce">Marketing</span>
+                            </a>
+                            <div
+                                class="collapse menu-dropdown"
+                                id="sidebarMarketing"
+                            >
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a
+                                            href="/admin/coupon/list"
+                                            class="nav-link coupons"
+                                            data-key="t-products"
+                                            >Coupons</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                href="/admin/order/list"
+                                class="nav-link menu-link orders"
+                                data-key="t-orders"
+                            >
+                                <i class="ph-shopping-bag"></i>
+                                <span data-key="t-calendar">Orders</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item"></li>
+                            <a
+                                href="/admin/transaction/list"
+                                class="nav-link menu-link transactions"
+                                data-key="t-orders"
+                            >
+                                <i class="ph-credit-card"></i>
+                                <span data-key="t-calendar">Transaction History</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                href="/admin/contactus/list"
+                                class="nav-link menu-link contactus"
+                            >
+                                <i class="ph-chat-text"></i>
+                                <span data-key="t-calendar">Contact Us</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                href="/admin/staff/list"
+                                class="nav-link menu-link staffs"
+                            >
+                                <i class="ph-users-three"></i>
+                                <span data-key="t-calendar"
+                                    >Manage Staffs
+                                </span>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
                             <a
                                 href="#sidebarInvoices"
                                 class="nav-link menu-link"
@@ -247,8 +474,8 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a
                                 href="transactions.html"
                                 class="nav-link menu-link"
@@ -256,11 +483,11 @@
                                 <i class="ph ph-credit-card"></i>
                                 <span data-key="t-calendar">Transactions</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a
                                 href="javascript:void(0)"
-                                class="nav-link menu-link"
+                                class="nav-link menu-link logout"
                             >
                                 <i class="ph ph-sign-out"></i>
                                 <span data-key="t-calendar" onclick="logout()"
@@ -285,7 +512,7 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box horizontal-logo">
-                            <a href="index.html" class="logo logo-light">
+                            <a href="/admin/dashboard" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img
                                         src="/assets/images/white-logo.png"
@@ -358,13 +585,13 @@
                                         class="dropdown-item bg-transparent text-wrap"
                                     >
                                         <a
-                                            href="index.html"
+                                            href="/admin/dashboard"
                                             class="btn btn-subtle-secondary btn-sm btn-rounded"
                                             >how to setup
                                             <i class="mdi mdi-magnify ms-1"></i
                                         ></a>
                                         <a
-                                            href="index.html"
+                                            href="/admin/dashboard"
                                             class="btn btn-subtle-secondary btn-sm btn-rounded"
                                             >buttons
                                             <i class="mdi mdi-magnify ms-1"></i
@@ -923,23 +1150,27 @@
                                 <span class="d-flex align-items-center">
                                     <img
                                         class="rounded-circle header-profile-user"
-                                        src="/assets/images/users/32/avatar-1.jpg"
+                                        src="<%- (user && user.image) ? '../../../dist/profile/' + user.image : '../../../assets/images/default/user-dummy-img.jpg' %>"
                                         alt="Header Avatar"
+                                        onerror="this.src='../../../assets/images/default/user-dummy-img.jpg'"
                                     />
                                     <span class="text-start ms-xl-2">
                                         <span
                                             class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"
-                                            >Richard Marshall</span
-                                        >
+                                            ><%= (user && user.first_name) ?
+                                            user.first_name + ' ' +
+                                            user.last_name : 'Admin' %>
+                                        </span>
                                     </span>
                                 </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
                                 <h6 class="dropdown-header">
-                                    Welcome Richard!
+                                    Welcome <%= (user && user.first_name) ?
+                                    user.first_name : 'Guest' %>!
                                 </h6>
-                                <a class="dropdown-item" href="profile.html"
+                                <a class="dropdown-item" href="/admin/profile"
                                     ><i
                                         class="mdi mdi-account-circle text-muted fs-lg align-middle me-1"
                                     ></i>
@@ -1106,4 +1337,126 @@
             </div>
         </div>
     </body>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", (event) => {
+            const pathnameToTabClassMap = {
+                "/admin/dashboard": "dashboard",
+                "/admin/product/list": "products",
+                "/admin/product/add": "add_product",
+                "/admin/category/list": "categories",
+                "/admin/brand/list": "brands",
+                "/admin/attribute/list": "attribute_sets",
+                "/admin/attribute-values/list": "attribute_values",
+                "/admin/product-review/list": "product_review",
+                "/admin/unit/list": "units",
+                "/admin/user/list": "customers",
+                "/admin/static-pages/add": "pages",
+                "/admin/vendor/list": "venders",
+                "/admin/static-pages/list": "pages",
+                "/admin/static-pages/add": "pages",
+                "/admin/faq/list": "faq",
+                "/admin/slider/list": "slider",
+                "/admin/banner/list": "banner",
+                "/admin/settings_view": "web_setting ",
+                "/admin/razorpay_config": "razorpay_config",
+                "/admin/smtp_config_view": "smtp_config",
+                "/admin/coupon/list": "coupons",
+                "/admin/order/list": "orders",
+                "/admin/contactus/list": "contactus",
+                "/admin/staff/list": "staffs",
+                "/admin/staff/add": "staffs",
+                "/admin/user/order-view": "orders", // Keep this for exact matches
+                "/admin/product/edit": "products",
+                "/admin/vendor/edit": "venders",
+                "/admin/order/details": "orders",
+                "/admin/transaction/list": "transactions",
+            };
+
+            const pathname = window.location.pathname;
+            let activeTabClass = pathnameToTabClassMap[pathname];
+
+            if (pathname.startsWith("/admin/user/order-view")) {
+                activeTabClass = "orders";
+            }
+            if (pathname.startsWith("/admin/product/edit")) {
+                activeTabClass = "products";
+            }
+            if (pathname.startsWith("/admin/vendor/edit")) {
+                activeTabClass = "venders";
+            }
+            if (pathname.startsWith("/admin/order/details")) {
+                activeTabClass = "orders";
+            }
+
+            if (activeTabClass) {
+                // Highlight the specific active tab
+                const activeTab = document.querySelector(`.${activeTabClass}`);
+                if (activeTab) {
+                    activeTab.classList.add("active");
+
+                    // Check which sidebar the active tab belongs to and open that sidebar
+                    if (
+                        document.getElementById("sidebarProducts") &&
+                        activeTab.closest("#sidebarProducts")
+                    ) {
+                        document
+                            .getElementById("sidebarProducts")
+                            .classList.add("show");
+                        const note = document.querySelector(".product");
+                        note.style.backgroundColor = "#E40F15";
+                        note.style.color = "white";
+                    }
+
+                    if (
+                        document.getElementById("sidebarPages") &&
+                        activeTab.closest("#sidebarPages")
+                    ) {
+                        document
+                            .getElementById("sidebarPages")
+                            .classList.add("show");
+                        const note = document.querySelector(".staticpages");
+                        note.style.backgroundColor = "#E40F15";
+                        note.style.color = "white";
+                    }
+
+                    if (
+                        document.getElementById("sidebarStoreFront") &&
+                        activeTab.closest("#sidebarStoreFront")
+                    ) {
+                        document
+                            .getElementById("sidebarStoreFront")
+                            .classList.add("show");
+                        const note = document.querySelector(".storefront");
+                        note.style.backgroundColor = "#E40F15";
+                        note.style.color = "white";
+                    }
+
+                    if (
+                        document.getElementById("sidebarMarketing") &&
+                        activeTab.closest("#sidebarMarketing")
+                    ) {
+                        document
+                            .getElementById("sidebarMarketing")
+                            .classList.add("show");
+                        const note = document.querySelector(".marketing");
+                        note.style.backgroundColor = "#E40F15";
+                        note.style.color = "white";
+                    }
+
+                    if (
+                        document.getElementById("sidebarInvoices") &&
+                        activeTab.closest("#sidebarInvoices")
+                    ) {
+                        document
+                            .getElementById("sidebarInvoices")
+                            .classList.add("show");
+                        const note = document.querySelector(".invoices");
+                        note.style.backgroundColor = "#E40F15";
+                        note.style.color = "white";
+                    }
+                }
+            }
+        });
+    </script>
 </html>

@@ -1,10 +1,20 @@
 function getFormData($form) {
-    var unindexed_array = $form.serializeArray();
-    var indexed_array = {};
+    var formData = $form.serializeArray();
+    var jsonData = {};
 
-    $.map(unindexed_array, function (n, i) {
-        indexed_array[n["name"]] = n["value"];
+    $.each(formData, function () {
+        if (jsonData[this.name]) {
+            // If the name already exists, push the new value to the array
+            if (Array.isArray(jsonData[this.name])) {
+                jsonData[this.name].push(this.value);
+            } else {
+                jsonData[this.name] = [jsonData[this.name], this.value];
+            }
+        } else {
+            // If the name does not exist, create it
+            jsonData[this.name] = this.value;
+        }
     });
 
-    return indexed_array;
+    return jsonData;
 }

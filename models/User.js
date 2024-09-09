@@ -10,11 +10,6 @@ const schema = new mongoose.Schema({
         type: String,
         enum: ["u", "v"],
     },
-    name: {
-        type: String,
-        min: 4,
-        max: 30,
-    },
     first_name: {
         type: String,
         min: 4,
@@ -30,12 +25,12 @@ const schema = new mongoose.Schema({
         max: 50,
         required: true,
     },
-    // phone: {
-    //     type: String,
-    //     // unique: true,
-    //     // max: 255,
-    //     // required: true,
-    // },
+    phone: {
+        type: String,
+        unique: true,
+        max: 255,
+        default: null,
+    },
     password: {
         type: String,
         min: 6,
@@ -72,7 +67,6 @@ const schema = new mongoose.Schema({
     },
     image: {
         type: String,
-        default: Date.now,
     },
     additional_info: {
         type: String,
@@ -84,11 +78,11 @@ const schema = new mongoose.Schema({
     },
     created_at: {
         type: String,
-        default: Date.now,
+        default: Date,
     },
     updated_at: {
         type: String,
-        default: Date.now,
+        default: Date,
     },
 });
 

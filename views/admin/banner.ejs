@@ -1,0 +1,862 @@
+<%- include('partials/header.ejs') %>
+
+<div id="layout-wrapper">
+    <!-- Start right Content here -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Banners</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="/seller/dashboard"
+                                            >Dashboard</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Banners
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row justify-content-center">
+                    <!--end col-->
+                    <div class="col-xxl-10">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Banners</h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="addBannerForm" autocomplete="off">
+                                    <!-- Home Banner Top -->
+                                    <div class="col-lg-12 mb-5">
+                                        <label class="form-label"
+                                            >Home Banner (Top)</label
+                                        >
+                                        <div class="mb-3">
+                                            <input
+                                                type="file"
+                                                class="form-control"
+                                                id="home_banner_top_image"
+                                                name="home_banner_top_image"
+                                                placeholder="Upload Image"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                id="home_banner_top_image_existing"
+                                                name="home_banner_top_image_existing"
+                                                value="<%= home_banner_top_image %>"
+                                            />
+
+                                            <% if (home_banner_top_image && home_banner_top_image.trim() !== ''){ %>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="TopBanner_Preview"
+                                            >
+                                                <img
+                                                    src="/dist/banner/<%= home_banner_top_image %>"
+                                                    id="display_home_banner_top_Preview"
+                                                    class="home_banner_2_image"
+                                                    style="
+                                                        margin: 5px;
+                                                        width: 100px;
+                                                        height: 100px;
+                                                    "
+                                                />
+                                            </div>
+                                            <% } else { %>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="TopBanner_Preview"
+                                                style="display: none"
+                                            ></div>
+                                            <% } %>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >URL</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_top_url"
+                                                name="home_banner_top_url"
+                                                placeholder="Enter URL"
+                                                value="<%= home_banner_top_url %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Title</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_top_title"
+                                                name="home_banner_top_title"
+                                                placeholder="Enter Title"
+                                                value="<%= home_banner_top_title %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Description</label
+                                            >
+                                            <textarea
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_top_description"
+                                                name="home_banner_top_description"
+                                                placeholder="Enter Description"
+                                            ><%= home_banner_top_description %>
+                                        </textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Home Banner 2 -->
+                                    <div class="col-lg-12 mb-5">
+                                        <label class="form-label"
+                                            >Home Banner 2</label
+                                        >
+                                        <div class="mb-3">
+                                            <input
+                                                type="file"
+                                                class="form-control"
+                                                id="home_banner_2_image"
+                                                name="home_banner_2_image"
+                                                placeholder="Upload Image"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                id="home_banner_2_image_existing"
+                                                name="home_banner_2_image_existing"
+                                                value="<%= home_banner_2_image %>"
+                                            />
+                                            <% if (home_banner_2_image && home_banner_2_image.trim() !== '') {%>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="HomeBanner2_Preview"
+                                            >
+                                                <img
+                                                    src="/dist/banner/<%= home_banner_2_image %>"
+                                                    id="display_home_banner_2_Preview"
+                                                    class="home_banner_2_image"
+                                                    style="
+                                                        margin: 5px;
+                                                        width: 100px;
+                                                        height: 100px;
+                                                    "
+                                                />
+                                            </div>
+                                            <% } else { %>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="HomeBanner2_Preview"
+                                                style="display: none"
+                                            ></div>
+                                            <% } %>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >URL</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_2_url"
+                                                name="home_banner_2_url"
+                                                placeholder="Enter URL"
+                                                value="<%= home_banner_2_url %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Title</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_2_title"
+                                                name="home_banner_2_title"
+                                                placeholder="Enter Title"
+                                                value="<%= home_banner_2_title %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Description</label
+                                            >
+                                            <textarea
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_2_description"
+                                                name="home_banner_2_description"
+                                                placeholder="Enter Description"
+                                            ><%= home_banner_2_description %>
+                                        </textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Home Banner 3 -->
+                                    <div class="col-lg-12 mb-5">
+                                        <label class="form-label"
+                                            >Home Banner 3</label
+                                        >
+                                        <div class="mb-3">
+                                            <input
+                                                type="file"
+                                                class="form-control"
+                                                id="home_banner_3_image"
+                                                name="home_banner_3_image"
+                                                placeholder="Upload Image"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                id="home_banner_3_image_existing"
+                                                name="home_banner_3_image_existing"
+                                                value="<%= home_banner_3_image %>"
+                                            />
+                                            <% if (home_banner_3_image && home_banner_3_image.trim() !== '') {%>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="HomeBanner3_Preview"
+                                            >
+                                                <img
+                                                    src="/dist/banner/<%= home_banner_3_image %>"
+                                                    id="display_home_banner_3_Preview"
+                                                    class="home_banner_2_image"
+                                                    style="
+                                                        margin: 5px;
+                                                        width: 100px;
+                                                        height: 100px;
+                                                    "
+                                                />
+                                            </div>
+                                            <% } else { %>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="HomeBanner3_Preview"
+                                                style="display: none"
+                                            ></div>
+                                            <% } %>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >URL</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_3_url"
+                                                name="home_banner_3_url"
+                                                placeholder="Enter URL"
+                                                value="<%= home_banner_3_url %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Title</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_3_title"
+                                                name="home_banner_3_title"
+                                                placeholder="Enter Title"
+                                                value="<%= home_banner_3_title %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Description</label
+                                            >
+                                            <textarea
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_3_description"
+                                                name="home_banner_3_description"
+                                                placeholder="Enter Description"
+                                            ><%= home_banner_3_description %>
+                                        </textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Home Banner 4 -->
+                                    <div class="col-lg-12 mb-5">
+                                        <label class="form-label"
+                                            >Home Banner 4</label
+                                        >
+                                        <div class="mb-3">
+                                            <input
+                                                type="file"
+                                                class="form-control"
+                                                id="home_banner_4_image"
+                                                name="home_banner_4_image"
+                                                placeholder="Upload Image"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                id="home_banner_4_image_existing"
+                                                name="home_banner_4_image_existing"
+                                                value="<%= home_banner_4_image %>"
+                                            />
+                                            <% if (home_banner_4_image && home_banner_4_image.trim() !== '') {%>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="HomeBanner4_Preview"
+                                            >
+                                                <img
+                                                    src="/dist/banner/<%= home_banner_4_image %>"
+                                                    id="display_home_banner_4_Preview"
+                                                    class="home_banner_2_image"
+                                                    style="
+                                                        margin: 5px;
+                                                        width: 100px;
+                                                        height: 100px;
+                                                    "
+                                                />
+                                            </div>
+                                            <% } else { %>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="HomeBanner4_Preview"
+                                                style="display: none"
+                                            ></div>
+                                            <% } %>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >URL</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_4_url"
+                                                name="home_banner_4_url"
+                                                placeholder="Enter URL"
+                                                value="<%= home_banner_4_url %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Title</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_4_title"
+                                                name="home_banner_4_title"
+                                                placeholder="Enter Title"
+                                                value="<%= home_banner_4_title %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Description</label
+                                            >
+                                            <textarea
+                                                type="text"
+                                                class="form-control"
+                                                id="home_banner_4_description"
+                                                name="home_banner_4_description"
+                                                placeholder="Enter Description"
+                                            ><%= home_banner_4_description %>
+                                        </textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Subscription Banner -->
+                                    <div class="col-lg-12 mb-5">
+                                        <label class="form-label"
+                                            >Subscription Banner</label
+                                        >
+                                        <div class="mb-3">
+                                            <input
+                                                type="file"
+                                                class="form-control"
+                                                id="subscription_banner_image"
+                                                name="subscription_banner_image"
+                                                placeholder="Upload Image"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                id="subscription_banner_image_existing"
+                                                name="subscription_banner_image_existing"
+                                                value="<%= subscription_banner_image %>"
+                                            />
+                                            <% if (subscription_banner_image && subscription_banner_image.trim() !== '') { %>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="SubscriptionBanner_Preview"
+                                            >
+                                                <img
+                                                    src="/dist/banner/<%= subscription_banner_image %>"
+                                                    id="display_subscription_banner_Preview"
+                                                    class="home_banner_2_image"
+                                                    style="
+                                                        margin: 5px;
+                                                        width: 100px;
+                                                        height: 100px;
+                                                    "
+                                                />
+                                            </div>
+                                            <% } else { %>
+                                            <div
+                                                class="mb-2 mt-2"
+                                                id="SubscriptionBanner_Preview"
+                                                style="display: none"
+                                            ></div>
+                                            <% } %>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >URL</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="subscription_banner_url"
+                                                name="subscription_banner_url"
+                                                placeholder="Enter URL"
+                                                value="<%= subscription_banner_url %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Title</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="subscription_banner_title"
+                                                name="subscription_banner_title"
+                                                placeholder="Enter Title"
+                                                value="<%= subscription_banner_title %>"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label"
+                                                >Description</label
+                                            >
+                                            <textarea
+                                                type="text"
+                                                class="form-control"
+                                                id="subscription_banner_description"
+                                                name="subscription_banner_description"
+                                                placeholder="Enter Description"
+                                            ><%= subscription_banner_description %>
+                                        </textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <div
+                                        class="d-flex align-items-center justify-content-end"
+                                    >
+                                        <div class="">
+                                            <button
+                                                type="submit"
+                                                class="btn btn-thm"
+                                            >
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+
+                <!--end row-->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+
+<%- include('partials/footer.ejs') %>
+
+<script>
+    // Initialize the form
+    var addBannerform = $("#addBannerForm");
+    addBannerform.on("submit", submitFormHandler);
+
+    // Function to handle form submission
+    function submitFormHandler(e) {
+        e.preventDefault();
+
+        if (
+            !$("#home_banner_top_image").get(0).files.length &&
+            !$("#home_banner_top_image_existing").val().trim()
+        ) {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Banner (Top) is required",
+                position: "topRight",
+            });
+            return false;
+        }
+
+        if (
+            !$("#home_banner_2_image").get(0).files.length &&
+            !$("#home_banner_2_image_existing").val().trim()
+        ) {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Banner 2 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if (
+            !$("#home_banner_3_image").get(0).files.length &&
+            !$("#home_banner_3_image_existing").val().trim()
+        ) {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Banner 3 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if (
+            !$("#home_banner_4_image").get(0).files.length &&
+            !$("#home_banner_4_image_existing").val().trim()
+        ) {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Banner 4 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if (
+            !$("#subscription_banner_image").get(0).files.length &&
+            !$("#subscription_banner_image_existing").val().trim()
+        ) {
+            iziToast.warning({
+                title: "Warning",
+                message: "Subscription Banner is required",
+                position: "topRight",
+            });
+            return;
+        }
+
+        if ($("#home_banner_top_url").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Top Banner URL is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_2_url").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home URL 2 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_3_url").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home URL 3 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_4_url").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home URL 4 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#subscription_banner_url").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Subscription URL is required",
+                position: "topRight",
+            });
+            return;
+        }
+
+        if ($("#home_banner_top_title").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Top Banner Title is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_2_title").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Title 2 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_3_title").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Title 3 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_4_title").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Title 4 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#subscription_banner_title").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Subscription Title is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_top_description").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Top Banner Description is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_2_description").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Description 2 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_3_description").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Description 3 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#home_banner_4_description").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Home Description 4 is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#subscription_banner_description").val().trim() === "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Subscription Description is required",
+                position: "topRight",
+            });
+            return;
+        }
+
+        var formData = new FormData(addBannerform[0]);
+
+        // AJAX POST request
+        $.ajax({
+            type: "POST",
+            cache: false,
+            enctype: "multipart/form-data",
+            processData: false,
+            contentType: false,
+            url: "/admin/banner/add",
+            data: formData,
+        })
+            .done((res) => {
+                if (res.status === 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+
+                    // Reload the page after a short delay
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    }
+
+    $("#home_banner_top_image").change(function () {
+        displayPP(this, $("#TopBanner_Preview"));
+    });
+    $("#home_banner_2_image").change(function () {
+        displayPP(this, $("#HomeBanner2_Preview"));
+    });
+    $("#home_banner_3_image").change(function () {
+        displayPP(this, $("#HomeBanner3_Preview"));
+    });
+    $("#home_banner_4_image").change(function () {
+        displayPP(this, $("#HomeBanner4_Preview"));
+    });
+    $("#subscription_banner_image").change(function () {
+        displayPP(this, $("#SubscriptionBanner_Preview"));
+    });
+</script>
+
+<script>
+    // Script to fill data ain bannerForm
+    $(document).ready(function () {
+        var homeBannerTop = "/dist/banner/" + banners.home_banner_top.image;
+        var homeBanner2 = "/dist/banner/" + banners.home_banner_2.image;
+        var homeBanner3 = "/dist/banner/" + banners.home_banner_3.image;
+        var homeBanner4 = "/dist/banner/" + banners.home_banner_4.image;
+        var subscriptionBanner =
+            "/dist/banner/" + banners.subscription_banner.image;
+        var defaultImageUrl =
+            "../../../assets/images/default/mart-demo-img.jpg";
+
+        // Function to check if the image exists
+        function imageExists(url, callback) {
+            $.ajax({
+                url: url,
+                type: "HEAD",
+                success: function () {
+                    callback(true);
+                },
+                error: function () {
+                    callback(false);
+                },
+            });
+        }
+
+        // Check if Home banner top exists
+        if (banners.home_banner_top.image) {
+            imageExists(imageUrl, function (exists) {
+                if (exists) {
+                    $("#display_home_banner_top_image").attr("src", imageUrl);
+                } else {
+                    $("#display_home_banner_top_image").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_home_banner_top_image").attr("src", defaultImageUrl);
+        }
+
+        // Check if Home banner 2 exists
+        if (banners.home_banner_2.image) {
+            imageExists(imageUrl, function (exists) {
+                if (exists) {
+                    $("#display_home_banner_2_image").attr("src", imageUrl);
+                } else {
+                    $("#display_home_banner_2_image").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_home_banner_2_image").attr("src", defaultImageUrl);
+        }
+
+        // Check if Home banner 3 exists
+        if (banners.home_banner_3.image) {
+            imageExists(imageUrl, function (exists) {
+                if (exists) {
+                    $("#display_home_banner_3_image").attr("src", imageUrl);
+                } else {
+                    $("#display_home_banner_3_image").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_home_banner_3_image").attr("src", defaultImageUrl);
+        }
+
+        // Check if Home banner 4 exists
+        if (banners.home_banner_4.image) {
+            imageExists(imageUrl, function (exists) {
+                if (exists) {
+                    $("#display_home_banner_4_image").attr("src", imageUrl);
+                } else {
+                    $("#display_home_banner_4_image").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_home_banner_4_image").attr("src", defaultImageUrl);
+        }
+        // Check if Subscription Banner exists
+        if (banners.subscription_banner.image) {
+            imageExists(imageUrl, function (exists) {
+                if (exists) {
+                    $("#display_subscription_banner_image").attr(
+                        "src",
+                        imageUrl
+                    );
+                } else {
+                    $("#display_subscription_banner_image").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_subscription_banner_image").attr(
+                "src",
+                defaultImageUrl
+            );
+        }
+    });
+
+    function loadImage(url, selector, defaultImageUrl) {
+        const img = new Image();
+        img.onload = function () {
+            $(selector).attr("src", url);
+        };
+        img.onerror = function () {
+            $(selector).attr("src", defaultImageUrl);
+        };
+        img.src = url;
+    }
+</script>

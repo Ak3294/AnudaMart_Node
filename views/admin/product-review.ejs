@@ -1,0 +1,701 @@
+<%- include('partials/header') %>
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Product Review</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="/seller/dashboard"
+                                            >Dashboard</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Product Review
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div id="productList">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-xxl-3">
+                                            <div class="search-box">
+                                                <input
+                                                    type="text"
+                                                    class="form-control search"
+                                                    placeholder="Search products, price etc..."
+                                                />
+                                                <i
+                                                    class="ri-search-line search-icon"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+
+                                        <div class="col-xxl-3 col-sm-6">
+                                            <div>
+                                                <select
+                                                    class="form-control"
+                                                    id="ratingStatus"
+                                                    data-choices
+                                                    data-choices-search-false
+                                                    data-choices-removeItem
+                                                >
+                                                    <option value="all">
+                                                        Select Status
+                                                    </option>
+                                                    <option value="show">
+                                                        Show
+                                                    </option>
+                                                    <option value="hide">
+                                                        Hide
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-sm-6">
+                                            <div>
+                                                <select
+                                                    class="form-control"
+                                                    id="rating"
+                                                    data-choices
+                                                    data-choices-search-false
+                                                    data-choices-removeItem
+                                                >
+                                                    <option value="all">
+                                                        Select Rating
+                                                    </option>
+                                                    <option value="0.5">
+                                                        0.5
+                                                    </option>
+                                                    <option value="1">1</option>
+                                                    <option value="1.5">
+                                                        1.5
+                                                    </option>
+                                                    <option value="2">2</option>
+                                                    <option value="2.5">
+                                                        2.5
+                                                    </option>
+                                                    <option value="3">3</option>
+                                                    <option value="3.5">
+                                                        3.5
+                                                    </option>
+                                                    <option value="4">4</option>
+                                                    <option value="4.5">
+                                                        4.5
+                                                    </option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-1 col-sm-6 ms-auto">
+                                            <button
+                                                type="button"
+                                                class="btn btn-secondary w-100 pd-new"
+                                                onclick="filterData();"
+                                            >
+                                                <i
+                                                    class="bi bi-funnel align-baseline me-1"
+                                                ></i>
+                                                Filters
+                                            </button>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div
+                                    class="card-header d-flex align-items-center"
+                                >
+                                    <div class="flex-grow-1">
+                                        <h5 class="card-title mb-0">
+                                            Products Review
+                                        </h5>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <div
+                                            class="d-flex flex-wrap align-items-start gap-2"
+                                        >
+                                            <button
+                                                class="btn btn-subtle-danger d-none show-status"
+                                                id="remove-actions"
+                                                onClick="showMultiple()"
+                                            >
+                                                <i
+                                                    class="ri-delete-bin-2-line"
+                                                ></i>
+                                                Show Status
+                                            </button>
+                                            <button
+                                                class="btn btn-subtle-danger d-none hide-status"
+                                                id="remove-actions"
+                                                onClick="hideMultiple()"
+                                            >
+                                                <i
+                                                    class="ri-delete-bin-2-line"
+                                                ></i>
+                                                Hide Status
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table
+                                            class="table table-centered align-middle table-nowrap mb-0"
+                                        >
+                                            <thead class="table-active">
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                value="option"
+                                                                id="checkAll"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="checkAll"
+                                                            ></label>
+                                                        </div>
+                                                    </th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Name
+                                                    </th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Product
+                                                    </th>
+
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Review Image
+                                                    </th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Rating
+                                                    </th>
+                                                    <th
+                                                        
+                                                        
+                                                    >
+                                                        Comments
+                                                    </th>
+
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody
+                                                class="list form-check-all"
+                                                id="ratingsTableBody"
+                                            >
+                                                <% if (!ratings[0]) { %>
+                                                <tr>
+                                                    <td
+                                                        colspan="100%"
+                                                        class="text-center"
+                                                    >
+                                                        No Data
+                                                    </td>
+                                                </tr>
+                                                <% } else { %> 
+                                                    <%  ratings.forEach(function(rating) { %>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                name="chk_child"
+                                                                value="<%= rating._id %>"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                            ></label>
+                                                        </div>
+                                                    </td>
+                                                    <td class="name">
+                                                        <%= rating.user_id?.first_name %>
+                                                    </td>
+                                                    <td class="products">
+                                                        <%= rating.product_id ?
+                                                        rating.product_id?.product_name
+                                                        : '' %>
+                                                    </td>
+
+                                                    <td class="review-image">
+                                                        <div
+                                                            class="avatar-xs bg-light rounded p-1 me-2"
+                                                        >
+                                                            <img
+                                                                src="<%- rating.image ? '../../dist/ratings/' + rating.image : '../../assets/images/default/mart-demo-img.jpg' %>"
+                                                                onerror="this.src='../../assets/images/default/mart-demo-img.jpg';"
+                                                                class="img-fluid d-block"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-image">
+                                                        <span
+                                                            class="badge bg-success-subtle text-success fs-8"
+                                                        >
+                                                            <i
+                                                                class="ph ph-star-fill me-1 fs-8"
+                                                            ></i>
+                                                            <span class="">
+                                                                <%= rating.rating || "" %>
+                                                            </span>
+                                                        </span>
+                                                    </td>
+                                                    <td class="comments">
+                                                        <%= rating ? rating.comment : "" %>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="badge bg-success-subtle text-success"
+                                                        >
+                                                            <%= rating.status_id?rating.status_id.name:"No Status" %>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <% }) %> <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--end table-responsive-->
+
+                                    <div class="noresult" style="display: none">
+                                        <div class="text-center py-4">
+                                            <i
+                                                class="ph-magnifying-glass fs-1 text-primary"
+                                            ></i>
+                                            <h5 class="mt-2">
+                                                Sorry! No Result Found
+                                            </h5>
+                                            <p class="text-muted mb-0">
+                                                We've searched more than 150+
+                                                ratings We did not find any
+                                                ratings for you search.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
+                                        id="pagination-element"
+                                    >
+                                        <div class="col-sm">
+                                            <div class="text-muted">
+                                                Showing
+                                                <span
+                                                    class="fw-semibold"
+                                                    id="current-items"
+                                                    ><%= Math.min(currentPage *
+                                                    pageSize, totalItems)
+                                                    %></span
+                                                >
+                                                of
+                                                <span
+                                                    class="fw-semibold"
+                                                    id="total-items"
+                                                    ><%= totalItems ? totalItems : 0%></span
+                                                >
+                                                Results
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-auto mt-3 mt-sm-0">
+                                            <div
+                                                class="pagination-wrap hstack gap-2 justify-content-center"
+                                            >
+                                                <a
+                                                    class="page-item pagination-prev disabled"
+                                                    href="javascript:void(0)"
+                                                    >Previous</a
+                                                >
+                                                <ul
+                                                    class="pagination listjs-pagination mb-0"
+                                                ></ul>
+                                                <a
+                                                    class="page-item pagination-next"
+                                                    href="javascript:void(0)"
+                                                    >Next</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end pagination-element -->
+                                </div>
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- deleteRecordModal -->
+<div
+    id="deleteRecordModal"
+    class="modal fade zoomIn"
+    tabindex="-1"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="btn-close"
+                    id="deleteRecord-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body p-md-5">
+                <div class="text-center">
+                    <div class="text-danger">
+                        <i class="bi bi-trash display-4"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="mb-2">Are you sure ?</h3>
+                        <p class="text-muted fs-lg mx-3 mb-0">
+                            Are you sure you want to remove this record ?
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button
+                        type="button"
+                        class="btn w-sm btn-light btn-hover"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        type="button"
+                        class="btn w-sm btn-danger btn-hover"
+                        id="delete-record"
+                    >
+                        Yes, Delete It!
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /deleteRecordModal -->
+<%- include('partials/footer') %>
+
+<script>
+    function filterData() {
+        // Get the selected values from the dropdowns
+        const status = document.getElementById("ratingStatus").value;
+        const rating = document.getElementById("rating").value;
+
+        // Prepare the request payload
+        const filterParams = {
+            status: status !== "all" ? status : "",
+            rating: rating !== "all" ? parseFloat(rating) : "",
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/admin/product-review/filter",
+            contentType: "application/json",
+            data: JSON.stringify(filterParams),
+            success: function (response) {
+                // Assuming the response contains the filtered ratings
+                console.log(response);
+                renderTableData(response.ratings);
+            },
+            error: function (error) {
+                console.error("Error fetching filtered data:", error);
+            },
+        });
+    }
+
+    function renderTableData(ratings) {
+        const tableBody = document.getElementById("ratingsTableBody");
+
+        // Clear existing table rows
+        tableBody.innerHTML = "";
+
+        // Check if there are any ratings to display
+        if (!ratings[0]) {
+            // Render "No Data" row if there are no ratings
+            tableBody.innerHTML = `
+        <tr>
+          <td colspan="100%" class="text-center">No Data</td>
+        </tr>
+      `;
+            return;
+        }
+
+        // Iterate over each rating and render table rows
+        ratings.forEach((rating) => {
+            const row = `
+        <tr>
+          <td>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="chk_child" value="${
+                  rating._id
+              }" />
+              <label class="form-check-label"></label>
+            </div>
+          </td>
+          <td class="name">
+            ${rating.user_id?.first_name || ""}
+          </td>
+          <td class="products">
+            ${rating.product_id ? rating.product_id.product_name : ""}
+          </td>
+          <td class="review-image">
+            <div class="avatar-xs bg-light rounded p-1 me-2">
+              <img src="${
+                  rating.image
+                      ? `../../dist/ratings/${rating.image}`
+                      : "../../assets/images/default/mart-demo-img.jpg"
+              }" 
+                   onerror="this.src='../../assets/images/default/mart-demo-img.jpg';" 
+                   class="img-fluid d-block" />
+            </div>
+          </td>
+          <td class="product-image">
+            <span class="badge bg-success-subtle text-success fs-8">
+              <i class="ph ph-star-fill me-1 fs-8"></i>
+              <span>${rating.rating || ""}</span>
+            </span>
+          </td>
+          <td class="comments">
+            ${rating.comment || ""}
+          </td>
+          <td>
+            <span class="badge bg-success-subtle text-success">
+              ${rating.status_id ? rating.status_id.name : "No Status"}
+            </span>
+          </td>
+        </tr>
+      `;
+
+            // Append the row to the table body
+            tableBody.insertAdjacentHTML("beforeend", row);
+        });
+    }
+</script>
+
+<script>
+    // Function to toggle the visibility of action buttons based on selected checkboxes
+    function toggleActionButtons() {
+        const checkboxes = document.getElementsByName("chk_child");
+        const checkedBoxes = Array.from(checkboxes).filter(
+            (checkbox) => checkbox.checked
+        );
+
+        const showButton = document.querySelector(".show-status");
+        const hideButton = document.querySelector(".hide-status");
+
+        if (checkedBoxes.length > 0) {
+            showButton.classList.remove("d-none");
+            hideButton.classList.remove("d-none");
+        } else {
+            showButton.classList.add("d-none");
+            hideButton.classList.add("d-none");
+        }
+    }
+
+    // Attach the event listener to each checkbox
+    document.querySelectorAll('input[name="chk_child"]').forEach((checkbox) => {
+        checkbox.addEventListener("change", toggleActionButtons);
+    });
+</script>
+
+<script>
+    function showMultiple() {
+        const ids_array = [];
+        const checkboxes = document.getElementsByName("chk_child");
+
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                const ratingID = checkboxes[i].value;
+                ids_array.push(ratingID);
+            }
+        }
+
+        if (ids_array.length > 0) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                cancelButtonClass: "btn btn-danger w-xs mt-2",
+                confirmButtonText: "Yes, Show the Status!",
+                buttonsStyling: false,
+                showCloseButton: true,
+            }).then(function (result) {
+                if (result.value) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "/admin/product-review/show",
+                        data: JSON.stringify({
+                            ids: ids_array,
+                        }),
+                    })
+                        .done((res) => {
+                            if (res.status == 200) {
+                                iziToast.success({
+                                    title: "Success",
+                                    message: res.message,
+                                    position: "topRight",
+                                });
+                                setTimeout(function () {
+                                    location.reload();
+                                }, 1000);
+                            } else {
+                                iziToast.error({
+                                    title: "Error",
+                                    message: res.message,
+                                    position: "topRight",
+                                });
+                            }
+                        })
+                        .fail(function (xhr, status, error) {
+                            iziToast.error({
+                                title: "Error",
+                                message: xhr.responseText,
+                                position: "topRight",
+                            });
+                        });
+                }
+            });
+        } else {
+            Swal.fire({
+                title: "Please select at least one checkbox",
+                confirmButtonClass: "btn btn-info",
+                buttonsStyling: false,
+                showCloseButton: true,
+            });
+        }
+    }
+
+    function hideMultiple() {
+        const ids_array = [];
+        const checkboxes = document.getElementsByName("chk_child");
+
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                const ratingID = checkboxes[i].value;
+                ids_array.push(ratingID);
+            }
+        }
+
+        if (ids_array.length > 0) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                cancelButtonClass: "btn btn-danger w-xs mt-2",
+                confirmButtonText: "Yes, Hide the Status!",
+                buttonsStyling: false,
+                showCloseButton: true,
+            }).then(function (result) {
+                if (result.value) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "/admin/product-review/hide",
+                        data: JSON.stringify({
+                            ids: ids_array,
+                        }),
+                    })
+                        .done((res) => {
+                            if (res.status == 200) {
+                                iziToast.success({
+                                    title: "Success",
+                                    message: res.message,
+                                    position: "topRight",
+                                });
+                                setTimeout(function () {
+                                    location.reload();
+                                }, 1000);
+                            } else {
+                                iziToast.error({
+                                    title: "Error",
+                                    message: res.message,
+                                    position: "topRight",
+                                });
+                            }
+                        })
+                        .fail(function (xhr, status, error) {
+                            iziToast.error({
+                                title: "Error",
+                                message: xhr.responseText,
+                                position: "topRight",
+                            });
+                        });
+                }
+            });
+        } else {
+            Swal.fire({
+                title: "Please select at least one checkbox",
+                confirmButtonClass: "btn btn-info",
+                buttonsStyling: false,
+                showCloseButton: true,
+            });
+        }
+    }
+</script>

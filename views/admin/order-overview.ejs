@@ -1,0 +1,899 @@
+<%- include('partials/header.ejs') %>
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Order Overview</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript: void(0);"
+                                            >Product</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Order Overview
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div
+                                class="card-body d-flex align-items-center flex-wrap gap-3"
+                            >
+                                <div class="flex-grow-1">
+                                    <p class="text-muted mb-2">Order Number</p>
+                                    <h6 class="fs-md mb-0">
+                                        <%= order.order_no ? order.order_no :
+                                        'N/A' %>
+                                    </h6>
+                                </div>
+                                <div class="flex-shrink-0 text-end">
+                                    <h6 class="fs-md mb-2">
+                                        <% 
+                                         const date = new Date(order.created_at);
+                                         const formattedDate = date.toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+                                         %>
+                                        <%= formattedDate %>
+                                        <i
+                                            class="bi bi-calendar4-event align-baseline ms-1"
+                                        ></i>
+                                    </h6>
+                                    <p class="text-muted mb-0">
+                                        <% 
+                                         const time = new Date(order.created_at);
+                                         const formattedTime = time.toLocaleString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true });
+                                         %>
+                                        <%= formattedTime %>
+                                        <i
+                                            class="bi bi-clock align-baseline ms-1"
+                                        ></i>
+                                    </p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <a
+                                        href="invoices-overview.html"
+                                        class="btn btn-thm"
+                                        ><i
+                                            class="ph-download-simple align-middle me-1"
+                                        ></i>
+                                        Invoice</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div
+                                class="row g-2 justify-content-lg-between align-items-center"
+                            >
+                                <input
+                                    type="hidden"
+                                    id="editid"
+                                    name="editid"
+                                    value="<%= order?._id %>"
+                                />
+
+                                <div class="col-lg-6 mb-4">
+                                    <label
+                                        for="paymentStatus"
+                                        class="form-label"
+                                        >Payment Status</label
+                                    >
+                                    <select
+                                        class="form-control"
+                                        id="paymentStatus"
+                                        name="paymentStatus"
+                                    >
+                                        <option value="paid">Paid</option>
+                                        <option value="unpaid">Unpaid</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <label for="orderStatus" class="form-label"
+                                        >Order Status</label
+                                    >
+                                    <select
+                                        class="form-control"
+                                        id="orderStatus"
+                                        name="orderStatus"
+                                    >
+                                        <option value="pending">Pending</option>
+                                        <option value="completed">
+                                            Completed
+                                        </option>
+                                        <option value="picked_up">
+                                            Picked Up
+                                        </option>
+                                        <option value="on_the_way">
+                                            On the Way
+                                        </option>
+                                        <option value="cancelled">
+                                            Cancelled
+                                        </option>
+                                        <option value="delivered">
+                                            Delivered
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end card-->
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+
+                <div class="row">
+                    <div class="col-xxl-6 col-md-6">
+                        <div
+                            class="card border-bottom border-2 border-secondary"
+                        >
+                            <div class="card-body d-flex gap-3">
+                                <div class="flex-grow-1">
+                                    <h6 class="card-title mb-3">
+                                        Customer Info
+                                    </h6>
+                                    <p class="fw-medium fs-md mb-1">
+                                        <%= order.user_id ?
+                                        order.user_id.first_name + ' ' +
+                                        order.user_id.last_name : 'N/A' %>
+                                    </p>
+                                    <p class="text-muted mb-1">
+                                        <%= order.user_id ? order.user_id.email
+                                        : 'N/A' %>
+                                    </p>
+                                    <p class="text-muted mb-0">
+                                        <%= order.user_id ? order.user_id.phone
+                                        : 'N/A' %>
+                                    </p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <img
+                                        src="<%- order.user_id.image ? '../../../dist/users/' + order.user_id.image : '../../../assets/images/default/user-dummy-img.jpg' %>"
+                                        onerror="this.src='../../../assets/images/default/user-dummy-img.jpg';"
+                                        class="avatar-md rounded img-thumbnail"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <!-- <div class="col-xxl-3 col-md-6">
+                        <div class="card border-bottom border-2 border-primary">
+                            <div class="card-body d-flex gap-3">
+                                <div class="flex-grow-1">
+                                    <h6 class="card-title mb-3">
+                                        Shipping Info
+                                    </h6>
+                                    <p class="fw-medium fs-md mb-1">
+                                        Jennifer Mayert
+                                    </p>
+                                    <p class="text-muted mb-1">
+                                        730 Madison Ave, Covington
+                                    </p>
+                                    <p class="text-muted mb-0">
+                                        Kentucky, United States
+                                    </p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <div class="avatar-sm">
+                                        <div
+                                            class="avatar-title bg-primary-subtle text-primary fs-3 rounded"
+                                        >
+                                            <i class="ph-truck"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--end col-->
+                    <div class="col-xxl-6 col-md-6">
+                        <div class="card border-bottom border-2 border-info">
+                            <div class="card-body d-flex gap-3">
+                                <div class="flex-grow-1">
+                                    <h6 class="card-title mb-3">
+                                        Billing Info
+                                    </h6>
+                                    <p class="fw-medium fs-md mb-1">
+                                        <%= billing_address ?
+                                        billing_address.name : 'N/A' %>
+                                    </p>
+                                    <p class="text-muted mb-1">
+                                        <%= billing_address ?
+                                        billing_address.address : 'N/A' %>
+                                    </p>
+                                    <p class="text-muted mb-0">
+                                        <%= billing_address ?
+                                        billing_address.city + ', ' +
+                                        billing_address.state : 'N/A' %>
+                                    </p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <div class="avatar-md">
+                                        <div
+                                            class="avatar-title bg-info-subtle text-info fs-3 rounded"
+                                        >
+                                            <i class="ph-file-text"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <!-- <div class="col-xxl-3 col-md-6">
+                        <div class="card border-bottom border-2 border-light">
+                            <div class="card-body d-flex gap-3">
+                                <div class="flex-grow-1">
+                                    <h6 class="card-title mb-3">
+                                        Payment Info
+                                    </h6>
+                                    <p class="fw-medium fs-md mb-1">
+                                        ID: #TBS3650259845
+                                    </p>
+                                    <p class="text-muted mb-1">
+                                        Payment Method: <b>Debit Card</b>
+                                    </p>
+                                    <p class="text-muted mb-0">
+                                        Card Number: <b>xxxx xxxx xxxx 2456</b>
+                                    </p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <div class="avatar-sm">
+                                        <div
+                                            class="avatar-title bg-light text-body fs-3 rounded"
+                                        >
+                                            <i
+                                                class="ph-currency-circle-dollar"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--end col-->
+                </div>
+                <!--end row-->
+
+                <div class="row">
+                    <div class="col-xxl-9">
+                        <div class="card">
+                            <div
+                                class="card-header d-flex align-items-center gap-3"
+                            >
+                                <h6 class="card-title mb-0 flex-grow-1">
+                                    Product Items
+                                </h6>
+                                <!-- <div class="flex-shrink-0">
+                                    <button
+                                        type="button"
+                                        class="btn btn-thn btn-sm"
+                                    >
+                                        <i class="ph-x align-middle"></i> Cancel
+                                        Order
+                                    </button>
+                                </div> -->
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                        class="table align-middle table-nowrap table-borderless"
+                                    >
+                                        <thead class="table-active">
+                                            <tr>
+                                                <th>Product Items</th>
+                                                <th>Item Price</th>
+                                                <th>Quantity</th>
+                                                <th class="text-end">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if(!record[0]) { %>
+                                            <tr>
+                                                <td
+                                                    colspan="100%"
+                                                    class="text-center"
+                                                >
+                                                    No Data
+                                                </td>
+                                            </tr>
+                                            <% } else {%> <%
+                                            record.forEach(function(record){%>
+                                            <tr>
+                                                <td>
+                                                    <div
+                                                        class="product-item d-flex align-items-center gap-2"
+                                                    >
+                                                        <div
+                                                            class="avatar-sm flex-shrink-0"
+                                                        >
+                                                            <div
+                                                                class="avatar-title bg-light rounded"
+                                                            >
+                                                                <img
+                                                                    src="<%- record.product_id ? '../../../dist/product/' + record.product_id.thumbnail : '../../../assets/images/default/mart-demo-img.jpg' %>"
+                                                                    onerror="this.src='../../../assets/images/default/mart-demo-img.jpg';"
+                                                                    class="avatar-xs"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="flex-grow-1"
+                                                        >
+                                                            <h6 class="fs-md">
+                                                                <%=
+                                                                record.product_id
+                                                                ?
+                                                                record.product_id.product_name
+                                                                : 'N/A' %>
+                                                            </h6>
+                                                            <p class="mb-0">
+                                                                <% if (record.variants && record.variants.length > 0) { %>
+                                                                    <% 
+                                                                    let variantsString = record.variants.map(variant => {
+                                                                        let variantObj = JSON.parse(variant);
+                                                                        return `<strong>${variantObj.name}</strong>: ${variantObj.variant_name}`;
+                                                                    }).join(', '); 
+                                                                    %>
+                                                                    <%- variantsString %>
+                                                                <% } %>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    ₹<%= record.special_discount
+                                                    ? record.special_discount :
+                                                    record.unit_price %>
+                                                </td>
+                                                <td>
+                                                    <%= record.quantity ?
+                                                    record.quantity : 'N/A' %>
+                                                </td>
+                                                <td class="fw-medium text-end">
+                                                    ₹<%= record.sub_total ?
+                                                    record.sub_total : '0' %>
+                                                </td>
+                                            </tr>
+                                            <% }); %> <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- <div class="row gy-3">
+                                    <div class="col-sm-6 col-lg-6 col-xl-3">
+                                        <div
+                                            class="text-center border border-dashed p-3 rounded"
+                                        >
+                                            <p class="text-muted mb-2">
+                                                Order Date
+                                            </p>
+                                            <h6 class="fs-md mb-0">
+                                                15 Feb, 2023
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-6 col-xl-3">
+                                        <div
+                                            class="text-center border border-dashed p-3 rounded"
+                                        >
+                                            <p class="text-muted mb-2">
+                                                Delivery Date
+                                            </p>
+                                            <h6 class="fs-md mb-0">
+                                                23 Feb, 2023
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-6 col-xl-3">
+                                        <div
+                                            class="text-center border border-dashed p-3 rounded"
+                                        >
+                                            <p class="text-muted mb-2">
+                                                Order Amount
+                                            </p>
+                                            <h6 class="fs-md mb-0">
+                                                ₹2,050.18
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-6 col-xl-3">
+                                        <div
+                                            class="text-center border border-dashed p-3 rounded"
+                                        >
+                                            <p class="text-muted mb-2">
+                                                Order Status
+                                            </p>
+                                            <span
+                                                class="badge bg-danger-subtle text-danger mb-0"
+                                                >Out of Delivery</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!--end card-->
+                    </div>
+                    <!--end col-->
+                    <div class="col-xxl-3">
+                        <div class="row">
+                            <div class="col-xxl-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="card-title mb-0">
+                                            Total order amount
+                                        </h6>
+                                    </div>
+                                    <div class="card-body pt-4">
+                                        <div
+                                            class="table-responsive table-card"
+                                        >
+                                            <table
+                                                class="table table-borderless mb-0"
+                                            >
+                                                <tbody>
+                                                    <% if(!record[0]) { %>
+                                                    <tr>
+                                                        <td
+                                                            colspan="100%"
+                                                            class="text-center"
+                                                        >
+                                                            No Data
+                                                        </td>
+                                                    </tr>
+                                                    <% } else {%> <%
+                                                    record.forEach(function(record){%>
+                                                    <tr>
+                                                        <td>Sub Total :</td>
+                                                        <td class="text-end">
+                                                            ₹<%= record.order_id
+                                                            ?
+                                                            record.order_id.order_subtotal_amount
+                                                            : '0' %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Discount :</td>
+                                                        <td class="text-end">
+                                                            -<%=
+                                                            record?.order_id ?
+                                                            record.order_id.order_discount_amount
+                                                            : '0' %>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- <tr>
+                                                        <td>
+                                                            Shipping Charge :
+                                                        </td>
+                                                        <td class="text-end">
+                                                            ₹49.99
+                                                        </td>
+                                                    </tr> -->
+                                                    <!-- <tr>
+                                                        <td>Estimated Tax :</td>
+                                                        <td class="text-end">
+                                                            ₹409.13
+                                                        </td>
+                                                    </tr> -->
+                                                    <tr
+                                                        class="border-top border-top-dashed"
+                                                    >
+                                                        <th scope="row">
+                                                            Total :
+                                                        </th>
+                                                        <th class="text-end">
+                                                            ₹<%= record.order_id
+                                                            ?
+                                                            record.order_id.order_total_amount
+                                                            : '0' %>
+                                                        </th>
+                                                    </tr>
+                                                    <% }); %> <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <!-- <div class="col-xxl-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <h5
+                                                class="card-title flex-grow-1 mb-0"
+                                            >
+                                                Logistics Details
+                                            </h5>
+                                            <div class="flex-shrink-0">
+                                                <a
+                                                    href="javascript:void(0);"
+                                                    class="badge bg-secondary-subtle text-secondary"
+                                                    >Track Order</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="card-body border-top border-dashed"
+                                    >
+                                        <div>
+                                            <h6
+                                                class="text-muted float-end mb-0"
+                                            >
+                                                ID: MFDS1400457854
+                                            </h6>
+                                            <h5 class="fs-lg clearfix">
+                                                <a href="#!" class="text-reset"
+                                                    >Themesbrand</a
+                                                >
+                                            </h5>
+                                            <p class="text-muted mb-2 mb-md-0">
+                                                Scan barcode to track
+                                            </p>
+                                            <div class="text-center p-3 pb-0">
+                                                <img
+                                                    alt="Scan Me!"
+                                                    src="/assets/images/barcode.svg"
+                                                    class="img-fluid"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div
+                                class="card-header d-flex align-items-center flex-wrap gap-2"
+                            >
+                                <h6 class="card-title flex-grow-1 mb-0">
+                                    Order Status
+                                </h6>
+                                <!-- <div class="flex-shrink-0">
+                                    <button
+                                        type="button"
+                                        class="btn btn-thm btn-sm"
+                                    >
+                                        <i class="ph-x align-middle"></i> Cancel
+                                        Order
+                                    </button>
+                                    <a
+                                        href="invoices-overview.html"
+                                        class="btn btn-primary btn-sm"
+                                        ><i
+                                            class="ph-download-simple align-middle me-1"
+                                        ></i>
+                                        Invoice</a
+                                    >
+                                </div> -->
+                            </div>
+                            <div class="card-body">
+                                <div
+                                    class="progress progress-step-arrow progress-info mb-4"
+                                >
+                                    <a
+                                        href="javascript:void(0);"
+                                        class="progress-bar active"
+                                        role="progressbar"
+                                        style="width: 100%"
+                                        aria-valuenow="100"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                        ><i
+                                            class="ph-bag align-baseline me-1 d-none d-lg-inline-block"
+                                        ></i>
+                                        Order Placed</a
+                                    >
+                                    <a
+                                        href="javascript:void(0);"
+                                        class="progress-bar active d-none d-xxl-inline-block"
+                                        role="progressbar"
+                                        style="width: 100%"
+                                        aria-valuenow="30"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                        ><i
+                                            class="ph-package align-middle me-1"
+                                        ></i>
+                                        Packed</a
+                                    >
+                                    <a
+                                        href="javascript:void(0);"
+                                        class="progress-bar pending d-none d-md-inline-block"
+                                        role="progressbar"
+                                        style="width: 100%"
+                                        aria-valuenow="30"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                        ><i
+                                            class="ph-truck align-baseline me-1 d-none d-lg-inline-block"
+                                        ></i>
+                                        Shipping</a
+                                    >
+                                    <a
+                                        href="javascript:void(0);"
+                                        class="progress-bar d-none d-md-inline-block"
+                                        role="progressbar"
+                                        style="width: 100%"
+                                        aria-valuenow="20"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                        ><i
+                                            class="ph-bicycle align-baseline me-1 d-none d-lg-inline-block"
+                                        ></i>
+                                        Out For Delivery</a
+                                    >
+                                    <a
+                                        href="javascript:void(0);"
+                                        class="progress-bar"
+                                        role="progressbar"
+                                        style="width: 100%"
+                                        aria-valuenow="20"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                        ><i
+                                            class="ph-house-line align-baseline me-1 d-none d-lg-inline-block"
+                                        ></i>
+                                        Delivered</a
+                                    >
+                                </div>
+                                <div
+                                    id="map"
+                                    class="leaflet-map leaflet-gray"
+                                    style="height: 380px"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Add Reason Modal -->
+<div
+    class="modal fade"
+    id="showModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel">Add Reason</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    id="close-ordermodal"
+                ></button>
+            </div>
+            <form class="tablelist-form" id="submitForm" autocomplete="off">
+                <div class="modal-body">
+                    <input type="hidden" id="id-field" />
+
+                    <div class="mb-3">
+                        <label for="reasonTextarea" class="form-label"
+                            >Reason for Change Status</label
+                        >
+                        <textarea
+                            id="reasonTextarea"
+                            class="form-control"
+                            name="reasonTextarea"
+                            placeholder="Enter Reason"
+                            rows="4"
+                            required
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                            id="saveReason"
+                        >
+                            Add Reason
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end Add Reason Modal -->
+
+<%- include('partials/footer.ejs') %>
+
+<script>
+    $(document).ready(function () {
+        // Initialize the modal using Bootstrap
+        const modalElement = new bootstrap.Modal(
+            document.getElementById("showModal"),
+            {}
+        );
+        const orders = JSON.parse(
+            `<%- JSON.stringify(order).replace(/\\/g, '\\\\').replace(/"/g, '\\"') %>`
+        );
+
+        $("#paymentStatus").val(orders?.payment_status);
+        $("#orderStatus").val(orders?.status_id?.name);
+
+        // Handler for Order Status change
+        $("#orderStatus").change(function () {
+            const orderStatus = $(this).val();
+            const order_id = $("#editid").val(); // Fetch the order_id from the hidden input field
+
+            // Make AJAX call to update order status in orders table
+            $.ajax({
+                type: "POST",
+                url: "/admin/order/update_order_status",
+                data: { orderStatus: orderStatus, order_id: order_id },
+                success: function (response) {
+                    iziToast.success({
+                        title: "Success",
+                        message: "Order status updated successfully",
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                },
+                error: function (xhr, status, error) {
+                    iziToast.error({
+                        title: "Error",
+                        message:
+                            "Failed to update order status: " +
+                            xhr.responseText,
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                },
+            });
+        });
+
+        // Handler for Payment Status change
+        $("#paymentStatus").change(function () {
+            const paymentStatus = $(this).val();
+            const order_id = $("#editid").val(); // Fetch the order_id from the hidden input field
+
+            // Check if the status is changed from 'paid' to 'unpaid' or vice versa
+            if (
+                (orders?.payment_status === "paid" &&
+                    paymentStatus === "unpaid") ||
+                (orders?.payment_status === "unpaid" &&
+                    paymentStatus === "paid")
+            ) {
+                // Show the modal to input the reason
+
+                // Show the modal using Bootstrap's modal API
+                modalElement.show();
+
+                // Handle save reason button click
+                $("#saveReason")
+                    .off("click")
+                    .on("click", function (e) {
+                        e.preventDefault(); // Prevent the form from submitting normally
+                        const reason = $("#reasonTextarea").val();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/admin/order/update_payment_status",
+                            data: {
+                                status: paymentStatus,
+                                order_id: order_id,
+                                reason: reason, // Include the reason
+                            },
+                            success: function (response) {
+                                iziToast.success({
+                                    title: "Success",
+                                    message:
+                                        "Payment status updated successfully",
+                                    position: "topRight",
+                                });
+                                setTimeout(function () {
+                                    location.reload();
+                                }, 2000);
+                            },
+                            error: function (xhr, status, error) {
+                                iziToast.error({
+                                    title: "Error",
+                                    message:
+                                        "Failed to update payment status: " +
+                                        xhr.responseText,
+                                    position: "topRight",
+                                });
+                                setTimeout(function () {
+                                    location.reload();
+                                }, 2000);
+                            },
+                        });
+                    });
+            } else {
+                // Directly update the status without a modal if the status is not changing from paid/unpaid
+                updatePaymentStatus(paymentStatus, order_id);
+            }
+        });
+
+        function updatePaymentStatus(paymentStatus, order_id) {
+            $.ajax({
+                type: "POST",
+                url: "/admin/order/update_payment_status",
+                data: { status: paymentStatus, order_id: order_id },
+                success: function (response) {
+                    iziToast.success({
+                        title: "Success",
+                        message: "Payment status updated successfully",
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                },
+                error: function (xhr, status, error) {
+                    iziToast.error({
+                        title: "Error",
+                        message:
+                            "Failed to update payment status: " +
+                            xhr.responseText,
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                },
+            });
+        }
+    });
+</script>
+
+<!-- leaflet plugin -->
+<script src="/assets/libs/leaflet/leaflet.js"></script>
+<!-- leaflet-routing-machine -->
+<script src="/assets/libs/leaflet-routing-machine/leaflet-routing-machine.min.js"></script>
+<!-- Order Overview init -->
+<script src="/assets/js/pages/ecommerce-order-overview.init.js"></script>

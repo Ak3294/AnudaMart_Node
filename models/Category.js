@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const CategorySchema = new mongoose.Schema({
+const Schema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -12,14 +12,39 @@ const CategorySchema = new mongoose.Schema({
     slug: {
         type: String,
         required: true,
+        unique: true,
     },
     parent_id: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+        default: null,
+    },
+    meta_title: {
+        type: String,
+    },
+    meta_description: {
+        type: String,
+    },
+    is_featured: {
+        type: Boolean,
+        default: false,
+    },
+    // commission_type: {
+    //     type: String,
+    //     default: null,
+    // },
+    commission: {
+        type: Number,
+        default: 0,
+    },
+    description: {
+        type: String,
         default: null,
     },
     status_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Status",
+        default: null,
     },
     created_at: {
         type: String,
@@ -27,8 +52,8 @@ const CategorySchema = new mongoose.Schema({
     },
     updated_at: {
         type: String,
-        default: Date.now,
+        default: Date,
     },
 });
 
-module.exports = mongoose.model("category", CategorySchema);
+module.exports = mongoose.model("Category", Schema);

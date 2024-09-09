@@ -1,0 +1,2153 @@
+<%- include ('partials/header.ejs') %>
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Coupon</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript: void(0);">
+                                            Dashboard</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Coupon
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div
+                            class="d-flex align-items-center flex-wrap gap-2 mb-4"
+                        >
+                            <ul
+                                class="nav nav-pills arrow-navtabs nav-secondary gap-2 flex-grow-1 order-2 order-lg-1"
+                                role="tablist"
+                            >
+                                <!-- Category Tab1  -->
+                                <li class="nav-item" role="presentation">
+                                    <a
+                                        class="nav-link active"
+                                        data-bs-toggle="tab"
+                                        href="#category"
+                                        role="tab"
+                                        aria-selected="false"
+                                        tabindex="-1"
+                                    >
+                                        Category
+                                    </a>
+                                </li>
+
+                                <!-- Product  -->
+                                <li class="nav-item" role="presentation">
+                                    <a
+                                        class="nav-link"
+                                        data-bs-toggle="tab"
+                                        href="#product"
+                                        role="tab"
+                                        aria-selected="false"
+                                        tabindex="-1"
+                                    >
+                                        Product
+                                    </a>
+                                </li>
+
+                                <!-- subTotal  -->
+                                <li class="nav-item" role="presentation">
+                                    <a
+                                        class="nav-link"
+                                        data-bs-toggle="tab"
+                                        href="#subTotal"
+                                        role="tab"
+                                        aria-selected="true"
+                                    >
+                                        subTotal
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <div class="tab-content">
+                                <!-- category Tab -->
+                                <div
+                                    class="tab-pane active"
+                                    id="category"
+                                    role="tabpanel"
+                                >
+                                    <div class="card-body">
+                                        <div id="productList">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="d-flex align-items-center flex-wrap gap-3"
+                                                            >
+                                                                <div
+                                                                    class="flex-grow-1"
+                                                                >
+                                                                    <h3
+                                                                        class="card-title mb-0"
+                                                                    >
+                                                                        Coupon
+                                                                        List
+                                                                    </h3>
+                                                                </div>
+                                                                <div>
+                                                                    <div
+                                                                        class="d-flex flex-wrap gap-2"
+                                                                    >
+                                                                        <button
+                                                                            type="button"
+                                                                            class="btn btn-thm add-btn"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#showModal"
+                                                                            data-name="Coupon"
+                                                                        >
+                                                                            <i
+                                                                                class="bi bi-plus-circle align-baseline me-1"
+                                                                            ></i>
+                                                                            Add
+                                                                            Coupon
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xxl-12">
+                                                    <!--end card-->
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="table-responsive"
+                                                            >
+                                                                <table
+                                                                    class="table table-centered align-middle table-nowrap mb-0"
+                                                                >
+                                                                    <thead
+                                                                        class="table-active"
+                                                                    >
+                                                                        <tr>
+                                                                            <th>
+                                                                                <div
+                                                                                    class="form-check"
+                                                                                >
+                                                                                    <input
+                                                                                        class="form-check-input"
+                                                                                        type="checkbox"
+                                                                                        value="option"
+                                                                                        id="checkAll"
+                                                                                    />
+                                                                                    <label
+                                                                                        class="form-check-label"
+                                                                                        for="checkAll"
+                                                                                    ></label>
+                                                                                </div>
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Category
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Type
+                                                                            </th>
+
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Discount
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Date
+                                                                                Range
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Message
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Status
+                                                                            </th>
+                                                                            <th>
+                                                                                Action
+                                                                            </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody
+                                                                        class="list"
+                                                                    >
+                                                                        <%
+                                                                        if(!category_coupon[0])
+                                                                        { %>
+                                                                        <tr>
+                                                                            <td
+                                                                                colspan="100%"
+                                                                                class="text-center"
+                                                                            >
+                                                                                No
+                                                                                Data
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% }
+                                                                        else {%>
+                                                                        <%
+                                                                        category_coupon.forEach(function(coupon){%>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div
+                                                                                    class="form-check"
+                                                                                >
+                                                                                    <input
+                                                                                        class="form-check-input"
+                                                                                        type="checkbox"
+                                                                                        name="chk_child"
+                                                                                    />
+                                                                                    <label
+                                                                                        class="form-check-label"
+                                                                                    ></label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="category">
+                                                                                <% if
+                                                                                (coupon.category_id
+                                                                                &&
+                                                                                coupon.category_id.length
+                                                                                > 0) { %>
+                                                                                <div class="wrapper">
+                                                                                    <%
+                                                                                    coupon.category_id.forEach((category,
+                                                                                    index) => { %>
+                                                                                    <span
+                                                                                        class="badge bg-secondary-subtle text-secondary"
+                                                                                        ><%=
+                                                                                        category.name
+                                                                                        %></span
+                                                                                    >
+                                                                                    <% if (index <
+                                                                                    coupon.category_id.length
+                                                                                    - 1) { %> <% if
+                                                                                    ((index + 1) % 4 ===
+                                                                                    0) { %>
+                                                                                    <br />
+                                                                                    <% } else { %> <% }
+                                                                                    %> <% } %> <% }); %>
+                                                                                </div>
+                                                                                <% } else { %>
+                                                                                <span
+                                                                                    class="badge bg-secondary-subtle text-secondary"
+                                                                                    >No Category</span
+                                                                                >
+                                                                                <% } %>
+                                                                            </td>
+                                                                            <td
+                                                                                class="type"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.type
+                                                                                ?
+                                                                                coupon.type
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+                                                                            <td
+                                                                                class="discount"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.discount
+                                                                                ?
+                                                                                coupon.discount
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+                                                                            <td
+                                                                                class="published"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.date_range
+                                                                                ?
+                                                                                coupon.date_range
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>                                                                            
+
+                                                                            <td
+                                                                                class="message"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.message
+                                                                                ?
+                                                                                coupon.message
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+
+                                                                            <td
+                                                                                class="status"
+                                                                            >
+                                                                                <span
+                                                                                    class="badge bg-secondary-subtle text-secondary"
+                                                                                >
+                                                                                    <%=
+                                                                                    coupon.status_id
+                                                                                    ?
+                                                                                    coupon.status_id.name
+                                                                                    :
+                                                                                    ''
+                                                                                    %>
+                                                                                </span>
+                                                                            </td>
+
+                                                                            <td>
+                                                                                <div
+                                                                                    class="dropdown position-static"
+                                                                                >
+                                                                                    <button
+                                                                                        class="btn btn-subtle-secondary btn-sm btn-icon"
+                                                                                        role="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                    >
+                                                                                        <i
+                                                                                            class="bi bi-three-dots-vertical"
+                                                                                        ></i>
+                                                                                    </button>
+
+                                                                                    <ul
+                                                                                        class="dropdown-menu dropdown-menu-end"
+                                                                                    >
+                                                                                        <li>
+                                                                                            <a
+                                                                                                class="dropdown-item edit-item-btn"
+                                                                                                data-bs-toggle="modal"
+                                                                                                data-name="Category"
+                                                                                                href="#showEditModal"
+                                                                                                id="edit_btn"
+                                                                                                data-model="<%= JSON.stringify(coupon) %>"
+                                                                                                ><i
+                                                                                                    class="ph-pencil align-middle me-1"
+                                                                                                ></i>
+                                                                                                Edit
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a
+                                                                                                class="dropdown-item remove-item-btn"
+                                                                                                data-bs-toggle="modal"
+                                                                                                href="#deleteRecordModal"
+                                                                                                data-id="<%= coupon._id %>"
+                                                                                                ><i
+                                                                                                    class="ph-trash align-middle me-1"
+                                                                                                ></i>
+                                                                                                Remove</a
+                                                                                            >
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% });
+                                                                        %> <% }
+                                                                        %>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div
+                                                                class="noresult"
+                                                                style="
+                                                                    display: none;
+                                                                "
+                                                            >
+                                                                <div
+                                                                    class="text-center py-4"
+                                                                >
+                                                                    <i
+                                                                        class="ph-magnifying-glass fs-1 text-primary"
+                                                                    ></i>
+                                                                    <h5
+                                                                        class="mt-2"
+                                                                    >
+                                                                        Sorry!
+                                                                        No
+                                                                        Result
+                                                                        Found
+                                                                    </h5>
+                                                                    <p
+                                                                        class="text-muted mb-0"
+                                                                    >
+                                                                        We've
+                                                                        searched
+                                                                        more
+                                                                        than
+                                                                        150+
+                                                                        coupons
+                                                                        We did
+                                                                        not find
+                                                                        any
+                                                                        coupons
+                                                                        for you
+                                                                        search.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
+                                                                id="pagination-element"
+                                                            >
+                                                                <div
+                                                                    class="col-sm"
+                                                                >
+                                                                    <div
+                                                                        class="text-muted"
+                                                                    >
+                                                                        Showing
+                                                                        <span
+                                                                            class="fw-semibold"
+                                                                            >
+                                                                            <%= Math.min(currentPage *
+                                                                                pageSize, total_category_coupon)
+                                                                             %>   
+                                                                            </span
+                                                                        >
+                                                                        of
+                                                                        <span
+                                                                            class="fw-semibold"
+                                                                            ><%= total_category_coupon ? total_category_coupon : 0 %></span>
+                                                                        Results
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col-sm-auto mt-3 mt-sm-0"
+                                                                >
+                                                                    <div
+                                                                        class="pagination-wrap hstack gap-2"
+                                                                    >
+                                                                        <a
+                                                                            class="page-item pagination-prev disabled"
+                                                                            href="javascript:void(0)"
+                                                                            >Previous</a
+                                                                        >
+                                                                        <ul
+                                                                            class="pagination listjs-pagination mb-0"
+                                                                        ></ul>
+                                                                        <a
+                                                                            class="page-item pagination-next"
+                                                                            href="javascript:void(0)"
+                                                                            >Next</a
+                                                                        >
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Product Tab -->
+                                <div
+                                    class="tab-pane"
+                                    id="product"
+                                    role="tabpanel"
+                                >
+                                    <div class="card-body">
+                                        <div id="orderList">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="d-flex align-items-center flex-wrap gap-3"
+                                                            >
+                                                                <div
+                                                                    class="flex-grow-1"
+                                                                >
+                                                                    <h3
+                                                                        class="card-title mb-0"
+                                                                    >
+                                                                        Coupon
+                                                                        List
+                                                                    </h3>
+                                                                </div>
+                                                                <div>
+                                                                    <div
+                                                                        class="d-flex flex-wrap gap-2"
+                                                                    >
+                                                                        <button
+                                                                            type="button"
+                                                                            class="btn btn-thm add-btn"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#showModal"
+                                                                            data-name="Coupon"
+                                                                        >
+                                                                            <i
+                                                                                class="bi bi-plus-circle align-baseline me-1"
+                                                                            ></i>
+                                                                            Add
+                                                                            Coupon
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xxl-12">
+                                                    <!--end card-->
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="table-responsive"
+                                                            >
+                                                                <table
+                                                                    class="table table-centered align-middle table-nowrap mb-0"
+                                                                >
+                                                                    <thead
+                                                                        class="table-active"
+                                                                    >
+                                                                        <tr>
+                                                                            <th>
+                                                                                <div
+                                                                                    class="form-check"
+                                                                                >
+                                                                                    <input
+                                                                                        class="form-check-input"
+                                                                                        type="checkbox"
+                                                                                        value="option"
+                                                                                        id="checkAll"
+                                                                                    />
+                                                                                    <label
+                                                                                        class="form-check-label"
+                                                                                        for="checkAll"
+                                                                                    ></label>
+                                                                                </div>
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Product
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Type
+                                                                            </th>
+
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Discount
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Date
+                                                                                Range
+                                                                            </th>                                                                            
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Message
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Status
+                                                                            </th>
+                                                                            <th>
+                                                                                Action
+                                                                            </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody
+                                                                        class="list"
+                                                                    >
+                                                                        <%
+                                                                        if(!product_coupon[0])
+                                                                        { %>
+                                                                        <tr>
+                                                                            <td
+                                                                                colspan="100%"
+                                                                                class="text-center"
+                                                                            >
+                                                                                No
+                                                                                Data
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% }
+                                                                        else {%>
+                                                                        <%
+                                                                        product_coupon.forEach(function(coupon){%>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div
+                                                                                    class="form-check"
+                                                                                >
+                                                                                    <input
+                                                                                        class="form-check-input"
+                                                                                        type="checkbox"
+                                                                                        name="chk_child"
+                                                                                    />
+                                                                                    <label
+                                                                                        class="form-check-label"
+                                                                                    ></label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td
+                                                                                class="category"
+                                                                            >
+                                                                            <% if
+                                                                            (coupon.product_id
+                                                                            &&
+                                                                            coupon.product_id.length
+                                                                            > 0) { %>
+                                                                            <div class="wrapper">
+                                                                                <%
+                                                                                coupon.product_id.forEach((product,
+                                                                                index) => { %>
+                                                                                <span
+                                                                                    class="badge bg-secondary-subtle text-secondary"
+                                                                                    ><%=
+                                                                                    product.product_name
+                                                                                    %></span
+                                                                                >
+                                                                                <% if (index <
+                                                                                coupon.product_id.length
+                                                                                - 1) { %> <% if
+                                                                                ((index + 1) % 4 ===
+                                                                                0) { %>
+                                                                                <br/>
+                                                                                <% } else { %> <% }
+                                                                                %> <% } %> <% }); %>
+                                                                            </div>
+                                                                            <% } else { %>
+                                                                            <span
+                                                                                class="badge bg-secondary-subtle text-secondary"
+                                                                                >No Product</span
+                                                                            >
+                                                                            <% } %>
+                                                                            </td>
+                                                                            <td
+                                                                                class="type"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.type
+                                                                                ?
+                                                                                coupon.type
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+                                                                            <td
+                                                                                class="discount"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.discount
+                                                                                ?
+                                                                                coupon.discount
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+                                                                            <td
+                                                                                class="published"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.date_range
+                                                                                ?
+                                                                                coupon.date_range
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+                                                                
+                                                                            <td
+                                                                                class="message"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.message
+                                                                                ?
+                                                                                coupon.message
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+
+                                                                            <td
+                                                                                class="status"
+                                                                            >
+                                                                                <span
+                                                                                    class="badge bg-secondary-subtle text-secondary"
+                                                                                >
+                                                                                    <%=
+                                                                                    coupon.status_id
+                                                                                    ?
+                                                                                    coupon.status_id.name
+                                                                                    :
+                                                                                    ''
+                                                                                    %>
+                                                                                </span>
+                                                                            </td>
+
+                                                                            <td>
+                                                                                <div
+                                                                                    class="dropdown position-static"
+                                                                                >
+                                                                                    <button
+                                                                                        class="btn btn-subtle-secondary btn-sm btn-icon"
+                                                                                        role="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                    >
+                                                                                        <i
+                                                                                            class="bi bi-three-dots-vertical"
+                                                                                        ></i>
+                                                                                    </button>
+
+                                                                                    <ul
+                                                                                        class="dropdown-menu dropdown-menu-end"
+                                                                                    >
+                                                                                        <li>
+                                                                                            <a
+                                                                                                class="dropdown-item edit-item-btn"
+                                                                                                data-bs-toggle="modal"
+                                                                                                data-name="Category"
+                                                                                                href="#showEditModal"
+                                                                                                id="edit_btn"
+                                                                                                data-model="<%= JSON.stringify(coupon) %>"
+                                                                                                ><i
+                                                                                                    class="ph-pencil align-middle me-1"
+                                                                                                ></i>
+                                                                                                Edit
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a
+                                                                                                class="dropdown-item remove-item-btn"
+                                                                                                data-bs-toggle="modal"
+                                                                                                href="#deleteRecordModal"
+                                                                                                data-id="<%= coupon._id %>"
+                                                                                                ><i
+                                                                                                    class="ph-trash align-middle me-1"
+                                                                                                ></i>
+                                                                                                Remove</a
+                                                                                            >
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% });
+                                                                        %> <% }
+                                                                        %>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div
+                                                                class="noresult"
+                                                                style="
+                                                                    display: none;
+                                                                "
+                                                            >
+                                                                <div
+                                                                    class="text-center py-4"
+                                                                >
+                                                                    <i
+                                                                        class="ph-magnifying-glass fs-1 text-primary"
+                                                                    ></i>
+                                                                    <h5
+                                                                        class="mt-2"
+                                                                    >
+                                                                        Sorry!
+                                                                        No
+                                                                        Result
+                                                                        Found
+                                                                    </h5>
+                                                                    <p
+                                                                        class="text-muted mb-0"
+                                                                    >
+                                                                        We've
+                                                                        searched
+                                                                        more
+                                                                        than
+                                                                        150+
+                                                                        customers
+                                                                        We did
+                                                                        not find
+                                                                        any
+                                                                        customers
+                                                                        for you
+                                                                        search.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
+                                                                id="pagination-element"
+                                                            >
+                                                                <div
+                                                                    class="col-sm"
+                                                                >
+                                                                    <div
+                                                                        class="text-muted"
+                                                                    >
+                                                                        Showing
+                                                                        <span
+                                                                            class="fw-semibold"
+                                                                            >
+                                                                            <%= Math.min(currentPage *
+                                                                                pageSize, total_product_coupon)
+                                                                             %>                                                                            
+                                                                            </span
+                                                                        >
+                                                                        of
+                                                                        <span
+                                                                            class="fw-semibold"
+                                                                            >
+                                                                            <%= total_product_coupon ? total_product_coupon : 0 %>
+                                                                        </span>
+                                                                        Results
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col-sm-auto mt-3 mt-sm-0"
+                                                                >
+                                                                    <div
+                                                                        class="pagination-wrap hstack gap-2"
+                                                                    >
+                                                                        <a
+                                                                            class="page-item pagination-prev disabled"
+                                                                            href="javascript:void(0)"
+                                                                            >Previous</a
+                                                                        >
+                                                                        <ul
+                                                                            class="pagination listjs-pagination mb-0"
+                                                                        ></ul>
+                                                                        <a
+                                                                            class="page-item pagination-next"
+                                                                            href="javascript:void(0)"
+                                                                            >Next</a
+                                                                        >
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- SubTotal Tab -->
+                                <div
+                                    class="tab-pane"
+                                    id="subTotal"
+                                    role="tabpanel"
+                                >
+                                    <div class="card-body">
+                                        <div id="invoiceList">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="d-flex align-items-center flex-wrap gap-3"
+                                                            >
+                                                                <div
+                                                                    class="flex-grow-1"
+                                                                >
+                                                                    <h3
+                                                                        class="card-title mb-0"
+                                                                    >
+                                                                        Coupon
+                                                                        List
+                                                                    </h3>
+                                                                </div>
+                                                                <div>
+                                                                    <div
+                                                                        class="d-flex flex-wrap gap-2"
+                                                                    >
+                                                                        <button
+                                                                            type="button"
+                                                                            class="btn btn-thm add-btn"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#showModal"
+                                                                            data-name="Coupon"
+                                                                        >
+                                                                            <i
+                                                                                class="bi bi-plus-circle align-baseline me-1"
+                                                                            ></i>
+                                                                            Add
+                                                                            Coupon
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xxl-12">
+                                                    <!--end card-->
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="table-responsive"
+                                                            >
+                                                                <table
+                                                                    class="table table-centered align-middle table-nowrap mb-0"
+                                                                >
+                                                                    <thead
+                                                                        class="table-active"
+                                                                    >
+                                                                        <tr>
+                                                                            <th>
+                                                                                <div
+                                                                                    class="form-check"
+                                                                                >
+                                                                                    <input
+                                                                                        class="form-check-input"
+                                                                                        type="checkbox"
+                                                                                        value="option"
+                                                                                        id="checkAll"
+                                                                                    />
+                                                                                    <label
+                                                                                        class="form-check-label"
+                                                                                        for="checkAll"
+                                                                                    ></label>
+                                                                                </div>
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                            
+                                                                            >
+                                                                                Coupon
+                                                                                Code
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Type
+                                                                            </th>
+
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Discount
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Date
+                                                                                Range
+                                                                            </th>
+                                                                            <th
+                                                                                
+                                                                               
+                                                                            >
+                                                                                Status
+                                                                            </th>
+                                                                            <th>
+                                                                                Action
+                                                                            </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody
+                                                                        class="list"
+                                                                    >
+                                                                        <%
+                                                                        if(!sub_total_coupon[0])
+                                                                        { %>
+                                                                        <tr>
+                                                                            <td
+                                                                                colspan="100%"
+                                                                                class="text-center"
+                                                                            >
+                                                                                No
+                                                                                Data
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% }
+                                                                        else {%>
+                                                                        <%
+                                                                        sub_total_coupon.forEach(function(coupon){%>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div
+                                                                                    class="form-check"
+                                                                                >
+                                                                                    <input
+                                                                                        class="form-check-input"
+                                                                                        type="checkbox"
+                                                                                        name="chk_child"
+                                                                                    />
+                                                                                    <label
+                                                                                        class="form-check-label"
+                                                                                    ></label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td
+                                                                                class="coupon_code"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.coupon_code
+                                                                                ?
+                                                                                coupon.coupon_code
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>                                                                        
+                                                                            <td
+                                                                                class="type"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.type
+                                                                                ?
+                                                                                coupon.type
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+                                                                            <td
+                                                                                class="discount"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.discount
+                                                                                ?
+                                                                                coupon.discount
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+                                                                            <td
+                                                                                class="published"
+                                                                            >
+                                                                                <%=
+                                                                                coupon.date_range
+                                                                                ?
+                                                                                coupon.date_range
+                                                                                :
+                                                                                ''
+                                                                                %>
+                                                                            </td>
+
+                                                                            <td
+                                                                                class="status"
+                                                                            >
+                                                                                <span
+                                                                                    class="badge bg-secondary-subtle text-secondary"
+                                                                                >
+                                                                                    <%=
+                                                                                    coupon.status_id
+                                                                                    ?
+                                                                                    coupon.status_id.name
+                                                                                    :
+                                                                                    ''
+                                                                                    %>
+                                                                                </span>
+                                                                            </td>
+
+                                                                            <td>
+                                                                                <div
+                                                                                    class="dropdown position-static"
+                                                                                >
+                                                                                    <button
+                                                                                        class="btn btn-subtle-secondary btn-sm btn-icon"
+                                                                                        role="button"
+                                                                                        data-bs-toggle="dropdown"
+                                                                                        aria-expanded="false"
+                                                                                    >
+                                                                                        <i
+                                                                                            class="bi bi-three-dots-vertical"
+                                                                                        ></i>
+                                                                                    </button>
+
+                                                                                    <ul
+                                                                                        class="dropdown-menu dropdown-menu-end"
+                                                                                    >
+                                                                                        <li>
+                                                                                            <a
+                                                                                                class="dropdown-item edit-item-btn"
+                                                                                                data-bs-toggle="modal"
+                                                                                                data-name="Category"
+                                                                                                href="#showEditModal"
+                                                                                                id="edit_btn"
+                                                                                                data-model="<%= JSON.stringify(coupon) %>"
+                                                                                                ><i
+                                                                                                    class="ph-pencil align-middle me-1"
+                                                                                                ></i>
+                                                                                                Edit
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a
+                                                                                                class="dropdown-item remove-item-btn"
+                                                                                                data-bs-toggle="modal"
+                                                                                                href="#deleteRecordModal"
+                                                                                                data-id="<%= coupon._id %>"
+                                                                                                ><i
+                                                                                                    class="ph-trash align-middle me-1"
+                                                                                                ></i>
+                                                                                                Remove</a
+                                                                                            >
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% });
+                                                                        %> <% }
+                                                                        %>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div
+                                                                class="noresult"
+                                                                style="
+                                                                    display: none;
+                                                                "
+                                                            >
+                                                                <div
+                                                                    class="text-center py-4"
+                                                                >
+                                                                    <i
+                                                                        class="ph-magnifying-glass fs-1 text-primary"
+                                                                    ></i>
+                                                                    <h5
+                                                                        class="mt-2"
+                                                                    >
+                                                                        Sorry!
+                                                                        No
+                                                                        Result
+                                                                        Found
+                                                                    </h5>
+                                                                    <p
+                                                                        class="text-muted mb-0"
+                                                                    >
+                                                                        We've
+                                                                        searched
+                                                                        more
+                                                                        than
+                                                                        150+
+                                                                        customers
+                                                                        We did
+                                                                        not find
+                                                                        any
+                                                                        customers
+                                                                        for you
+                                                                        search.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
+                                                                id="pagination-element"
+                                                            >
+                                                                <div
+                                                                    class="col-sm"
+                                                                >
+                                                                    <div
+                                                                        class="text-muted"
+                                                                    >
+                                                                        Showing
+                                                                        <span
+                                                                            class="fw-semibold"
+                                                                            >
+                                                                            <%= Math.min(currentPage *
+                                                                                pageSize, total_sub_total_coupon)
+                                                                             %>
+                                                                        </span>
+                                                                        of
+                                                                        <span
+                                                                            class="fw-semibold"
+                                                                            >
+                                                                            <%= total_sub_total_coupon ? total_sub_total_coupon : 0 %>
+                                                                        </span>
+                                                                        Results
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col-sm-auto mt-3 mt-sm-0"
+                                                                >
+                                                                    <div
+                                                                        class="pagination-wrap hstack gap-2"
+                                                                    >
+                                                                        <a
+                                                                            class="page-item pagination-prev disabled"
+                                                                            href="javascript:void(0)"
+                                                                            >Previous</a
+                                                                        >
+                                                                        <ul
+                                                                            class="pagination listjs-pagination mb-0"
+                                                                        ></ul>
+                                                                        <a
+                                                                            class="page-item pagination-next"
+                                                                            href="javascript:void(0)"
+                                                                            >Next</a
+                                                                        >
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Add coupon -->
+<div
+    class="modal modal-lg fade"
+    id="showModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel">Add Coupon</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    id="close-ordermodal"
+                ></button>
+            </div>
+            <form class="tablelist-form" id="submitForm" autocomplete="off">
+                <div class="modal-body">
+                    <input type="hidden" id="id-field" />
+
+                    <div class="mb-3" id="category-field-container">
+                        <label for="Category-field" class="form-label"
+                            >Category<span class="text-danger">*</span>                            
+                            </label
+                        >
+                        <select
+                            class="form-control select2 select2-hidden-accessible"
+                            id="category-field"
+                            name="category_id"
+                            multiple=""
+                            tabindex="-1"
+                            aria-hidden="true"
+                            data-placeholder="Select Categories"
+                        >
+                            <%categories.forEach(function(element){ %>
+                            <option value="<%= element._id %>">
+                                <%= element.name%>
+                            </option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="product-field-container">
+                        <label for="Product-field" class="form-label"
+                            >Product<span class="text-danger">*</span></label
+                        >
+                        <select
+                            class="form-control select2 select2-hidden-accessible"
+                            id="product_id"
+                            name="product_id"
+                            multiple=""
+                            tabindex="-1"
+                            aria-hidden="true"
+                            data-placeholder="Select Products"
+                        >
+                            <%products.forEach(function(element){ %>
+                            <option value="<%= element._id %>">
+                                <%= element.product_name%>
+                            </option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-6" id="type-field-container">
+                            <label for="type-field" class="form-label"
+                                >Type<span class="text-danger">*</span></label
+                            >
+                            <select class="form-control" id="type" name="type">
+                                <option value="" selected>
+                                    Select Type
+                                </option>
+                                <option value="flat">Flat</option>
+                                <option value="percentage">Percentage</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 col-6" id="discount-field-container">
+                            <label for="discount-field" class="form-label"
+                                >Discount<span class="text-danger">*</span></label
+                            >
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="discount"
+                                name="discount"
+                                placeholder="Enter discount"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3" id="date-range-container">
+                        <label for="type-field" class="form-label">
+                            Date Range<span class="text-danger">*</span></label
+                        >
+                        <input
+                            type="text"
+                            name="date_range"
+                            id="date_range"
+                            class="form-control daterange-cus"
+                            placeholder="Select Date Range"
+                        />
+                    </div>
+                    <div class="mb-3" id="message-field-container">
+                        <label for="message-field" class="form-label"
+                            >Message</label
+                        >
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="message"
+                            name="message"
+                            placeholder="Enter message"
+                        />
+                    </div>
+                    <div class="mb-3" id="coupon-code-field-container">
+                        <label for="code-field" class="form-label"
+                            >Coupon Code<span class="text-danger">*</span></label
+                        >
+                        <div class="input-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="coupon_code"
+                                name="coupon_code"
+                                placeholder="Enter coupon code"
+                            />
+                            <span class="input-group-text" id="generate_coupon">
+                                <i
+                                    class="bi bi-arrow-repeat"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Generate"
+                                ></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3 ms-3" id="status-field-container">
+                        <div
+                            class="d-flex justify-content-start align-items-start"
+                        >
+                            <label class="form-check-label" for="variant"
+                                >Status</label
+                            >
+                            <div class="form-check form-switch ms-4">
+                                <input
+                                    type="checkbox"
+                                    name="status_id"
+                                    id="status_id"
+                                    class="form-check-input form-check-input-lg"
+                                    checked
+                                />
+                                <span class="custom-switch-indicator"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                            id="add-btn"
+                        >
+                            Add Coupon
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end Add coupon -->
+ 
+<!-- Edit coupon -->
+<div
+    class="modal modal-lg fade"
+    id="showEditModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Coupon</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    id="close-ordermodal"
+                ></button>
+            </div>
+            <form class="tablelist-form" id="editForm">
+                <div class="modal-body">
+                    <input type="hidden" id="editid" name="editid" />
+
+                    <div class="mb-3" id="edit_category-field-container">
+                        <label for="Category-field" class="form-label"
+                            >Category</label
+                        >
+                        <select
+                            class="form-control select2 select2-hidden-accessible"
+                            id="edit_category"
+                            name="category_id"
+                            multiple=""
+                            tabindex="-1"
+                            aria-hidden="true"
+                            data-placeholder="Select Categories"
+                        >
+                            <%categories.forEach(function(element){ %>
+                            <option value="<%= element._id %>">
+                                <%= element.name%>
+                            </option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="edit_product-field-container">
+                        <label for="Product-field" class="form-label"
+                            >Product</label
+                        >
+                        <select
+                            class="form-control select2 select2-hidden-accessible"
+                            id="edit_product"
+                            name="product_id"
+                            multiple=""
+                            tabindex="-1"
+                            aria-hidden="true"
+                            data-placeholder="Select Products"
+                        >
+                            <%products.forEach(function(element){ %>
+                            <option value="<%= element._id %>">
+                                <%= element.product_name%>
+                            </option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-6" id="edit_type-field-container">
+                            <label for="type-field" class="form-label"
+                                >Type</label
+                            >
+                            <select class="form-control" id="edit_type" name="type">
+                                <option value="" selected>
+                                    Select Type
+                                </option>
+                                <option value="flat">Flat</option>
+                                <option value="percentage">Percentage</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 col-6" id="edit_discount-field-container">
+                            <label for="discount-field" class="form-label"
+                                >Discount</label
+                            >
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="edit_discount"
+                                name="discount"
+                                placeholder="Enter discount"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3" id="edit_date-range-container">
+                        <label for="type-field" class="form-label">
+                            Date Range</label
+                        >
+                        <input
+                            type="text"
+                            name="date_range"
+                            id="edit_date_range"
+                            class="form-control daterange-cus"
+                            placeholder="Select Date Range"
+                        />
+                    </div>
+                    <div class="mb-3" id="edit_message-field-container">
+                        <label for="message-field" class="form-label"
+                            >Message</label
+                        >
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="edit_message"
+                            name="message"
+                            placeholder="Enter message"
+                        />
+                    </div>
+                    <div class="mb-3" id="edit_coupon-code-field-container">
+                        <label for="code-field" class="form-label"
+                            >Coupon Code</label
+                        >
+                        <div class="input-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="edit_coupon_code"
+                                name="coupon_code"
+                                placeholder="Enter coupon code"
+                            />
+                            <span class="input-group-text" id="edit_generate_coupon">
+                                <i
+                                    class="bi bi-arrow-repeat"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Generate"
+                                ></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3 ms-3" id="edit_status-field-container">
+                        <div
+                            class="d-flex justify-content-start align-items-start"
+                        >
+                            <label class="form-check-label" for="variant"
+                                >Status</label
+                            >
+                            <div class="form-check form-switch ms-4">
+                                <input
+                                    type="checkbox"
+                                    name="status_id"
+                                    id="edit_status_id"
+                                    class="form-check-input form-check-input-lg"
+                                    checked
+                                />
+                                <span class="custom-switch-indicator"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end Edit coupon -->
+
+<!-- deleteRecordModal -->
+<div
+    id="deleteRecordModal"
+    class="modal fade zoomIn"
+    tabindex="-1"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="btn-close"
+                    id="deleteRecord-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body p-md-5">
+                <div class="text-center">
+                    <div class="text-danger">
+                        <i class="bi bi-trash display-4"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="mb-2">Are you sure ?</h3>
+                        <p class="text-muted fs-lg mx-3 mb-0">
+                            Are you sure you want to remove this record ?
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button
+                        type="button"
+                        class="btn w-sm btn-light btn-hover"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn w-sm btn-danger btn-hover"
+                        id="delete-record"
+                    >
+                        Yes, Delete It!
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /deleteRecordModal -->
+
+<%- include ('partials/footer.ejs') %>
+
+<script>
+    $(document).ready(function () {
+        $("#category-field").select2({
+            placeholder: $(this).data("placeholder"),
+            width: "100%", // This makes sure the select box takes the full width
+        });
+    });
+    $(document).ready(function () {
+        $("#edit_category").select2({
+            placeholder: $(this).data("placeholder"),
+            width: "100%", // This makes sure the select box takes the full width
+        });
+    });
+    $(document).ready(function () {
+        $("#product_id").select2({
+            placeholder: $(this).data("placeholder"),
+            width: "100%", // This makes sure the select box takes the full width
+        });
+    });
+    $(document).ready(function () {
+        $("#edit_product").select2({
+            placeholder: $(this).data("placeholder"),
+            width: "100%", // This makes sure the select box takes the full width
+        });
+    });
+</script>
+
+<script>
+    //  Date Range Picker For Discount period
+    $(function () {
+        $('input[name="date_range"]').daterangepicker({
+            timePicker: true,
+            autoUpdateInput: false,
+            locale: {
+                format: "DD/MM/YYYY hh:mm A",
+                cancelLabel: "Clear",
+            },
+        });
+        $('input[name="date_range"]').on(
+            "apply.daterangepicker",
+            function (ev, picker) {
+                $(this).val(
+                    picker.startDate.format("DD/MM/YYYY hh:mm A") +
+                        " - " +
+                        picker.endDate.format("DD/MM/YYYY hh:mm A")
+                );
+            }
+        );
+
+        $('input[name="date_range"]').on(
+            "cancel.daterangepicker",
+            function (ev, picker) {
+                $(this).val("");
+            }
+        );
+    });
+
+    // Generate Coupon Code
+    document
+        .getElementById("generate_coupon")
+        .addEventListener("click", function () {
+            // Function to generate a random coupon code
+            function generateCouponCode(length = 8) {
+                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                let couponCode = "";
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(
+                        Math.random() * chars.length
+                    );
+                    couponCode += chars[randomIndex];
+                }
+                return couponCode;
+            }
+            // Set the generated coupon code to the input field
+            document.getElementById("coupon_code").value = generateCouponCode();
+        });
+
+        document
+        .getElementById("edit_generate_coupon")
+        .addEventListener("click", function () {
+            // Function to generate a random coupon code
+            function generateCouponCode(length = 8) {
+                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                let couponCode = "";
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(
+                        Math.random() * chars.length
+                    );
+                    couponCode += chars[randomIndex];
+                }
+                return couponCode;
+            }
+            // Set the generated coupon code to the input field
+            document.getElementById("edit_coupon_code").value = generateCouponCode();
+        });
+</script>
+
+<script>
+    //#region Add Form form-fields based on the active tab
+    document.addEventListener('DOMContentLoaded', function () {
+    // Function to toggle form fields based on active tab
+    function toggleFormFields(tab) {
+        // Hide all fields initially
+        document.getElementById('category-field-container').style.display = 'none';
+        document.getElementById('product-field-container').style.display = 'none';
+        document.getElementById('coupon-code-field-container').style.display = 'none';
+        
+        // Common fields
+        document.getElementById('type-field-container').style.display = 'block';
+        document.getElementById('discount-field-container').style.display = 'block';
+        document.getElementById('date-range-container').style.display = 'block';
+        document.getElementById('status-field-container').style.display = 'block';
+        document.getElementById('message-field-container').style.display = 'block';
+        
+        // Show specific fields based on the selected tab
+        if (tab === 'category') {
+            document.getElementById('category-field-container').style.display = 'block';
+        } else if (tab === 'product') {
+            document.getElementById('product-field-container').style.display = 'block';
+        } else if (tab === 'subTotal') {
+            document.getElementById('coupon-code-field-container').style.display = 'block';
+        }
+    }
+
+    // Get all the tabs
+    var tabs = document.querySelectorAll('.nav-link');
+
+    // Add event listeners to each tab
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function (e) {
+            var activeTab = e.target.getAttribute('href').substring(1); // Get the tab ID
+            toggleFormFields(activeTab);
+        });
+    });
+
+    // Initialize form based on the active tab when the page loads
+    var activeTab = document.querySelector('.nav-link.active').getAttribute('href').substring(1);
+    toggleFormFields(activeTab);
+});
+    //#endregion Add Form form-fields based on the active tab
+
+    //#region Edit Form form-fields based on the active tab
+    document.addEventListener('DOMContentLoaded', function () {
+    // Function to toggle form fields based on active tab
+    function toggleEditFormFields(tab) {
+        // Hide all fields initially
+        document.getElementById('edit_category-field-container').style.display = 'none';
+        document.getElementById('edit_product-field-container').style.display = 'none';
+        document.getElementById('edit_coupon-code-field-container').style.display = 'none';
+        
+        // Common fields
+        document.getElementById('edit_type-field-container').style.display = 'block';
+        document.getElementById('edit_discount-field-container').style.display = 'block';
+        document.getElementById('edit_date-range-container').style.display = 'block';
+        document.getElementById('edit_status-field-container').style.display = 'block';
+        document.getElementById('edit_message-field-container').style.display = 'block';
+        
+        // Show specific fields based on the selected tab
+        if (tab === 'category') {
+            document.getElementById('edit_category-field-container').style.display = 'block';
+        } else if (tab === 'product') {
+            document.getElementById('edit_product-field-container').style.display = 'block';
+        } else if (tab === 'subTotal') {
+            document.getElementById('edit_coupon-code-field-container').style.display = 'block';
+        }
+    }
+     
+    // Get all the tabs
+    var tabs = document.querySelectorAll('.nav-link');
+
+    // Add event listeners to each tab
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function (e) {
+            var activeTab = e.target.getAttribute('href').substring(1); // Get the tab ID
+            toggleEditFormFields(activeTab);
+        });
+    });
+
+    // Initialize form based on the active tab when the page loads
+    var activeTab = document.querySelector('.nav-link.active').getAttribute('href').substring(1);
+    toggleEditFormFields(activeTab);
+});
+
+    //#endregion Edit Form form-fields based on the active tab
+
+</script>
+
+<script>
+    //#region Add Coupon
+    var addform = $("#submitForm");
+    addform.on("submit", submitFormHandler);
+    function submitFormHandler(e) {
+        e.preventDefault();
+
+        // validation Required fields
+        if ($("#category-field-container").css("display") === "block") {
+            if ($("#category-field").val() === null || $("#category-field").val() == "") {
+                iziToast.warning({
+                    title: "Warning",
+                    message: "Category is required",
+                    position: "topRight",
+                });
+                return;
+            }
+        }
+        if ($("#product-field-container").css("display") === "block") {
+            if ($("#product_id").val() === null || $("#product_id").val() == "") {
+                iziToast.warning({
+                    title: "Warning",
+                    message: "Product is required",
+                    position: "topRight",
+                });
+                return;
+            }
+        }
+        if ($("#coupon-code-field-container").css("display") === "block") {
+            if ($("#coupon_code").val() == "") {
+                iziToast.warning({
+                    title: "Warning",
+                    message: "Coupon Code is required",
+                    position: "topRight",
+                });
+                return;
+            }
+        }
+
+        if ($("#type").val() == "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Type is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#discount").val() == "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Discount is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#date_range").val() == "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Date Range is required",
+                position: "topRight",
+            });
+            return;
+        }
+        
+        var categoryIds = $(this).find('select[name="category_id"]').val();
+        var productIds = $(this).find('select[name="product_id"]').val();
+
+        var formData = getFormData(addform);
+        formData.category_id = categoryIds;
+        formData.product_id = productIds;
+
+        const activeTab = document
+            .querySelector(".nav-link.active")
+            .getAttribute("href");
+
+        // Store the active tab in local storage
+        localStorage.setItem("activeTab", activeTab);
+
+        // Remove fields not related to the active tab
+        if (activeTab === "#category") {
+            delete formData.product_id;
+            delete formData.coupon_code;
+        } else if (activeTab === "#product") {
+            delete formData.category_id;
+            delete formData.coupon_code;
+        } else if (activeTab === "#subTotal") {
+            delete formData.category_id;
+            delete formData.product_id;
+            delete formData.message;
+        }
+
+        // DO POST
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/admin/coupon/add",
+            data: JSON.stringify(formData),
+        })
+            .done((res) => {
+                if (res.status == 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    $("#showModal").modal("hide");
+                    setTimeout(function () {
+                        window.location.href = "/admin/coupon/list";
+                    }, 500);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    }
+    //#endregion Add Coupon
+
+    //#region Edit Coupon
+    $(document).on("click", "#edit_btn", function (e) {
+        var data = $(this).attr("data-model");
+        data = JSON.parse(data);
+        const activeStatusId = "<%= activeStatus._id.toString() %>";
+
+       // Populate multi-select for categories, products
+    if (data.category_id && data.category_id.length > 0) {
+        var categoryIds = data.category_id.map((category) => category._id);
+        $("#edit_category").val(categoryIds).trigger('change');
+    }
+    if (data.product_id && data.product_id.length > 0) {
+        var productIds = data.product_id.map((product) => product._id);
+        $("#edit_product").val(productIds).trigger('change');
+    }
+
+        $("#editid").val(data._id);
+        $("#edit_category").val(categoryIds);
+        $("#edit_product").val(productIds);
+        $("#edit_type").val(data.type);
+        $("#edit_discount").val(data.discount);
+        $("#edit_date_range").val(data.date_range);
+        $("#edit_message").val(data.message);
+        $("#edit_coupon_code").val(data.coupon_code);
+        $("#edit_status_id").prop("checked", data.status_id._id === activeStatusId);
+    });
+
+    function getFormData($form) {
+        var unindexed_array = $form.serializeArray();
+        var indexed_array = {};
+
+        $.map(unindexed_array, function (n, i) {
+            indexed_array[n["name"]] = n["value"];
+        });
+
+        return indexed_array;
+    }
+
+    var editform = $("#editForm");
+    editform.on("submit", function (e) {
+        e.preventDefault();
+
+        var categoryIds = $(this).find('select[name="category_id"]').val();
+        var productIds = $(this).find('select[name="product_id"]').val();
+
+        var formData = getFormData(editform);
+        formData.category_id = categoryIds;
+        formData.product_id = productIds;
+
+        const activeTab = document
+            .querySelector(".nav-link.active")
+            .getAttribute("href");
+
+        // Store the active tab in local storage
+        localStorage.setItem("activeTab", activeTab);
+
+        // Remove fields not related to the active tab
+        if (activeTab === "#category") {
+            delete formData.product_id;
+            delete formData.coupon_code;
+        } else if (activeTab === "#product") {
+            delete formData.category_id;
+            delete formData.coupon_code;
+        } else if (activeTab === "#subTotal") {
+            delete formData.category_id;
+            delete formData.product_id;
+            delete formData.message;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/admin/coupon/edit",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+        })
+            .done((res) => {
+                if (res.status === 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    $("#showEditModal").modal("hide");
+                    setTimeout(function () {
+                        window.location.href = "/admin/coupon/list";
+                    }, 500);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    });
+    //#endregion Edit Coupon
+
+    //#region Delete product
+    let couponID;
+    $(document).ready(function () {
+    // Show the modal and store the product ID to delete
+    $(".remove-item-btn").click(function () {
+        couponID = $(this).data("id");
+    });
+
+    // AJAX request to delete the product
+    $("#delete-record").click(function () {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/admin/coupon/delete/" + couponID,
+        })
+            .done((res) => {
+                if (res.status == 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    });
+});
+//#endregion Delete product
+
+    $(document).ready(function () {
+        // Read the stored active tab from local storage
+        var activeTab = localStorage.getItem("activeTab");
+
+        if (activeTab) {
+            // Activate the stored tab
+            $('.nav-link[href="' + activeTab + '"]').tab("show");
+            // Remove the stored active tab from local storage
+            localStorage.removeItem("activeTab");
+        }
+    });
+</script>

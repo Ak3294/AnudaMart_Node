@@ -1,0 +1,734 @@
+<%- include('partials/header.ejs') %><!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- Start right Content here -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid p-2">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">Edit Vendor details</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript: void(0);"
+                                            >Dashboard</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Vendor Information
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+                <!--end row-->
+                <div class="d-flex align-items-center flex-wrap gap-2 mb-4">
+                    <ul
+                        class="nav nav-pills arrow-navtabs nav-secondary gap-2 flex-grow-1 order-2 order-lg-1"
+                        role="tablist"
+                    >
+                        <li class="nav-item" role="presentation">
+                            <a
+                                class="nav-link active"
+                                data-bs-toggle="tab"
+                                href="#personalInfo"
+                                role="tab"
+                                aria-selected="false"
+                                tabindex="-1"
+                            >
+                                Personal Info
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a
+                                class="nav-link"
+                                data-bs-toggle="tab"
+                                href="#accountDetails"
+                                role="tab"
+                                aria-selected="true"
+                            >
+                                Account Details
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <form id="EditVendorForm">
+                    <div class="card p-4">
+                        <input
+                            type="hidden"
+                            id="editid"
+                            name="editid"
+                            value="<%= user._id %>"
+                        />
+                        <div class="tab-content">
+                            <!-- Personal Info -->
+                            <div
+                                class="tab-pane active"
+                                id="personalInfo"
+                                role="tabpanel"
+                            >
+                                <div class="card-header">
+                                    <h6 class="card-title mb-4">
+                                        Personal Information
+                                    </h6>
+                                </div>
+                                <div class="row mt-3 p-4">
+                                    <div class="col-lg-6">
+                                        <div class="mb-4">
+                                            <label
+                                                for="first_name"
+                                                class="form-label fw-semibold"
+                                                >First Name</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="first_name"
+                                                name="first_name"
+                                                placeholder="John"
+                                            />
+                                        </div>
+                                        <div class="mb-4">
+                                            <label
+                                                for="phone"
+                                                class="form-label fw-semibold"
+                                                >Phone
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="phone"
+                                                name="phone"
+                                                placeholder=""
+                                            />
+                                        </div>
+                                        <div class="mb-4">
+                                            <label
+                                                for="dob"
+                                                class="form-label fw-semibold"
+                                                >DOB
+                                            </label>
+                                            <input
+                                                type="date"
+                                                class="form-control"
+                                                id="dob"
+                                                name="dob"
+                                                placeholder=""
+                                            />
+                                        </div>
+                                        <div class="mb-4">
+                                            <label
+                                                for="address"
+                                                class="form-label fw-semibold"
+                                                >Address
+                                            </label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="address"
+                                                name="address"
+                                                placeholder=""
+                                            />
+                                        </div>
+                                        <div class="mb-4">
+                                            <label
+                                                for="additional_info"
+                                                class="form-label fw-semibold"
+                                                >Additional Info</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="additional_info"
+                                                name="additional_info"
+                                                placeholder=""
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-4">
+                                            <label
+                                                for="last_name"
+                                                class="form-label fw-semibold"
+                                                >Last Name</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="last_name"
+                                                name="last_name"
+                                                placeholder="Doe"
+                                            />
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label
+                                                for="email"
+                                                class="form-label fw-semibold"
+                                                >Email</label
+                                            >
+                                            <input
+                                                type="email"
+                                                class="form-control"
+                                                id="email"
+                                                name="email"
+                                                placeholder="johndoe@gmail.com"
+                                            />
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label
+                                                for="pincode"
+                                                class="form-label fw-semibold"
+                                                >Pin Code</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="pincode"
+                                                name="pincode"
+                                                placeholder="3118056"
+                                            />
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label
+                                                for="address2"
+                                                class="form-label fw-semibold"
+                                                >Address 2</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="address2"
+                                                name="address2"
+                                                placeholder=""
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Account details  -->
+                            <div
+                                class="tab-pane"
+                                id="accountDetails"
+                                role="tabpanel"
+                            >
+                                <div class="card-header">
+                                    <h6 class="card-title mb-2">
+                                        Account Details
+                                    </h6>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <!-- Column 1 -->
+                                        <div class="space-y-4">
+                                            <!--  vendor Image -->
+                                            <div
+                                                class="p-4 bg-white rounded shadow-md"
+                                            >
+                                                <label
+                                                    class="form-label"
+                                                >
+                                                    vendor Image
+                                                </label>
+                                                <div
+                                                    class="d-flex align-items-center"
+                                                >
+                                                    <input
+                                                        type="file"
+                                                        id="image"
+                                                        name="image"
+                                                        class="form-control"
+                                                        accept="image/*"
+                                                    />
+                                                    <input
+                                                        type="hidden"
+                                                        id="edit_image"
+                                                        name="edit_image"
+                                                        value="<%= (user && user.image) ? user.image : '' %>"
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="flex-shrink-0 me-2 mt-3"
+                                                    id="previewimage"
+                                                >
+                                                    <div>
+                                                        <img
+                                                            src=""
+                                                            id="display_preview_image"
+                                                            style="
+                                                                margin: 5px;
+                                                                width: 100px;
+                                                                height: 100px;
+                                                            "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <!-- Column 1 -->
+                                        <div class="space-y-4">
+                                            <!-- Aadhaar Card Front -->
+                                            <div class="p-4">
+                                                <label
+                                                    class="form-label"
+                                                >
+                                                    Aadhaar Card Front
+                                                </label>
+                                                <div
+                                                    class="d-flex align-items-center"
+                                                >
+                                                    <input
+                                                        type="file"
+                                                        id="aadhar_front_photo"
+                                                        name="aadhar_front_photo"
+                                                        class="form-control"
+                                                        accept="image/*"
+                                                    />
+                                                    <input
+                                                        type="hidden"
+                                                        id="edit_aadhar_front_photo"
+                                                        name="edit_aadhar_front_photo"
+                                                        value="<%= (vendors && vendors.aadhar_front_photo) ? vendors.aadhar_front_photo : '' %>"
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="me-2 mt-3"
+                                                    id="preview_aadhar_front_photo"
+                                                >
+                                                    <div>
+                                                        <img
+                                                            id="display_preview_aadhar_front_photo"
+                                                            style="
+                                                                margin: 5px;
+                                                                width: 100px;
+                                                                height: 100px;
+                                                            "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Aadhaar Card Back -->
+                                            <div class="p-4">
+                                                <label
+                                                    class="form-label"
+                                                    >Aadhaar Card Back</label
+                                                >
+                                                <div
+                                                    class="d-flex align-items-center"
+                                                >
+                                                    <input
+                                                        type="file"
+                                                        id="aadhar_back_photo"
+                                                        name="aadhar_back_photo"
+                                                        class="form-control"
+                                                        accept="image/*"
+                                                    />
+                                                    <input
+                                                        type="hidden"
+                                                        id="edit_aadhar_back_photo"
+                                                        name="edit_aadhar_back_photo"
+                                                        value="<%= (vendors && vendors.aadhar_back_photo) ? vendors.aadhar_back_photo : '' %>"
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="me-2 mt-3"
+                                                    id="preview_aadhar_back_photo"
+                                                >
+                                                    <div>
+                                                        <img
+                                                            id="display_preview_aadhar_back_photo"
+                                                            style="
+                                                                margin: 5px;
+                                                                width: 100px;
+                                                                height: 100px;
+                                                            "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Column 2 -->
+                                    <div class="col-lg-6">
+                                        <!-- PAN Card Front -->
+                                        <div class="p-4">
+                                            <label
+                                                for="pan_front_photo"
+                                                class="form-label"
+                                                >Pan Card Front</label
+                                            >
+                                            <div
+                                                class="d-flex align-items-center"
+                                            >
+                                                <input
+                                                    type="file"
+                                                    id="pan_front_photo"
+                                                    name="pan_front_photo"
+                                                    class="form-control"
+                                                    accept="image/*"
+                                                />
+                                                <input
+                                                    type="hidden"
+                                                    id="edit_pan_front_photo"
+                                                    name="edit_pan_front_photo"
+                                                    value="<%= (vendors && vendors.pan_front_photo) ? vendors.pan_front_photo : '' %>"
+                                                />
+                                            </div>
+                                            <div
+                                                class="mt-3"
+                                                id="preview_pan_front_photo"
+                                            >
+                                                <div>
+                                                    <img
+                                                        id="display_preview_pan_front_photo"
+                                                        style="
+                                                            margin: 5px;
+                                                            width: 100px;
+                                                            height: 100px;
+                                                        "
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 p-4 ml-3">
+                                        <div class="mb-4">
+                                            <label
+                                                for="aadhar_no"
+                                                class="form-label fw-semibold"
+                                                >Aadhaar Number
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="aadhar_no"
+                                                class="form-control"
+                                                id="aadhar_no"
+                                                placeholder="4353534534XXXX"
+                                            />
+                                        </div>
+                                        <div class="mb-4">
+                                            <label
+                                                for="pan_no"
+                                                class="form-label fw-semibold"
+                                                >Pan Card Number
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="pan_no"
+                                                class="form-control"
+                                                id="pan_no"
+                                                placeholder="HP4535XX544XX"
+                                            />
+                                        </div>
+                                        <div class="mb-4">
+                                            <label
+                                                for="bank_name"
+                                                class="form-label fw-semibold"
+                                                >Bank Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="bank_name"
+                                                class="form-control"
+                                                id="bank_name"
+                                                placeholder="ICICI Bank"
+                                            />
+                                        </div>
+                                        <div class="mb-4">
+                                            <label
+                                                for="ifsc_code"
+                                                class="form-label fw-semibold"
+                                                >IFSC Code
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="ifsc_code"
+                                                class="form-control"
+                                                id="ifsc_code"
+                                                placeholder="BARB0435XXX"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 6 p-4 ml-3">
+                                        <div class="mb-4">
+                                            <label
+                                                for="gst_no"
+                                                class="form-label fw-semibold"
+                                                >GST Number
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="gst_no"
+                                                class="form-control"
+                                                id="gst_no"
+                                                placeholder="4535435XX45CC"
+                                            />
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label
+                                                for="account_holder_name"
+                                                class="form-label fw-semibold"
+                                                >Account Holder Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="account_holder_name"
+                                                class="form-control"
+                                                id="account_holder_name"
+                                                placeholder="John Doe"
+                                            />
+                                        </div>
+                                        <div class="mb-4">
+                                            <label
+                                                for="account_no"
+                                                class="form-label fw-semibold"
+                                                >Account Number
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="account_no"
+                                                class="form-control"
+                                                id="account_no"
+                                                placeholder="4535466665XXX"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mt-10 mb-10">
+                        <div class="hstack gap-2 justify-content-end mrt-30">
+                            <button type="submit" class="btn btn-thm">
+                                Update & Save
+                            </button>
+                            <button type="button" class="btn btn-subtle-danger">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--end row-->
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+
+<%- include('partials/footer.ejs') %>
+
+<script>
+    $(document).ready(function () {
+        const vendor = JSON.parse(
+            '<%- JSON.stringify(vendors).replace(/\\n/g, "\\\\n").replace(/\\r/g, "\\\\r").replace(/\\t/g, "\\\\t").replace(/\\f/g, "\\\\f") %>'
+        );
+        const user = JSON.parse(
+            '<%- JSON.stringify(user).replace(/\\n/g, "\\\\n").replace(/\\r/g, "\\\\r").replace(/\\t/g, "\\\\t").replace(/\\f/g, "\\\\f") %>'
+        );
+
+        $("#first_name").val(user.first_name);
+        $("#last_name").val(user.last_name);
+        $("#email").val(user.email);
+        $("#pincode").val(user.pincode);
+        $("#phone").val(user.phone);
+        $("#address").val(user.address);
+        $("#dob").val(user.dob);
+        $("#address2").val(user.address2);
+        $("#additional_info").val(user.additional_info);
+
+        var imageUrl = "/dist/users/" + user.image;
+        var defaultImageUrl =
+            "../../../assets/images/default/user-dummy-img.jpg";
+
+        // Function to check if the image exists
+        function imageExists(url, callback) {
+            $.ajax({
+                url: url,
+                type: "HEAD",
+                success: function () {
+                    callback(true);
+                },
+                error: function () {
+                    callback(false);
+                },
+            });
+        }
+        if (user.image) {
+            imageExists(imageUrl, function (exists) {
+                if (exists) {
+                    $("#display_preview_image").attr("src", imageUrl);
+                } else {
+                    $("#display_preview_image").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_preview_image").attr("src", defaultImageUrl);
+        }
+
+        var aadharFrontImageUrl = "/dist/vendor/" + vendor.aadhar_front_photo;
+        var aadharBackImageUrl = "/dist/vendor/" + vendor.aadhar_back_photo;
+        var panFrontImageUrl = "/dist/vendor/" + vendor.pan_front_photo;
+
+        if (vendor.aadhar_front_photo) {
+            imageExists(aadharFrontImageUrl, function (exists) {
+                if (exists) {
+                    $("#display_preview_aadhar_front_photo").attr(
+                        "src",
+                        aadharFrontImageUrl
+                    );
+                } else {
+                    $("#display_preview_aadhar_front_photo").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_preview_aadhar_front_photo").attr(
+                "src",
+                defaultImageUrl
+            );
+        }
+
+        if (vendor.aadhar_back_photo) {
+            imageExists(aadharBackImageUrl, function (exists) {
+                if (exists) {
+                    $("#display_preview_aadhar_back_photo").attr(
+                        "src",
+                        aadharBackImageUrl
+                    );
+                } else {
+                    $("#display_preview_aadhar_back_photo").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_preview_aadhar_back_photo").attr(
+                "src",
+                defaultImageUrl
+            );
+        }
+
+        if (vendor.pan_front_photo) {
+            imageExists(panFrontImageUrl, function (exists) {
+                if (exists) {
+                    $("#display_preview_pan_front_photo").attr(
+                        "src",
+                        panFrontImageUrl
+                    );
+                } else {
+                    $("#display_preview_pan_front_photo").attr(
+                        "src",
+                        defaultImageUrl
+                    );
+                }
+            });
+        } else {
+            $("#display_preview_pan_front_photo").attr(
+                "src",
+                defaultImageUrl
+            );
+        }
+        $("#aadhar_no").val(vendor.aadhar_no);
+        $("#pan_no").val(vendor.pan_no);
+        $("#bank_name").val(vendor.bank_name);
+        $("#account_no").val(vendor.account_no);
+        $("#account_holder_name").val(vendor.account_holder_name);
+        $("#gst_no").val(vendor.gst_no);
+        $("#ifsc_code").val(vendor.ifsc_code);
+    });
+</script>
+
+<script>
+    $("#image").change(function () {
+        displayPP(this, $("#previewimage"));
+    });
+    $("#aadhar_front_photo").change(function () {
+        displayPP(this, $("#preview_aadhar_front_photo"));
+    });
+    $("#aadhar_back_photo").change(function () {
+        displayPP(this, $("#preview_aadhar_back_photo"));
+    });
+    $("#pan_front_photo").change(function () {
+        displayPP(this, $("#preview_pan_front_photo"));
+    });
+
+    var editform = $("#EditVendorForm");
+    editform.on("submit", submitFormHandler);
+
+    function submitFormHandler(e) {
+        e.preventDefault();
+
+        var formData;
+        var currentForm = editform[0];
+        const fileInputs = currentForm.querySelectorAll('input[type="file"]');
+        const hasImages = Array.from(fileInputs).some(
+            (input) => input.files.length > 0
+        );
+        if (hasImages) {
+            // If there are files selected, create FormData from the current form
+            formData = new FormData(currentForm);
+        } else {
+            // If no files are selected, get FormData from another form (editform)
+            formData = getFormData(editform);
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/admin/vendor/update",
+            data: hasImages ? formData : JSON.stringify(formData),
+            cache: false,
+            contentType: hasImages ? false : "application/json",
+            processData: !hasImages,
+        })
+            .done((res) => {
+                if (res.status === 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    }
+</script>

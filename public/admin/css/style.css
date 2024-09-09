@@ -1,4 +1,4 @@
-body {
+/* body {
     overflow-x: hidden;
 }
 
@@ -300,4 +300,64 @@ table {
 
 .toggle.android .toggle-handle {
     border-radius: 0px;
+} */
+
+/* Edit Vendor CSS */
+.wrapper {
+    display: inline-block;
+    white-space: nowrap;
 }
+
+.wrapper .badge {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.toggle-btn {
+    border: none;
+    font-size: smaller;
+    font-weight: 400;
+    color: white;
+    border-radius: 3px;
+    background-color: #2dcb73;
+    cursor: pointer;
+}
+
+.status-ban {
+    border: none;
+    font-size: smaller;
+    font-weight: 400;
+    border-radius: 3px;
+    background-color: #ec1e24 !important;
+    color: white !important;
+    cursor: not-allowed;
+    font-weight: bold;
+}
+.status-active {
+    background-color: #2dcb73;
+    font-weight: bold;
+}
+.status-inactive {
+    background-color: #ddddde;
+    color: black;
+    font-weight: bold;
+}
+.form-check-input-lg {
+    width: 1.5em;
+    height: 1.5em;
+    transform: scale(1.5);
+    transform-origin: center;
+    margin-right: 20px;
+}
+.transform:hover {
+    transform: scale(1.2);
+}
+/* Edit Vendor CSS */
+
+/* Edit FAQ CSS */
+.form-wrapper {
+    border: 1px solid #e5e1e1;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+/* Edit FAQ CSS */

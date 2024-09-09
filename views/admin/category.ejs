@@ -30,358 +30,407 @@
                 </div>
                 <!-- end page title -->
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div
-                                    class="d-flex align-items-center flex-wrap gap-3"
-                                >
-                                    <div class="flex-grow-1">
-                                        <h3 class="card-title mb-0">
-                                            Category List
-                                        </h3>
-                                    </div>
-                                    <div>
-                                        <div class="d-flex flex-wrap gap-2">
-                                            <button
-                                                type="button"
-                                                class="btn btn-thm add-btn"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#showModal"
-                                                data-name="Category"
-                                            >
-                                                <i
-                                                    class="bi bi-plus-circle align-baseline me-1"
-                                                ></i>
-                                                Add Category
-                                            </button>
-                                            <button
-                                                type="button"
-                                                class="btn btn-secondary"
-                                            >
-                                                <i
-                                                    class="ph-cloud-arrow-down align-middle me-1"
-                                                ></i>
-                                                Import
-                                            </button>
-                                            <button
-                                                type="button"
-                                                class="btn btn-subtle-info"
-                                            >
-                                                <i
-                                                    class="ph-cloud-arrow-up align-middle me-1"
-                                                ></i>
-                                                Export
-                                            </button>
+                <div id="productList">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div
+                                        class="d-flex align-items-center flex-wrap gap-3"
+                                    >
+                                        <div class="flex-grow-1">
+                                            <h3 class="card-title mb-0">
+                                                Category List
+                                            </h3>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-thm add-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showModal"
+                                                    data-name="Category"
+                                                >
+                                                    <i
+                                                        class="bi bi-plus-circle align-baseline me-1"
+                                                    ></i>
+                                                    Add Category
+                                                </button>
+                                                <!-- <button
+                                                    type="button"
+                                                    class="btn btn-secondary"
+                                                >
+                                                    <i
+                                                        class="ph-cloud-arrow-down align-middle me-1"
+                                                    ></i>
+                                                    Import
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-subtle-info"
+                                                >
+                                                    <i
+                                                        class="ph-cloud-arrow-up align-middle me-1"
+                                                    ></i>
+                                                    Export
+                                                </button> -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!--end col-->
                     </div>
-                    <!--end col-->
-                </div>
-                <!--end row-->
+                    <!--end row-->
 
-                <div class="row" id="customer-list">
-                    <div class="col-xxl-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row gy-3">
-                                    <div class="col-xl-4">
-                                        <div class="search-box">
+                    <div class="row">
+                        <div class="col-xxl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row gy-3">
+                                        <div class="col-xl-4">
+                                            <div class="search-box">
+                                                <input
+                                                    type="text"
+                                                    class="form-control search"
+                                                    placeholder="Search name, date etc..."
+                                                />
+                                                <i
+                                                    class="ri-search-line search-icon"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-xl-3 col-md-4">
+                                            <div>
+                                                <select
+                                                    class="form-control"
+                                                    id="idStatus"
+                                                    data-choices
+                                                    data-choices-search-false
+                                                >
+                                                    <option value="all">
+                                                        All Select
+                                                    </option>
+                                                    <option value="Active">
+                                                        Active
+                                                    </option>
+                                                    <option value="Unactive">
+                                                        Unactive
+                                                    </option>
+                                                    <option value="Block">
+                                                        Block
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-md-4">
                                             <input
                                                 type="text"
-                                                class="form-control search"
-                                                placeholder="Search customer, email etc..."
-                                            />
-                                            <i
-                                                class="ri-search-line search-icon"
-                                            ></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-4">
-                                        <div>
-                                            <select
                                                 class="form-control"
-                                                id="idStatus"
-                                                data-choices
-                                                data-choices-search-false
-                                            >
-                                                <option value="all">
-                                                    All Select
-                                                </option>
-                                                <option value="Active">
-                                                    Active
-                                                </option>
-                                                <option value="Unactive">
-                                                    Unactive
-                                                </option>
-                                                <option value="Block">
-                                                    Block
-                                                </option>
-                                            </select>
+                                                id="datepicker-range"
+                                                data-provider="flatpickr"
+                                                data-date-format="d M, Y"
+                                                data-range-date="true"
+                                                placeholder="Select date"
+                                            />
                                         </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-4">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="datepicker-range"
-                                            data-provider="flatpickr"
-                                            data-date-format="d M, Y"
-                                            data-range-date="true"
-                                            placeholder="Select date"
-                                        />
-                                    </div>
-                                    <div class="col-xl-2 col-md-4">
-                                        <button
-                                            class="btn btn-subtle-primary w-100"
-                                            onclick="filterData();"
-                                        >
-                                            <i
-                                                class="bi bi-funnel align-baseline me-1"
-                                            ></i>
-                                            Filter
-                                        </button>
+                                        <div class="col-xl-2 col-md-4">
+                                            <button
+                                                class="btn btn-subtle-primary w-100"
+                                                onclick="filterData();"
+                                            >
+                                                <i
+                                                    class="bi bi-funnel align-baseline me-1"
+                                                ></i>
+                                                Filter
+                                            </button>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--end card-->
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive table-card">
-                                    <table
-                                        class="table align-middle table-nowrap"
-                                    >
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <div class="form-check">
-                                                        <input
-                                                            class="form-check-input"
-                                                            type="checkbox"
-                                                            value="option"
-                                                            id="checkAll"
-                                                        />
-                                                        <label
-                                                            class="form-check-label"
-                                                            for="checkAll"
-                                                        ></label>
-                                                    </div>
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Icon
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Category
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Slug
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Meta Title
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Meta Description
-                                                </th>
-                                                <th class="sort cursor-pointer">
-                                                    Status
-                                                </th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="list">
-                                            <% if(!categories[0]) { %>
-                                            <tr>
-                                                <td
-                                                    colspan="100%"
-                                                    class="text-center"
-                                                >
-                                                    No Data
-                                                </td>
-                                            </tr>
-                                            <% } else {%> <%
-                                            categories.forEach(function(category){%>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input
-                                                            class="form-check-input"
-                                                            type="checkbox"
-                                                            name="chk_child"
-                                                        />
-                                                        <label
-                                                            class="form-check-label"
-                                                        ></label>
-                                                    </div>
-                                                </td>
-                                                <td class="customer">
-                                                    <div
-                                                        class="d-flex align-items-center"
+                            <!--end card-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table
+                                            class="table table-centered align-middle table-nowrap mb-0"
+                                        >
+                                            <thead class="table-active">
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                value="option"
+                                                                id="checkAll"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="checkAll"
+                                                            ></label>
+                                                        </div>
+                                                    </th>
+                                                    <th>#</th>
+                                                    <th
+                                                        
+                                                     
                                                     >
+                                                        Icon
+                                                    </th>
+                                                    <th
+                                                        
+                                                     
+                                                    >
+                                                        Category
+                                                    </th>
+                                                    <th
+                                                        
+                                                      
+                                                    >
+                                                        Slug
+                                                    </th>
+
+                                                    <th
+                                                        
+                                                      
+                                                    >
+                                                        Featured
+                                                    </th>
+                                                    <th
+                                                        
+                                                     
+                                                    >
+                                                        Status
+                                                    </th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="list">
+                                                <% if(!categories[0]) { %>
+                                                <tr>
+                                                    <td
+                                                        colspan="100%"
+                                                        class="text-center"
+                                                    >
+                                                        No Data
+                                                    </td>
+                                                </tr>
+                                                <% } else {%> <%
+                                                categories.forEach(function(categories,index){%>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                name="chk_child"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                            ></label>
+                                                        </div>
+                                                    </td>
+                                                    <td><%= index + 1 %></td>
+                                                    <td class="category">
                                                         <div
-                                                            class="flex-shrink-0 me-2"
+                                                            class="d-flex align-items-center"
                                                         >
-                                                            <div>
-                                                                <img
-                                                                    class="avatar-xs rounded-circle customer-image-elem"
-                                                                    src="../../dist/category/<%- category.icon %>"
-                                                                    alt="<%- category.icon %>"
-                                                                />
+                                                            <div
+                                                                class="flex-shrink-0 me-2"
+                                                            >
+                                                                <div>
+                                                                    <img
+                                                                        class="avatar-xs rounded-circle customer-image-elem"
+                                                                        src="<%- categories.icon ? '../../dist/category/' + categories.icon : '../../assets/images/default/mart-demo-img.jpg' %>"
+                                                                        onerror="this.src='../../assets/images/default/mart-demo-img.jpg';"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="flex-grow-1"
+                                                            >
+                                                                <h5
+                                                                    class="fs-base mb-0"
+                                                                >
+                                                                    <a
+                                                                        href="#"
+                                                                        class="text-reset customer-name-elem"
+                                                                    >
+                                                                        <%=
+                                                                        categories.name
+                                                                        ?
+                                                                        categories.name
+                                                                        : ''%>
+                                                                    </a>
+                                                                </h5>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="flex-grow-1"
-                                                        >
-                                                            <h5
-                                                                class="fs-base mb-0"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-reset customer-name-elem"
-                                                                >
-                                                                    <%=
-                                                                    category.name
-                                                                    ?
-                                                                    category.name
-                                                                    : ''%>
-                                                                </a>
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="category">
-                                                    <% if(category.parent_name)
-                                                    { %> <%=
-                                                    category.parent_name %> <% }
-                                                    else { %> –– <% } %>
-                                                </td>
-                                                <td class="slug">
-                                                    <%= category.slug?
-                                                    category.slug: ''%>
-                                                </td>
-                                                <td class="title">
-                                                    <%= category.meta_title?
-                                                    category.meta_title: ''%>
-                                                </td>
-                                                <td class="description">
-                                                    <%=
-                                                    category.meta_description?
-                                                    category.meta_description:
-                                                    ''%>
-                                                </td>
-                                                <td class="status">
-                                                    <span
-                                                        class="badge bg-secondary-subtle text-secondary"
-                                                        >Unactive</span
-                                                    >
-                                                </td>
-                                                <td>
-                                                    <div
-                                                        class="dropdown position-static"
-                                                    >
-                                                        <button
-                                                            class="btn btn-subtle-secondary btn-sm btn-icon"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false"
-                                                        >
-                                                            <i
-                                                                class="bi bi-three-dots-vertical"
-                                                            ></i>
-                                                        </button>
+                                                    </td>
+                                                    <td class="category">
+                                                        <%
+                                                        if(categories.parent_name)
+                                                        { %> <%=
+                                                        categories.parent_name
+                                                        %> <% } else { %> –– <%
+                                                        } %>
+                                                    </td>
+                                                    <td class="slug">
+                                                        <%= categories.slug ?
+                                                        categories.slug : '' %>
+                                                    </td>
 
-                                                        <ul
-                                                            class="dropdown-menu dropdown-menu-end"
+                                                    <td>
+                                                        <span
+                                                            class="badge bg-secondary-subtle text-secondary"
                                                         >
-                                                            <li>
+                                                            <%=
+                                                            categories.is_featured===true
+                                                            ? "True" : 'False'
+                                                            %>
+                                                        </span>
+                                                    </td>
+
+                                                    <td class="status">
+                                                        <span
+                                                            class="badge bg-secondary-subtle text-secondary"
+                                                        >
+                                                            <%=
+                                                            categories.status_id
+                                                            ?
+                                                            categories.status_id.name
+                                                            : '' %>
+                                                        </span>
+                                                    </td>
+
+                                                    <td>
+                                                        <div
+                                                            class="dropdown position-static"
+                                                        >
+                                                            <button
+                                                                class="btn btn-subtle-secondary btn-sm btn-icon"
+                                                                role="button"
+                                                                data-bs-toggle="dropdown"
+                                                                aria-expanded="false"
+                                                            >
+                                                                <i
+                                                                    class="bi bi-three-dots-vertical"
+                                                                ></i>
+                                                            </button>
+
+                                                            <ul
+                                                                class="dropdown-menu dropdown-menu-end"
+                                                            >
+                                                                <!-- <li>
                                                                 <a
-                                                                    class="dropdown-item edit-item-btn"
-                                                                    data-bs-toggle="modal"
-                                                                    data-name="Category"
-                                                                    data-id="<%= category._id %>"
-                                                                    href="#showEditModal"
+                                                                    class="dropdown-item"
+                                                                    href="apps-ecommerce-product-details.html"
                                                                     ><i
-                                                                        class="ph-pencil align-middle me-1"
+                                                                        class="ph-eye align-middle me-1"
                                                                     ></i>
-                                                                    Edit
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    class="dropdown-item remove-item-btn"
-                                                                    data-bs-toggle="modal"
-                                                                    href="#deleteRecordModal"
-                                                                    data-id="<%= category._id %>"
-                                                                    ><i
-                                                                        class="ph-trash align-middle me-1"
-                                                                    ></i>
-                                                                    Remove</a
+                                                                    View</a
                                                                 >
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <% }); %> <% } %>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="noresult" style="display: none">
-                                    <div class="text-center py-4">
-                                        <i
-                                            class="ph-magnifying-glass fs-1 text-primary"
-                                        ></i>
-                                        <h5 class="mt-2">
-                                            Sorry! No Result Found
-                                        </h5>
-                                        <p class="text-muted mb-0">
-                                            We've searched more than 150+
-                                            customers We did not find any
-                                            customers for you search.
-                                        </p>
+                                                            </li> -->
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item edit-item-btn"
+                                                                        data-bs-toggle="modal"
+                                                                        data-name="Category"
+                                                                        href="#showEditModal"
+                                                                        id="edit_btn"
+                                                                        data-model="<%= JSON.stringify(categories) %>"
+                                                                        ><i
+                                                                            class="ph-pencil align-middle me-1"
+                                                                        ></i>
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item remove-item-btn"
+                                                                        data-bs-toggle="modal"
+                                                                        href="#deleteRecordModal"
+                                                                        data-id="<%= categories._id %>"
+                                                                        ><i
+                                                                            class="ph-trash align-middle me-1"
+                                                                        ></i>
+                                                                        Remove</a
+                                                                    >
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <% }); %> <% } %>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
-                                <div
-                                    class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
-                                    id="pagination-element"
-                                >
-                                    <div class="col-sm">
-                                        <div class="text-muted">
-                                            Showing
-                                            <span class="fw-semibold">10</span>
-                                            of
-                                            <span class="fw-semibold">13</span>
-                                            Results
+                                    <div class="noresult" style="display: none">
+                                        <div class="text-center py-4">
+                                            <i
+                                                class="ph-magnifying-glass fs-1 text-primary"
+                                            ></i>
+                                            <h5 class="mt-2">
+                                                Sorry! No Result Found
+                                            </h5>
+                                            <p class="text-muted mb-0">
+                                                We've searched more than 150+
+                                                categories We did not find any
+                                                categories for you search.
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="col-sm-auto mt-3 mt-sm-0">
-                                        <div
-                                            class="pagination-wrap hstack gap-2"
-                                        >
-                                            <a
-                                                class="page-item pagination-prev disabled"
-                                                href="javascript:void(0)"
-                                                >Previous</a
+                                    <div
+                                        class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
+                                        id="pagination-element"
+                                    >
+                                        <div class="col-sm">
+                                            <div class="text-muted">
+                                                Showing
+                                                <span
+                                                    class="fw-semibold"
+                                                    id="current-items"
+                                                    ><%= Math.min(currentPage *
+                                                    pageSize, totalItems)
+                                                    %></span
+                                                >
+                                                of
+                                                <span
+                                                    class="fw-semibold"
+                                                    id="total-items"
+                                                    ><%= totalItems ? totalItems :0%></span
+                                                >
+                                                Results
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-auto mt-3 mt-sm-0">
+                                            <div
+                                                class="pagination-wrap hstack gap-2 justify-content-center"
                                             >
-                                            <ul
-                                                class="pagination listjs-pagination mb-0"
-                                            ></ul>
-                                            <a
-                                                class="page-item pagination-next"
-                                                href="javascript:void(0)"
-                                                >Next</a
-                                            >
+                                                <a
+                                                    class="page-item pagination-prev disabled"
+                                                    href="javascript:void(0)"
+                                                    >Previous</a
+                                                >
+                                                <ul
+                                                    class="pagination listjs-pagination mb-0"
+                                                ></ul>
+                                                <a
+                                                    class="page-item pagination-next"
+                                                    href="javascript:void(0)"
+                                                    >Next</a
+                                                >
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!--end col-->
                     </div>
-                    <!--end col-->
                 </div>
                 <!--end row-->
             </div>
@@ -395,7 +444,7 @@
 
 <!-- Add Category Modal -->
 <div
-    class="modal fade"
+    class="modal modal-lg fade"
     id="showModal"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
@@ -413,12 +462,8 @@
                     id="close-ordermodal"
                 ></button>
             </div>
-            <form class="tablelist-form" id="addCategoryForm">
+            <form class="tablelist-form" id="addCategoryForm" autocomplete="off">
                 <div class="modal-body">
-                    <div
-                        id="alert-error-msg"
-                        class="d-none alert alert-danger py-2"
-                    ></div>
                     <input type="hidden" id="id-field" />
 
                     <div class="text-center mb-3">
@@ -461,52 +506,92 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="mb-3">
-                        <label for="customername-field" class="form-label"
+                        <label for="name" class="form-label"
                             >Category Name</label
                         >
                         <input
                             type="text"
-                            id="customername-field"
+                            id="name"
                             class="form-control"
                             name="name"
                             placeholder="Enter Category name"
+                            required
                         />
                     </div>
                     <div class="mb-3">
-                        <label for="status-field" class="form-label"
+                        <label for="parent_id" class="form-label"
                             >Root Category</label
                         >
                         <select
                             class="form-control"
-                            id="status-field"
+                            id="parent_id"
                             name="parent_id"
                         >
-                            <option value="" disabled selected>
-                                Select Category
-                            </option>
-                            <%categories.forEach(function(element){ %>
-                            <option value="<%= element._id %>">
-                                <%= element.name%>
+                            <option value="" selected>Select Category</option>
+                            <% categories.forEach(function(element) { %>
+                            <option
+                                value="<%= element._id %>"
+                                class="category-option"
+                            >
+                                <%= element.name %>
                             </option>
                             <% }); %>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="slug-field" class="form-label">Slug</label>
-                        <input
-                            type="text"
-                            id="slug-field"
-                            name="slug"
-                            class="form-control"
-                            placeholder="Enter slug"
-                        />
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="slug-field" class="form-label"
+                                >Slug <span class="text-danger">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="slug-field"
+                                name="slug"
+                                class="form-control"
+                                placeholder="Enter slug"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <!-- <div class="col">
+                            <label class="form-label" for="commission_type"
+                                >Commission Type</label
+                            >
+                            <select
+                                class="form-control"
+                                id="commission_type"
+                                name="commission_type"
+                            >
+                                <option value="" selected>
+                                    Select commission Type
+                                </option>
+                                <option value="flat">Flat</option>
+                                <option value="percentage">Percentage</option>
+                            </select>
+                        </div> -->
+                        <div class="col">
+                            <label for="commission" class="form-label">
+                                Commission (%)
+                            </label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="commission"
+                                name="commission"
+                                placeholder="Enter Commission"
+                            />
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Meta Title</label>
                         <input
                             type="text"
-                            id="title"
+                            id="meta_title"
                             name="meta_title"
                             class="form-control"
                             placeholder="Enter Title"
@@ -519,28 +604,66 @@
                         <textarea
                             class="form-control"
                             name="meta_description"
-                            id="description"
+                            id="meta_description"
                             placeholder="Enter Description"
                         ></textarea>
                     </div>
-                    <div>
-                        <label for="status-field" class="form-label"
-                            >Status</label
-                        >
-                        <select
-                            class="form-control"
-                            id="status-field"
-                            name="status"
-                        >
-                            <option value="" disabled selected>
-                                Select Status
-                            </option>
-                            <%statuses.forEach(function(element){ %>
-                            <option value="<%= element._id %>">
-                                <%= element.name%>
-                            </option>
-                            <% }); %>
-                        </select>
+                    <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <div>
+                                <label class="form-label">Description </label>
+                                <textarea
+                                    type="text"
+                                    class="form-control"
+                                    id="editor"
+                                    name="description"
+                                    placeholder="Enter Description"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col ms-3">
+                            <div
+                                class="d-flex justify-content-start align-items-start"
+                            >
+                                <label class="form-check-label" for="variant"
+                                    >Status</label
+                                >
+                                <div class="form-check form-switch ms-4">
+                                    <input
+                                        type="checkbox"
+                                        name="status_id"
+                                        id="status_id"
+                                        class="form-check-input form-check-input-lg"
+                                        checked
+                                    />
+                                    <span
+                                        class="custom-switch-indicator"
+                                    ></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div
+                                class="d-flex justify-content-start align-items-start"
+                            >
+                                <label class="form-check-label" for="variant"
+                                    >Add to Featured</label
+                                >
+                                <div class="form-check form-switch ms-4">
+                                    <input
+                                        type="checkbox"
+                                        name="is_featured"
+                                        id="is_featured"
+                                        class="form-check-input form-check-input-lg"
+                                    />
+                                    <span
+                                        class="custom-switch-indicator"
+                                    ></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -569,7 +692,7 @@
 
 <!-- Edit Category Modal -->
 <div
-    class="modal fade"
+    class="modal modal-lg fade"
     id="showEditModal"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
@@ -591,19 +714,14 @@
             </div>
             <form class="tablelist-form" id="editform">
                 <div class="modal-body">
-                    <div
-                        id="alert-error-msg"
-                        class="d-none alert alert-danger py-2"
-                    ></div>
                     <input type="hidden" id="editid" name="editid" />
-
                     <div class="text-center mb-3">
                         <div class="position-relative d-inline-block">
                             <div
                                 class="position-absolute top-100 start-100 translate-middle"
                             >
                                 <label
-                                    for="image-input"
+                                    for="editicon"
                                     class="mb-0"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="right"
@@ -619,17 +737,21 @@
                                 </label>
                                 <input
                                     class="form-control d-none"
-                                    id="image-input"
-                                    name="icon"
+                                    id="editicon"
+                                    name="editicon"
                                     type="file"
                                     accept="image/png, image/gif, image/jpeg"
                                 />
                             </div>
                             <div class="avatar-lg">
-                                <div class="avatar-title bg-light rounded-3">
+                                <div
+                                    class="avatar-title bg-light rounded-3"
+                                    id="editpreviewicon"
+                                >
                                     <img
                                         src="/assets/images/users/user-dummy-img.jpg"
-                                        id="image-preview"
+                                        alt=""
+                                        id="editimage-preview"
                                         class="avatar-md h-auto rounded-3 object-fit-cover"
                                     />
                                 </div>
@@ -637,14 +759,14 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="customername-field" class="form-label"
+                        <label for="name" class="form-label"
                             >Category Name</label
                         >
                         <input
                             type="text"
                             id="edit_name"
                             class="form-control"
-                            name="name"
+                            name="edit_name"
                             placeholder="Enter Category name"
                         />
                     </div>
@@ -655,34 +777,68 @@
                         <select
                             class="form-control"
                             id="edit_parent_id"
-                            name="parent_id"
+                            name="edit_parent_id"
                         >
-                            <option value="" disabled selected>
-                                Select Category
-                            </option>
-                            <%categories.forEach(function(element){ %>
+                            <option value="" selected>Select Category</option>
+                            <% categories.forEach(function(element) { %>
                             <option value="<%= element._id %>">
-                                <%= element.name%>
+                                <%= element.name %>
                             </option>
                             <% }); %>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="slug-field" class="form-label">Slug</label>
-                        <input
-                            type="text"
-                            id="edit_slug"
-                            name="slug"
-                            class="form-control"
-                            placeholder="Enter slug"
-                        />
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="slug-field" class="form-label"
+                                >Slug<span class="text-danger">*</span></label
+                            >
+                            <input
+                                type="text"
+                                id="edit_slug"
+                                name="edit_slug"
+                                class="form-control"
+                                placeholder="Enter slug"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <!-- <div class="col">
+                            <label class="form-label" for="edit_commission_type"
+                                >Commission Type</label
+                            >
+                            <select
+                                class="form-control"
+                                id="edit_commission_type"
+                                name="edit_commission_type"
+                            >
+                                <option value="" selected>
+                                    Select commission Type
+                                </option>
+                                <option value="flat">Flat</option>
+                                <option value="percentage">Percentage</option>
+                            </select>
+                        </div> -->
+                        <div class="col">
+                            <label for="edit_commission" class="form-label">
+                                Commission (%)
+                            </label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="edit_commission"
+                                name="edit_commission"
+                                placeholder="Enter Commission"
+                            />
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="title" class="form-label">Meta Title</label>
                         <input
                             type="text"
                             id="edit_meta_title"
-                            name="meta_title"
+                            name="edit_meta_title"
                             class="form-control"
                             placeholder="Enter Title"
                         />
@@ -693,29 +849,75 @@
                         >
                         <textarea
                             class="form-control"
-                            name="meta_description"
+                            name="edit_meta_description"
                             id="edit_meta_description"
                             placeholder="Enter Description"
                         ></textarea>
                     </div>
-                    <div>
-                        <label for="status-field" class="form-label"
-                            >Status</label
-                        >
-                        <select
-                            class="form-control"
-                            id="edit_status"
-                            name="status"
-                        >
-                            <option value="" disabled selected>
-                                Select Status
-                            </option>
-                            <%statuses.forEach(function(element){ %>
-                            <option value="<%= element._id %>">
-                                <%= element.name%>
-                            </option>
-                            <% }); %>
-                        </select>
+                    <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <div>
+                                <label class="form-label">Description </label>
+                                <textarea
+                                    type="text"
+                                    class="form-control"
+                                    id="edit_editor"
+                                    name="edit_description"
+                                    placeholder="Enter Description"
+                                >
+                               <%=
+                                categories.description
+                                ? categories.description
+                                : ""
+                                %>
+                            </textarea
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col ms-3">
+                            <div
+                                class="d-flex justify-content-start align-items-start"
+                            >
+                                <label class="form-check-label" for="variant"
+                                    >Status</label
+                                >
+                                <div class="form-check form-switch ms-4">
+                                    <input
+                                        type="checkbox"
+                                        name="edit_status_id"
+                                        id="edit_status_id"
+                                        class="form-check-input form-check-input-lg"
+                                        checked
+                                    />
+                                    <span
+                                        class="custom-switch-indicator"
+                                    ></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div
+                                class="d-flex justify-content-start align-items-start"
+                            >
+                                <label class="form-check-label" for="variant"
+                                    >Add to Featured</label
+                                >
+                                <div class="form-check form-switch ms-4">
+                                    <input
+                                        type="checkbox"
+                                        name="edit_is_featured"
+                                        id="edit_is_featured"
+                                        class="form-check-input form-check-input-lg"
+                                    />
+                                    <span
+                                        class="custom-switch-indicator"
+                                    ></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -736,7 +938,7 @@
         </div>
     </div>
 </div>
-<!-- end Add Category Modal -->
+<!-- end Edit Category Modal -->
 
 <!-- deleteRecordModal -->
 <div
@@ -791,8 +993,9 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /deleteRecordModal -->
-
 <%- include('partials/footer.ejs') %>
+<script src="/admin/js/ckeditor/ckeditor.js"></script>
+<script src="/admin/js/ck.js"></script>
 
 <script>
     //#region Add Category
@@ -802,8 +1005,25 @@
     function submitFormHandler(e) {
         e.preventDefault();
 
+        // Validation
+        if ($("#name").val() == "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Category Name is required",
+                position: "topRight",
+            });
+            return;
+        }
+        if ($("#slug").val() == "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Slug is required",
+                position: "topRight",
+            });
+            return;
+        }
+
         var formData = new FormData(addformCategory[0]);
-        console.log(formData);
         // DO POST
         $.ajax({
             type: "POST",
@@ -821,9 +1041,10 @@
                         message: res.message,
                         position: "topRight",
                     });
+                    $("#showModal").modal("hide");
                     setTimeout(function () {
                         location.reload();
-                    }, 1000);
+                    }, 500);
                 } else {
                     iziToast.error({
                         title: "Error",
@@ -838,27 +1059,40 @@
                     message: xhr.responseText,
                     position: "topRight",
                 });
-                setTimeout(function () {
-                        location.reload();
-                    }, 1000);
             });
     }
     //#endregion Add Category
 
-    //#region Edit Category
+    //#region starts Edit Category
+    $("#editicon").change(function () {
+        displayPP(this, $("#editimage-preview"));
+    });
+
     $(document).on("click", "#edit_btn", function (e) {
-        // var row = $(this).closest("tr");
-        // var data = table.row(row).data();
-        // console.log("data", data);
+        var data = $(this).attr("data-model");
+        data = JSON.parse(data);
+        const activeStatusId = "<%= activeStatus._id.toString() %>";
+
+        // Assuming 'data.icon' may or may not be defined
+        var imageUrl = data.icon
+            ? "/dist/category/" + data.icon
+            : "../../assets/images/default/mart-demo-img.jpg";
+        $("#editimage-preview").attr("src", imageUrl);
+
         $("#editid").val(data._id);
-        $("#editform").find("#edit_student_id").val(data.student_id);
-        $("#editform").find("#edit_assign_teacher").val(data.assign_teacher);
-        $("#editform").find("#edit_meeting_id").val(data.meeting_id);
-        $("#editform")
-            .find("#edit_meeting_password")
-            .val(data.meeting_password);
-        $("#editform").find("#edit_date").val(data.date);
-        $("#editform").find("#edit_time").val(data.time);
+        $("#edit_name").val(data.name);
+        $("#edit_parent_id").val(data.parent_id ? data.parent_id._id : "");
+        $("#edit_slug").val(data.slug);
+        $("#edit_status_id").prop(
+            "checked",
+            data.status_id._id == activeStatusId
+        );
+        $("#edit_meta_title").val(data.meta_title);
+        $("#edit_meta_description").val(data.meta_description);
+        // $("#edit_commission_type").val(data.commission_type);
+        $("#edit_commission").val(data.commission);
+        $("#edit_is_featured").prop("checked", data.is_featured);
+        $("#edit_editor").val(data.description);
     });
 
     var editform = $("#editform");
@@ -867,26 +1101,36 @@
     function editSubmitHandler(e) {
         e.preventDefault();
 
-        let data = {
-            student_id: $("#editform").find("#edit_student_id").val(),
-            assign_teacher: $("#editform").find("#edit_assign_teacher").val(),
-            meeting_id: $("#editform").find("#edit_meeting_id").val(),
-            meeting_password: $("#editform")
-                .find("#edit_meeting_password")
-                .val(),
-            date: $("#editform").find("#edit_date").val(),
-            time: $("#editform").find("#edit_time").val(),
-            editid: $("#editform").find("#editid").val(),
-        };
+        // Validation
+        if ($("#edit_name").val() == "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Category Name is required",
+                position: "topRight",
+            });
+            return;
+        }
 
-        // DO POST
+        if ($("#edit_slug").val() == "") {
+            iziToast.warning({
+                title: "Warning",
+                message: "Slug is required",
+                position: "topRight",
+            });
+            return;
+        }
+
+        // Prepare form data
+        var formData = new FormData(this);
+
+        // Perform AJAX request
         $.ajax({
             type: "POST",
-            contentType: "application/json",
+            enctype: "multipart/form-data",
+            processData: false,
+            contentType: false,
             url: "/admin/category/edit",
-            data: JSON.stringify({
-                id: id,
-            }),
+            data: formData,
         })
             .done((res) => {
                 if (res.status == 200) {
@@ -895,16 +1139,16 @@
                         message: res.message,
                         position: "topRight",
                     });
+                    $("#showEditModal").modal("hide");
                     setTimeout(function () {
                         location.reload();
-                    }, 1000);
+                    }, 500);
                 } else {
                     iziToast.error({
                         title: "Error",
                         message: res.message,
                         position: "topRight",
                     });
-
                 }
             })
             .fail(function (xhr, status, error) {
@@ -913,11 +1157,9 @@
                     message: xhr.responseText,
                     position: "topRight",
                 });
-                setTimeout(function () {
-                        location.reload();
-                    }, 1000);
             });
     }
+
     //#endregion Edit Category
 
     //#region Delete Category
@@ -944,7 +1186,7 @@
                         });
                         setTimeout(function () {
                             location.reload();
-                        }, 1000);
+                        }, 500);
                     } else {
                         iziToast.error({
                             title: "Error",
@@ -959,11 +1201,29 @@
                         message: xhr.responseText,
                         position: "topRight",
                     });
-                    setTimeout(function () {
-                        location.reload();
-                    }, 1000);
                 });
         });
     });
     //#endregion Delete Category
+</script>
+
+<script>
+    function generateSlug(name) {
+        return name
+            .toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, "")
+            .replace(/\s+/g, "-");
+    }
+
+    // Generate slug when name is entered
+    $("#name").on("input", function () {
+        var slug = generateSlug($(this).val());
+        $("#slug-field").val(slug);
+    });
+
+    // Generate slug when name is entered
+    $("#edit_name").on("input", function () {
+        var slug = generateSlug($(this).val());
+        $("#edit_slug").val(slug);
+    });
 </script>

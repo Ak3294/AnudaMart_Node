@@ -6,6 +6,7 @@ const { rainbow } = require("handy-log");
 require("dotenv").config();
 
 const PORT = process.env.PORT;
+const URL = process.env.URL;
 
 io.on("connection", (socket) => {
     console.log("socket connected");
@@ -16,11 +17,16 @@ io.on("connection", (socket) => {
 });
 
 // Listening to PORT 3000
-app.listen(PORT, () => {
+// app.listen(PORT, () => {
+//     setTimeout(printURL, 50);
+//     rainbow(`App running on port ${PORT} ..`);
+// });
+
+app.listen(PORT, "0.0.0.0", () => {
     setTimeout(printURL, 50);
     rainbow(`App running on port ${PORT} ..`);
 });
 
 const printURL = () => {
-    console.log("\x1b[36m%s\x1b[0m", `url: http://localhost:${PORT}`);
+    console.log("\x1b[36m%s\x1b[0m", `url: ${URL}:${PORT}`);
 };

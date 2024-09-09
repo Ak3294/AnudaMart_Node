@@ -265,10 +265,10 @@
                                                             class="position-relative auth-pass-inputgroup mb-3"
                                                         >
                                                             <input
-                                                                type="password"
+                                                                type="text"
                                                                 name="password"
-                                                                id="password"
-                                                                class="form-control"
+                                                                id="password-input"
+                                                                class="form-control pe-5 password-input"
                                                                 value=""
                                                                 placeholder="Enter password"
                                                             />
@@ -381,7 +381,7 @@
                     url: window.location + "/../login",
                     data: JSON.stringify({
                         username: $("#username").val(),
-                        password: $("#password").val(),
+                        password: $("#password-input").val(),
                     }),
                 })
                     .done((res) => {

@@ -1,10 +1,4 @@
 <%- include('partials/header.ejs') %>
-<style>
-    .alert {
-        display: none;
-    }
-</style>
-
 <!-- Begin page -->
 <div id="layout-wrapper">
     <!-- Start right Content here -->
@@ -36,33 +30,34 @@
                 </div>
                 <!-- end page title -->
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div
-                                    class="d-flex align-items-center flex-wrap gap-3"
-                                >
-                                    <div class="flex-grow-1">
-                                        <h3 class="card-title mb-0">
-                                            Brand List
-                                        </h3>
-                                    </div>
-                                    <div>
-                                        <div class="d-flex flex-wrap gap-2">
-                                            <button
-                                                type="button"
-                                                class="btn btn-thm add-btn"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#showModal"
-                                                data-name="Category"
-                                            >
-                                                <i
-                                                    class="bi bi-plus-circle align-baseline me-1"
-                                                ></i>
-                                                Add Brand
-                                            </button>
-                                            <button
+                <div id="productList">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div
+                                        class="d-flex align-items-center flex-wrap gap-3"
+                                    >
+                                        <div class="flex-grow-1">
+                                            <h3 class="card-title mb-0">
+                                                Brand List
+                                            </h3>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-thm add-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showModal"
+                                                    data-name="Brand"
+                                                >
+                                                    <i
+                                                        class="bi bi-plus-circle align-baseline me-1"
+                                                    ></i>
+                                                    Add Brand
+                                                </button>
+                                                <!-- <button
                                                 type="button"
                                                 class="btn btn-secondary"
                                             >
@@ -79,252 +74,290 @@
                                                     class="ph-cloud-arrow-up align-middle me-1"
                                                 ></i>
                                                 Export
-                                            </button>
+                                            </button> F-->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!--end col-->
                     </div>
-                    <!--end col-->
-                </div>
-                <!--end row-->
+                    <!--end row-->
 
-                <div class="row" id="customer-list">
-                    <div class="col-xxl-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row gy-3">
-                                    <div class="col-xl-4">
-                                        <div class="search-box">
+                    <div class="row">
+                        <div class="col-xxl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row gy-3">
+                                        <div class="col-xl-4">
+                                            <div class="search-box">
+                                                <input
+                                                    type="text"
+                                                    class="form-control search"
+                                                    placeholder="Search name, date etc..."
+                                                />
+                                                <i
+                                                    class="ri-search-line search-icon"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-xl-3 col-md-4">
+                                            <div>
+                                                <select
+                                                    class="form-control"
+                                                    id="idStatus"
+                                                    data-choices
+                                                    data-choices-search-false
+                                                >
+                                                    <option value="all">
+                                                        All Select
+                                                    </option>
+                                                    <option value="Active">
+                                                        Active
+                                                    </option>
+                                                    <option value="Unactive">
+                                                        Unactive
+                                                    </option>
+                                                    <option value="Block">
+                                                        Block
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-md-4">
                                             <input
                                                 type="text"
-                                                class="form-control search"
-                                                placeholder="Search customer, email etc..."
-                                            />
-                                            <i
-                                                class="ri-search-line search-icon"
-                                            ></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-4">
-                                        <div>
-                                            <select
                                                 class="form-control"
-                                                id="idStatus"
-                                                data-choices
-                                                data-choices-search-false
-                                            >
-                                                <option value="all">
-                                                    All Select
-                                                </option>
-                                                <option value="Active">
-                                                    Active
-                                                </option>
-                                                <option value="Unactive">
-                                                    Unactive
-                                                </option>
-                                                <option value="Block">
-                                                    Block
-                                                </option>
-                                            </select>
+                                                id="datepicker-range"
+                                                data-provider="flatpickr"
+                                                data-date-format="d M, Y"
+                                                data-range-date="true"
+                                                placeholder="Select date"
+                                            />
                                         </div>
-                                    </div>
-                                    <div class="col-xl-3 col-md-4">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="datepicker-range"
-                                            data-provider="flatpickr"
-                                            data-date-format="d M, Y"
-                                            data-range-date="true"
-                                            placeholder="Select date"
-                                        />
-                                    </div>
-                                    <div class="col-xl-2 col-md-4">
-                                        <button
-                                            class="btn btn-subtle-primary w-100"
-                                            onclick="filterData();"
-                                        >
-                                            <i
-                                                class="bi bi-funnel align-baseline me-1"
-                                            ></i>
-                                            Filter
-                                        </button>
+                                        <div class="col-xl-2 col-md-4">
+                                            <button
+                                                class="btn btn-subtle-primary w-100"
+                                                onclick="filterData();"
+                                            >
+                                                <i
+                                                    class="bi bi-funnel align-baseline me-1"
+                                                ></i>
+                                                Filter
+                                            </button>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--end card-->
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive table-card">
-                                    <table
-                                        class="table align-middle table-nowrap"
-                                        id="brandTable"
-                                    >
-                                        <tbody class="list" id="brandTableBody">
-                                            <% brands.forEach(function(brand,
-                                            index) { %>
-                                            <tr data-id="<%= brand._id %>">
-                                                <!-- Index column -->
-                                                <td><%= index + 1 %></td>
-
-                                                <td class="customer">
-                                                    <div
-                                                        class="d-flex align-items-center"
-                                                    >
-                                                        <div
-                                                            class="flex-grow-1"
-                                                        >
-                                                            <h5
-                                                                class="fs-base mb-0"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    class="text-reset customer-name-elem"
-                                                                >
-                                                                    <%=
-                                                                    brand.name
-                                                                    %>
-                                                                </a>
-                                                            </h5>
+                            <!--end card-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table
+                                            class="table table-centered align-middle table-nowrap mb-0"
+                                        >
+                                            <thead class="table-active">
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                value="option"
+                                                                id="checkAll"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="checkAll"
+                                                            ></label>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td class="status">
-                                                    <span
-                                                        class="badge bg-secondary-subtle text-secondary"
+                                                    </th>
+                                                    <th>
+                                                        #
+                                                    </th>
+                                                    <th
+                                                        
+                                                  
                                                     >
-                                                        <%= brand.status %>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <button
-                                                            class="btn btn-subtle-secondary btn-sm dropdown"
-                                                            type="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false"
+                                                        Brand Name
+                                                    </th>
+                                                    <th
+                                                        
+                                                       
+                                                    >
+                                                        Status
+                                                    </th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="list form-check-all">
+                                                <%
+                                                brands.forEach(function(brand,index)
+                                                {%>
+                                                <tr data-id="<%= brand._id %>">
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                name="chk_child"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                            ></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <%= index + 1 %>
+                                                    </td>
+
+                                                    <td class="category">
+                                                        <div
+                                                            class="d-flex align-items-center"
                                                         >
-                                                            <i
-                                                                class="ri-more-fill align-middle"
-                                                            ></i>
-                                                        </button>
-                                                        <ul
-                                                            class="dropdown-menu dropdown-menu-end"
+                                                            <div
+                                                                class="flex-grow-1"
+                                                            >
+                                                                <h5
+                                                                    class="fs-base mb-0"
+                                                                >
+                                                                    <a
+                                                                        href="#"
+                                                                        class="text-reset brand-name-elem"
+                                                                    >
+                                                                        <%=
+                                                                        brand.name
+                                                                        %>
+                                                                    </a>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="stock">
+                                                        <span
+                                                            class="badge bg-secondary-subtle text-secondary"
                                                         >
-                                                            <li>
-                                                                <a
-                                                                    class="dropdown-item view-item-btn"
-                                                                    href="javascript:void(0);"
-                                                                >
-                                                                    <i
-                                                                        class="ri-eye-fill align-bottom me-2 text-muted"
-                                                                    ></i>
-                                                                    View
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    class="dropdown-item edit-item-btn"
-                                                                    href="#editBrandModal"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#editBrandModal"
-                                                                >
-                                                                    <i
-                                                                        class="ri-pencil-fill align-bottom me-2 text-muted"
-                                                                    ></i>
-                                                                    Edit
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    class="dropdown-item remove-item-btn"
-                                                                    data-bs-toggle="modal"
-                                                                    href="#deleteRecordModal"
-                                                                >
-                                                                    <i
-                                                                        class="ri-delete-bin-fill align-bottom me-2 text-muted"
-                                                                    ></i>
-                                                                    Delete
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <% }); %>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="noresult" style="display: none">
-                                    <div class="text-center py-4">
-                                        <i
-                                            class="ph-magnifying-glass fs-1 text-primary"
-                                        ></i>
-                                        <h5 class="mt-2">
-                                            Sorry! No Result Found
-                                        </h5>
-                                        <p class="text-muted mb-0">
-                                            We've searched more than 150+
-                                            customers. We did not find any
-                                            brands for your search.
-                                        </p>
+                                                            <%= brand.status_id
+                                                            ?brand.status_id.name
+                                                            : ' ' %>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button
+                                                                class="btn btn-subtle-secondary btn-sm dropdown"
+                                                                type="button"
+                                                                data-bs-toggle="dropdown"
+                                                                aria-expanded="false"
+                                                            >
+                                                                <i
+                                                                    class="ri-more-fill align-middle"
+                                                                ></i>
+                                                            </button>
+                                                            <ul
+                                                                class="dropdown-menu dropdown-menu-end"
+                                                            >
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item edit-item-btn"
+                                                                        href="#editBrandModal"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#editBrandModal"
+                                                                        id="edit_btn"
+                                                                        data-model="<%= JSON.stringify(brand) %>"
+                                                                    >
+                                                                        <i
+                                                                            class="ri-pencil-fill align-bottom me-2 text-muted"
+                                                                        ></i>
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a
+                                                                        class="dropdown-item remove-item-btn"
+                                                                        data-bs-toggle="modal"
+                                                                        data-id="<%= brand._id %>"
+                                                                        href="#deleteRecordModal"
+                                                                    >
+                                                                        <i
+                                                                            class="ri-delete-bin-fill align-bottom me-2 text-muted"
+                                                                        ></i>
+                                                                        Delete
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <% }); %>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
-                                <div
-                                    class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
-                                    id="pagination-element"
-                                >
-                                    <div class="col-sm">
-                                        <div class="text-muted">
-                                            Showing
-                                            <span
-                                                class="fw-semibold"
-                                                id="pagination-start"
-                                                >1</span
-                                            >
-                                            to
-                                            <span
-                                                class="fw-semibold"
-                                                id="pagination-end"
-                                                >10</span
-                                            >
-                                            of
-                                            <span
-                                                class="fw-semibold"
-                                                id="total-results"
-                                                >13</span
-                                            >
-                                            Results
+                                    <div class="noresult" style="display: none">
+                                        <div class="text-center py-4">
+                                            <i
+                                                class="ph-magnifying-glass fs-1 text-primary"
+                                            ></i>
+                                            <h5 class="mt-2">
+                                                Sorry! No Result Found
+                                            </h5>
+                                            <p class="text-muted mb-0">
+                                                We've searched more than 150+
+                                                brands We did not find any
+                                                brands for you search.
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="col-sm-auto mt-3 mt-sm-0">
-                                        <div
-                                            class="pagination-wrap hstack gap-2"
-                                        >
-                                            <a
-                                                class="page-item pagination-prev disabled"
-                                                href="javascript:void(0)"
-                                                >Previous</a
+                                    <div
+                                        class="align-items-center mt-4 justify-content-between row text-center text-sm-start"
+                                        id="pagination-element"
+                                    >
+                                        <div class="col-sm">
+                                            <div class="text-muted">
+                                                Showing
+                                                <span
+                                                    class="fw-semibold"
+                                                    id="current-items"
+                                                    ><%= Math.min(currentPage *
+                                                    pageSize, totalItems)
+                                                    %></span
+                                                >
+                                                of
+                                                <span
+                                                    class="fw-semibold"
+                                                    id="total-items"
+                                                    ><%= totalItems ? totalItems : 0%></span
+                                                >
+                                                Results
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-auto mt-3 mt-sm-0">
+                                            <div
+                                                class="pagination-wrap hstack gap-2 justify-content-center"
                                             >
-                                            <ul
-                                                class="pagination listjs-pagination mb-0"
-                                                id="pagination-list"
-                                            ></ul>
-                                            <a
-                                                class="page-item pagination-next"
-                                                href="javascript:void(0)"
-                                                >Next</a
-                                            >
+                                                <a
+                                                    class="page-item pagination-prev disabled"
+                                                    href="javascript:void(0)"
+                                                    >Previous</a
+                                                >
+                                                <ul
+                                                    class="pagination listjs-pagination mb-0"
+                                                ></ul>
+                                                <a
+                                                    class="page-item pagination-next"
+                                                    href="javascript:void(0)"
+                                                    >Next</a
+                                                >
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!--end col-->
                     </div>
-                    <!--end col-->
                 </div>
                 <!--end row-->
             </div>
@@ -356,43 +389,39 @@
                     id="close-ordermodal"
                 ></button>
             </div>
-            <form class="tablelist-form" id="addBrandForm">
+            <form class="tablelist-form" id="submitForm" autocomplete="off">
                 <div class="modal-body">
-                    <div
-                        id="alert-error-msg"
-                        class="alert alert-danger py-2"
-                    ></div>
                     <input type="hidden" id="id-field" />
 
                     <div class="text-center mb-3"></div>
                     <div class="mb-3">
-                        <label for="customername-field" class="form-label"
+                        <label for="brandname-field" class="form-label"
                             >Brand Name</label
                         >
                         <input
                             type="text"
-                            id="customername-field"
+                            id="brandname-field"
                             class="form-control"
                             name="name"
                             placeholder="Enter Brand name"
+                            required
                         />
                     </div>
 
-                    <div>
-                        <label for="status-field" class="form-label"
+                    <div class="d-flex justify-content-start align-items-start">
+                        <label class="form-check-label" for="variant"
                             >Status</label
                         >
-                        <select
-                            class="form-control"
-                            name="status"
-                            id="status-field"
-                            required
-                        >
-                            <option value="">Status</option>
-                            <option value="Active">Active</option>
-                            <option value="Block">Block</option>
-                            <option value="Inactive">Inactive</option>
-                        </select>
+                        <div class="form-check form-switch ms-4">
+                            <input
+                                type="checkbox"
+                                name="status_id"
+                                id="status-field"
+                                class="form-check-input form-check-input-lg"
+                                checked
+                            />
+                            <span class="custom-switch-indicator"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -417,6 +446,7 @@
         </div>
     </div>
 </div>
+<!-- end Add Category Modal -->
 
 <!-- Edit Modal Starts -->
 <div
@@ -437,57 +467,50 @@
                     aria-label="Close"
                 ></button>
             </div>
-            <div class="modal-body">
-                <div
-                    id="edit-alert-error-msg"
-                    class="alert alert-danger py-2"
-                ></div>
-                <input type="hidden" id="edit-id-field" />
+            <form class="tablelist-form" id="editForm">
+                <div class="modal-body">
+                    <input type="hidden" id="editid" name="editid" />
 
-                <div class="mb-3">
-                    <label for="edit-customername-field" class="form-label"
-                        >Brand Name</label
-                    >
-                    <input
-                        type="text"
-                        id="edit-customername-field"
-                        class="form-control"
-                        name="name"
-                    />
-                </div>
+                    <div class="mb-3">
+                        <label for="edit-name-field" class="form-label"
+                            >Brand Name</label
+                        >
+                        <input
+                            type="text"
+                            id="edit_name"
+                            class="form-control"
+                            name="name"
+                            placeholder="Enter Category name"
+                            required
+                        />
+                    </div>
 
-                <div>
-                    <label for="edit-status-field" class="form-label"
-                        >Status</label
-                    >
-                    <select
-                        class="form-control"
-                        name="status"
-                        id="edit-status-field"
-                        required
-                    >
-                        <option value="Active">Active</option>
-                        <option value="Block">Block</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
+                    <div class="d-flex justify-content-start align-items-start">
+                        <label class="form-check-label" for="status_id"
+                            >Status</label
+                        >
+                        <div class="form-check form-switch ms-4">
+                            <input
+                                type="checkbox"
+                                name="status_id"
+                                id="edit_status_id"
+                                class="form-check-input form-check-input-lg"
+                            />
+                            <span class="custom-switch-indicator"></span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button
-                    type="button"
-                    class="btn btn-light"
-                    data-bs-dismiss="modal"
-                >
-                    Close
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-success"
-                    id="edit-brand-btn"
-                >
-                    Save Changes
-                </button>
-            </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-light"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -548,123 +571,131 @@
 
 <!-- /deleteRecordModal -->
 
-<!-- end Add Category Modal -->
-
-<!-- Edit Category Modal -->
-
-<!-- end Add Category Modal -->
-
-<!-- deleteRecordModal -->
-
-<!-- /deleteRecordModal -->
-
 <%- include('partials/footer.ejs') %>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $("#addBrandForm").on("submit", function (event) {
-            event.preventDefault();
+    var addform = $("#submitForm");
+    addform.on("submit", submitFormHandler);
 
-            const name = $("#customername-field").val();
-            const status = $("#status-field").val();
-
-            $.ajax({
-                type: "POST",
-                url: "/admin/brand/add", // Adjust URL based on your routes
-                contentType: "application/json",
-                data: JSON.stringify({ name, status }),
-            })
-                .done((res) => {
-                    if (res.status == 200) {
-                        iziToast.success({
-                            title: "Success",
-                            message: res.message,
-                            position: "topRight",
-                        });
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000);
-                    } else {
-                        iziToast.error({
-                            title: "Error",
-                            message: res.message,
-                            position: "topRight",
-                        });
-                    }
-                })
-                .fail(function (xhr, status, error) {
-                    iziToast.error({
-                        title: "Error",
-                        message: xhr.responseText,
+    function submitFormHandler(e) {
+        e.preventDefault();
+        var formData = getFormData(addform);
+        // DO POST
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/admin/brand/add",
+            data: JSON.stringify(formData),
+        })
+            .done((res) => {
+                if (res.status == 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
                         position: "topRight",
                     });
+                    $("#showModal").modal("hide");
                     setTimeout(function () {
                         location.reload();
-                    }, 1000);
+                    }, 500);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
                 });
+            });
+    }
+</script>
+<script>
+    $(document).on("click", "#edit_btn", function (e) {
+        var data = $(this).attr("data-model");
+        data = JSON.parse(data);
+        const activeStatusId = "<%= activeStatus._id.toString() %>";
+
+        $("#editid").val(data._id);
+        $("#edit_name").val(data.name);
+        $("#edit_status_id").prop(
+            "checked",
+            data.status_id._id === activeStatusId
+        );
+    });
+
+    function getFormData($form) {
+        var unindexed_array = $form.serializeArray();
+        var indexed_array = {};
+
+        $.map(unindexed_array, function (n, i) {
+            indexed_array[n["name"]] = n["value"];
         });
-    });
 
-    $(document).on("click", ".edit-item-btn", function () {
-        currentEditRow = $(this).closest("tr"); // Track the row being edited
-        const id = currentEditRow.data("id");
-        const name = currentEditRow.find(".customer-name-elem").text().trim();
-        const status = currentEditRow.find(".status span").text().trim();
+        return indexed_array;
+    }
 
-        $("#edit-id-field").val(id);
-        $("#edit-customername-field").val(name);
-        $("#edit-status-field").val(status);
+    var editForm = $("#editForm");
+    editForm.on("submit", function (e) {
+        e.preventDefault();
 
-        $("#editBrandModal").modal("show"); // Show the modal
-    });
-
-    $("#edit-brand-btn").on("click", function () {
-        const id = $("#edit-id-field").val();
-        const name = $("#edit-customername-field").val();
-        const status = $("#edit-status-field").val();
+        var formData = getFormData(editForm);
+        var id = $("#editid").val();
 
         $.ajax({
             type: "POST",
             url: "/admin/brand/edit/" + id,
             contentType: "application/json",
-            data: JSON.stringify({ name, status }),
-            success: function (response) {
-                iziToast.success({
-                    title: "Success",
-                    message: "Brand updated successfully!",
-                    position: "topRight",
-                });
-
-                // Update the row in the table
-                currentEditRow.find(".customer-name-elem").text(name);
-                currentEditRow.find(".status span").text(status);
-
-                setTimeout(function () {
-                    location.reload(); // Reload to reflect changes
-                }, 1000);
-            },
-            error: function (xhr, status, error) {
+            data: JSON.stringify(formData),
+        })
+            .done((res) => {
+                if (res.status === 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    $("#editBrandModal").modal("hide");
+                    setTimeout(function () {
+                        location.reload();
+                    }, 500);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
                 iziToast.error({
                     title: "Error",
-                    message: xhr.responseText || "Failed to update brand!",
+                    message: xhr.responseText,
                     position: "topRight",
                 });
-            },
-        });
+            });
     });
+</script>
 
-    // Delete Brand AJAX
-
+<script>
+    //#region Delete Brand
     $(document).on("click", ".remove-item-btn", function () {
         currentDeleteId = $(this).data("id"); // Get the id of the brand to delete
     });
 
     $(document).on("click", "#delete-brand", function () {
-        if (!currentDeleteId) return; // Check if currentDeleteId is defined
-
+        if (!currentDeleteId) {
+            console.error("No brand ID set for deletion.");
+            return;
+        }
         $.ajax({
-            type: "DELETE",
+            type: "POST",
             url: "/admin/brand/delete/" + currentDeleteId,
             success: function (response) {
                 iziToast.success({
@@ -685,4 +716,5 @@
             },
         });
     });
+    //#endregion Delete Brand
 </script>

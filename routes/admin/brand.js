@@ -1,12 +1,10 @@
-// routes/admin/brand.js
-
 const router = require("express").Router();
-const BrandController = require("../../controllers/admin/brandControllers");
+const { NotLoggedIn } = require("../../middlewares/Adminauth");
+const BrandController = require("../../controllers/admin/brandController");
 
-router.get("/list", BrandController.list);
-router.post("/add", BrandController.create);
-// Correct route with parameter
-router.post("/edit/:id", BrandController.update);
-router.delete("/delete/:id", BrandController.delete);
+router.get("/list", NotLoggedIn, BrandController.list);
+router.post("/add", NotLoggedIn, BrandController.add);
+router.post("/edit/:id", NotLoggedIn, BrandController.edit);
+router.post("/delete/:id", NotLoggedIn, BrandController.delete);
 
 module.exports = router;

@@ -257,12 +257,12 @@ function isStatus(e) {
         refreshCallbacks(),
         ischeckboxcheck();
 }),
-    xhttp.open("GET", "assets/json/order-list.json"),
-    xhttp.send(),
-    (isCount = new DOMParser().parseFromString(
-        orderList.items.slice(-1)[0]._values.id,
-        "text/html"
-    )),
+    // xhttp.open("GET", "assets/json/order-list.json"),
+    // xhttp.send(),
+    // (isCount = new DOMParser().parseFromString(
+    //     orderList.items.slice(-1)[0]._values.id,
+    //     "text/html"
+    // )),
     document
         .querySelector(".pagination-next")
         .addEventListener("click", function () {
@@ -294,44 +294,6 @@ function isStatus(e) {
                     .querySelector(".pagination.listjs-pagination")
                     .querySelector(".active")
                     .previousSibling.children[0].click();
-        }),
-    document
-        .getElementById("showModal")
-        .addEventListener("show.bs.modal", function (e) {
-            e.relatedTarget.classList.contains("edit-item-btn")
-                ? ((document.getElementById("exampleModalLabel").innerHTML =
-                      "Edit Order"),
-                  (document
-                      .getElementById("showModal")
-                      .querySelector(".modal-footer").style.display = "block"),
-                  (document.getElementById("add-btn").innerHTML = "Update"))
-                : e.relatedTarget.classList.contains("add-btn")
-                ? ((document.getElementById("exampleModalLabel").innerHTML =
-                      "Add Order"),
-                  (document
-                      .getElementById("showModal")
-                      .querySelector(".modal-footer").style.display = "block"),
-                  (document.getElementById("add-btn").innerHTML = "Add Order"))
-                : ((document.getElementById("exampleModalLabel").innerHTML =
-                      "List product"),
-                  (document
-                      .getElementById("showModal")
-                      .querySelector(".modal-footer").style.display = "none"));
-        }),
-    document
-        .querySelector("#companyLogo-image-input")
-        .addEventListener("change", function () {
-            var e = document.querySelector("#companyLogo-img"),
-                t = document.querySelector("#companyLogo-image-input").files[0],
-                a = new FileReader();
-            a.addEventListener(
-                "load",
-                function () {
-                    e.src = a.result;
-                },
-                !1
-            ),
-                t && a.readAsDataURL(t);
         });
 var idField = document.getElementById("id-field"),
     companyLogoImg = document.getElementById("companyLogo-img"),
@@ -344,13 +306,13 @@ var idField = document.getElementById("id-field"),
     deliverStatsField = document.getElementById("delivered-status"),
     removeBtns = document.getElementsByClassName("remove-item-btn"),
     editBtns = document.getElementsByClassName("edit-item-btn"),
-    productVal = new Choices(productsField, { searchEnabled: !1 }),
-    paymentVal = new Choices(paymentField, { searchEnabled: !1 }),
-    deliverStatsVal = new Choices(deliverStatsField, { searchEnabled: !1 }),
-    count =
-        (flatpickr("#date-field", { enableTime: !0, dateFormat: "d M, Y" }),
-        refreshCallbacks(),
-        13),
+    // productVal = new Choices(productsField, { searchEnabled: !1 }),
+    // paymentVal = new Choices(paymentField, { searchEnabled: !1 }),
+    // deliverStatsVal = new Choices(deliverStatsField, { searchEnabled: !1 }),
+    // count =
+    //     (flatpickr("#date-field", { enableTime: !0, dateFormat: "d M, Y" }),
+    //     refreshCallbacks(),
+    //     13),
     forms = document.querySelectorAll(".tablelist-form");
 function ischeckboxcheck() {
     Array.from(document.getElementsByName("chk_child")).forEach(function (a) {
@@ -668,9 +630,9 @@ Array.prototype.slice.call(forms).forEach(function (e) {
                   !0)
         );
     });
-}),
-    document
-        .getElementById("showModal")
-        .addEventListener("hidden.bs.modal", function () {
-            clearFields();
-        });
+});
+// document
+//     .getElementById("showModal")
+//     .addEventListener("hidden.bs.modal", function () {
+//         clearFields();
+//     });

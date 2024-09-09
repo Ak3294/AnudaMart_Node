@@ -1,0 +1,203 @@
+<%- include('partials/header') %>
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="page-title-box d-sm-flex align-items-center justify-content-between"
+                        >
+                            <h4 class="mb-sm-0">RazorPay Config</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="/admin/dashboard">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        RazorPay Config
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <!--end col-->
+                    <div class="col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">RazorPay Config</h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="updateForm">
+                                    <div
+                                        class="row g-2 justify-content-lg-between align-items-center"
+                                    >
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="copyright"
+                                                class="form-label"
+                                                >Key</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="key_id"
+                                                    name="key_id"
+                                                    placeholder="Enter Key"
+                                                    value="<%= key_id ? key_id : '' %>"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label
+                                                for="copyright"
+                                                class="form-label"
+                                                >Key Secret</label
+                                            >
+                                            <div class="position-relative">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="key_secret"
+                                                    name="key_secret"
+                                                    placeholder="Enter Key Secret"
+                                                    value="<%= key_secret ? key_secret : '' %>"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 ms-3 mt-4">
+                                            <div
+                                                class="d-flex justify-content-start align-items-start"
+                                            >
+                                                <label
+                                                    class="form-check-label"
+                                                    for="variant"
+                                                    >Status</label
+                                                >
+                                                <div
+                                                    class="form-check form-switch ms-4"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        name="status_id"
+                                                        id="status_id"
+                                                        class="form-check-input form-check-input-lg"
+                                                        checked
+                                                    />
+                                                    <span
+                                                        class="custom-switch-indicator"
+                                                    ></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="d-flex align-items-center justify-content-end"
+                                        >
+                                            <div class="mt-3">
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-thm"
+                                                >
+                                                    Save Changes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end row-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<%- include('partials/footer') %>
+
+<!-- profile-update -->
+<script>
+    var editform = $("#updateForm");
+    editform.submit(function (e) {
+        e.preventDefault();
+
+        var formData = getFormData(editform);
+
+        //validation
+        if ($("#key_id").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Key is required",
+                position: "topRight",
+            });
+            return false;
+        }
+        if ($("#key_secret").val() == "") {
+            iziToast.error({
+                title: "Error",
+                message: "Key Secret is required",
+                position: "topRight",
+            });
+            return false;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/admin/razorpay_config_add",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+        })
+            .done((res) => {
+                if (res.status == 200) {
+                    iziToast.success({
+                        title: "Success",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    iziToast.error({
+                        title: "Error",
+                        message: res.message,
+                        position: "topRight",
+                    });
+                }
+            })
+            .fail(function (xhr, status, error) {
+                iziToast.error({
+                    title: "Error",
+                    message: xhr.responseText,
+                    position: "topRight",
+                });
+            });
+    });
+
+    // fill status
+    var status = "<%= status_id %>";
+    const activeStatusId = "<%= activeStatus._id.toString() %>";
+    $("#status_id").prop(
+            "checked",
+            status == activeStatusId ? true : false
+        );
+</script>
